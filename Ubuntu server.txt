@@ -1,0 +1,8 @@
+Ubuntu Server
+- usuario: izan  pass: 0000
+MySQL Server (Ubuntu Server)
+- usuario: root pass: @Ev0luti0n
+
+MV ubuntu server preparada para alojar MySQL server 
+para la base de datos y un servidor web Apachhe para la API y mediante esta utilizarlo tambien 
+para el almacenamiento de archivos
