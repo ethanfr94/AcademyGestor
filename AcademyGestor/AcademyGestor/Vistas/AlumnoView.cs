@@ -18,6 +18,9 @@ namespace AcademyGestor.Vistas
         private CtrlTutores ctrlTutores;
         private List<Tutor> tutores;
         private Alumno alumno;
+        private Tutor tutor;
+
+
         public AlumnoView()
         {
             InitializeComponent();
@@ -32,11 +35,12 @@ namespace AcademyGestor.Vistas
         {
             InitializeComponent();
             this.alumno = alumno;
+            this.tutor = alumno.tutor;
+            this.Text = "Datos del Alumno " + alumno.nombre + " " + alumno.apellido1 + " " + alumno.apellido2;
             ctrlTutores = new CtrlTutores();
             ctrlAlumnos = new CtrlAlumnos();
             cargarTutores();
             dtpFecha_nac_ValueChanged(null, null);
-            this.Text = "Datos del Alumno " + alumno.nombre + " " + alumno.apellido1 + " " + alumno.apellido2;
             cargarAlumno();
 
 
@@ -57,23 +61,8 @@ namespace AcademyGestor.Vistas
             chkProt_datos.Checked = (alumno.proteccionDatos == 1);
             chkWhatsapp.Checked = (alumno.grupoWhatsapp == 1);
             chkComerc.Checked = (alumno.comunicacionesComerciales == 1);
-            if (alumno.tutor != null)
-            {
-                txtNombreTutor.Text = alumno.tutor.nombre;
-                txtApe1Tutor.Text = alumno.tutor.apellido1;
-                txtApe2Tutor.Text = alumno.tutor.apellido2;
-                txtEmailTutor.Text = alumno.tutor.email;
-                txtDniTutor.Text = alumno.tutor.dni;
-                txtDireccionTutor.Text = alumno.tutor.direccion;
-                txtLocalidadTutor.Text = alumno.tutor.localidad;
-                txtTlfnTutor.Text = alumno.tutor.telefono;
-                cmbTutor.SelectedItem = alumno.tutor;
 
-            }
-            else
-            {
-                limpiarCamposTutor();
-            }
+            
         }
 
 
@@ -91,6 +80,17 @@ namespace AcademyGestor.Vistas
             else
             {
                 MessageBox.Show("Error al cargar los tutores");
+            }
+            if(tutor != null)
+            {
+                foreach (var item in cmbTutor.Items)
+                {
+                    if (item is Tutor t && t.id == tutor.id)
+                    {
+                        cmbTutor.SelectedItem = item;
+                        break;
+                    }
+                }
             }
         }
 
@@ -190,7 +190,7 @@ namespace AcademyGestor.Vistas
 
             if (result == DialogResult.Yes)
             {
-                bool eliminado = await ctrlAlumnos.deleteAlumno(alumno.id);
+                bool eliminado = await ctrlAlumnos.deleteAlumno((int)alumno.id);
                 if (!eliminado)
                 {
                     MessageBox.Show("Error al eliminar el alumno.", "Eliminar Alumno", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -215,6 +215,8 @@ namespace AcademyGestor.Vistas
             if (alumno == null)
             {
                 alumno = new Alumno();
+
+                alumno.id = 0;
                 alumno.nombre = txtNombre.Text;
                 alumno.apellido1 = txtApe1.Text;
                 alumno.apellido2 = txtApe2.Text;
@@ -231,6 +233,7 @@ namespace AcademyGestor.Vistas
                 if (chkNuevoTutor.Checked)
                 {
                     alumno.tutor = new Tutor();
+                    
                     alumno.tutor.nombre = txtNombreTutor.Text;
                     alumno.tutor.apellido1 = txtApe1Tutor.Text;
                     alumno.tutor.apellido2 = txtApe2Tutor.Text;
@@ -272,6 +275,7 @@ namespace AcademyGestor.Vistas
                     alumno.tutor.localidad = txtLocalidadTutor.Text;
                     alumno.tutor.telefono = txtTlfnTutor.Text;
 
+                   
                 }
                 else
                 {
@@ -280,7 +284,10 @@ namespace AcademyGestor.Vistas
                 }
             }
 
-            if (alumno.id == 0)
+
+            MessageBox.Show(alumno.ToString());
+
+            if (alumno.id < 1)
             {
                 bool creado = await ctrlAlumnos.addAlumno(alumno);
                 if (!creado)

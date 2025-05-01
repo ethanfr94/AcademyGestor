@@ -4,7 +4,7 @@ namespace AcademyGestor.Modelos
 {
     public class Alumno
     {
-        public int id { get; set; }
+        public int? id { get; set; }
         public string nombre { get; set; }
         public string apellido1 { get; set; }
         public string apellido2 { get; set; }
@@ -21,7 +21,7 @@ namespace AcademyGestor.Modelos
 
         public string ToString()
         {
-            return $"{nombre} {apellido1} {apellido2} {dni} {fechaNac.ToString("dd/MM/yyyy")} {direccion} {localidad} {email} {telefono} {tutor.nombreCompleto} {proteccionDatos} {grupoWhatsapp} {comunicacionesComerciales}";
+            return $"{(int)id} {nombre} {apellido1} {apellido2} {dni} {fechaNac.ToString("dd/MM/yyyy")} {direccion} {localidad} {email} {telefono} {tutor.nombreCompleto} {proteccionDatos} {grupoWhatsapp} {comunicacionesComerciales}";
         }
 
 

@@ -58,8 +58,6 @@ namespace AcademyGestor
         {
             alumnos = await ctrlAlumnos.getAlumnos();
 
-            btnFaltas.Visible = true;
-
             dgvDatos.Columns.Clear();
 
             dgvDatos.Columns.Add("nombre", "Nombre");
@@ -88,9 +86,9 @@ namespace AcademyGestor
                     item.email,
                     item.telefono,
                     item.tutor.nombre + " " + item.tutor.apellido1 + " " + item.tutor.apellido2,
-                    item.proteccionDatos == 1? "si" : "no",
-                    item.grupoWhatsapp == 1? "si" : "no",
-                    item.comunicacionesComerciales == 1? "si" : "no"
+                    item.proteccionDatos == 1 ? "si" : "no",
+                    item.grupoWhatsapp == 1 ? "si" : "no",
+                    item.comunicacionesComerciales == 1 ? "si" : "no"
                 )];
                 row.Tag = item;
             }
@@ -115,7 +113,7 @@ namespace AcademyGestor
                     item.nombre,
                     item.apellido1 + " " + item.apellido2,
                     item.email, item.telefono,
-                    item.activo ? "si" : "no"
+                    item.activo == 1 ? "si" : "no"
                 )];
                 row.Tag = item;
             }
@@ -136,9 +134,9 @@ namespace AcademyGestor
             foreach (var item in cursos)
             {
                 DataGridViewRow row = dgvDatos.Rows[dgvDatos.Rows.Add(
-                    item.cod_curso, 
-                    item.nombre, 
-                    item.tipo.nombre, 
+                    item.cod_curso,
+                    item.nombre,
+                    item.tipo.nombre,
                     item.activo == 1 ? "si" : "no"
                 )];
                 row.Tag = item;
@@ -162,11 +160,11 @@ namespace AcademyGestor
             foreach (var item in solicitudes)
             {
                 DataGridViewRow row = dgvDatos.Rows[dgvDatos.Rows.Add(
-                    item.fecha.ToString("dd/MM/yyyy"), 
-                    item.curso.cod_curso + " " + item.curso.nombre, 
-                    item.nombre + " " + item.apellido1 + " " + item.apellido2, 
-                    item.prot_datos ? "si" : "no", 
-                    item.aut_fotos ? "si" : "no", 
+                    item.fecha.ToString("dd/MM/yyyy"),
+                    item.curso.cod_curso + " " + item.curso.nombre,
+                    item.nombre + " " + item.apellido1 + " " + item.apellido2,
+                    item.prot_datos ? "si" : "no",
+                    item.aut_fotos ? "si" : "no",
                     item.whatsapp ? "si" : "no",
                     item.com_comerciales ? "si" : "no"
                     )];
@@ -209,7 +207,7 @@ namespace AcademyGestor
                         item.autorizacionFotos ? "si" : "no",
                         item.beca ? "si" : "no"
                         )];
-                row.Tag = item;                
+                row.Tag = item;
             }
             dgvDatos.CurrentCell = null;
         }
@@ -226,10 +224,10 @@ namespace AcademyGestor
             foreach (var item in recibos)
             {
                 DataGridViewRow row = dgvDatos.Rows[dgvDatos.Rows.Add(
-                    item.fecha.ToString("dd/MM/yyyy"), 
-                    item.matricula.alumno.nombre + " " + item.matricula.alumno.apellido1 + " " + item.matricula.alumno.apellido2, 
-                    item.matricula.curso.nombre, 
-                    item.importe, 
+                    item.fecha.ToString("dd/MM/yyyy"),
+                    item.matricula.alumno.nombre + " " + item.matricula.alumno.apellido1 + " " + item.matricula.alumno.apellido2,
+                    item.matricula.curso.nombre,
+                    item.importe,
                     item.pagado ? "si" : "no"
                     )];
                 row.Tag = item;
@@ -247,8 +245,8 @@ namespace AcademyGestor
             foreach (var item in publicaciones)
             {
                 DataGridViewRow row = dgvDatos.Rows[dgvDatos.Rows.Add(
-                    item.timeStamp.ToString("dd/MM/yyyy"), 
-                    item.titulo, 
+                    item.timeStamp.ToString("dd/MM/yyyy"),
+                    item.titulo,
                     item.tipo
                     )];
                 row.Tag = item;
@@ -258,7 +256,7 @@ namespace AcademyGestor
 
         private void btnCarga_Click(object sender, EventArgs e)
         {
-            
+
             if (cmbSelect.SelectedItem == null)
             {
                 MessageBox.Show("Selecciona una opción");
@@ -272,30 +270,37 @@ namespace AcademyGestor
             if (cmbSelect.SelectedItem.ToString() == "Alumnos")
             {
                 cargaAlumnos();
+                btnMultifuncion.Visible = true;
             }
             else if (cmbSelect.SelectedItem.ToString() == "Profesores")
             {
                 cargaProfesores();
+                btnMultifuncion.Visible = false;
             }
             else if (cmbSelect.SelectedItem.ToString() == "Solicitudes")
             {
                 cargaSolicitudes();
+                btnMultifuncion.Visible = false;
             }
             else if (cmbSelect.SelectedItem.ToString() == "Matriculas")
             {
                 cargaMatriculas();
+                btnMultifuncion.Visible = false;
             }
             else if (cmbSelect.SelectedItem.ToString() == "Cursos")
             {
                 cargaCursos();
+                btnMultifuncion.Visible = false;
             }
             else if (cmbSelect.SelectedItem.ToString() == "Recibos")
             {
                 cargaRecibos();
+                btnMultifuncion.Visible = false;
             }
             else if (cmbSelect.SelectedItem.ToString() == "Publicaciones")
             {
                 cargaPublicaciones();
+                btnMultifuncion.Visible = false;
             }
         }
 
@@ -303,7 +308,7 @@ namespace AcademyGestor
         {
             if (dgvDatos.SelectedRows.Count > 0)
             {
-               DataGridViewRow selectedRow = dgvDatos.SelectedRows[0];
+                DataGridViewRow selectedRow = dgvDatos.SelectedRows[0];
 
                 if (selectedRow.Tag is Alumno alumno)
                 {
@@ -327,7 +332,7 @@ namespace AcademyGestor
                                     "- DNI: " + profesor.dni + "\n\n" +
                                     "- Email: " + profesor.email + "\t" + "- Telefono: " + profesor.telefono + "\n\n" +
                                     "- Direccion: " + profesor.direccion + "\n" + "- Localidad: " + profesor.localidad + "\n\n" +
-                                    "- Activo: " + (profesor.activo ? "si" : "no");
+                                    "- Activo: " + (profesor.activo == 1 ? "si" : "no");
                 }
                 else if (selectedRow.Tag is Curso curso)
                 {
@@ -337,7 +342,7 @@ namespace AcademyGestor
 
                     foreach (var item in profs)
                     {
-                        if (item.coordinador)
+                        if (item.coordinador == 1)
                         {
                             pr = item.profesor;
                             break;
@@ -346,10 +351,10 @@ namespace AcademyGestor
 
                     txtDatos.Text = "- Codigo: " + curso.cod_curso + "\t\t" + "Nombre: " + curso.nombre + "\n" +
                                     "- Descripcion: " + curso.descripcion + "\n\n" +
-                                    "- Horario: " + curso.horario + "\n\n" +                                   
+                                    "- Horario: " + curso.horario + "\n\n" +
                                     "- Tipo: " + curso.tipo.nombre + "\n\n" +
                                     "- Activo: " + (curso.activo == 1 ? "si" : "no") + "\n\n" +
-                                    "- Coordinador: " + (pr != null ? pr.nombre + " " + pr.apellido1 + " " + pr.apellido2 : "") ;
+                                    "- Coordinador: " + (pr != null ? pr.nombre + " " + pr.apellido1 + " " + pr.apellido2 : "");
                 }
                 else if (selectedRow.Tag is Solicitud solicitud)
                 {
@@ -378,7 +383,7 @@ namespace AcademyGestor
                                     "- Curso: " + matricula.curso.nombre + "\n\n" +
                                     "- Fecha alta: " + matricula.fechAlta.ToString("dd/MM/yyyy") + "\n" +
                                     "- Fecha baja: " + (matricula.fechBaja != null ? matricula.fechBaja.ToString() : "") + "\n\n" +
-                                    "- Autorizacion de fotos: " + (matricula.autorizacionFotos ? "si" : "no") + "\t" + "- Beca: " + (matricula.beca ? "si" : "no"); 
+                                    "- Autorizacion de fotos: " + (matricula.autorizacionFotos ? "si" : "no") + "\t" + "- Beca: " + (matricula.beca ? "si" : "no");
                 }
                 else if (selectedRow.Tag is Recibo recibo)
                 {
@@ -405,7 +410,7 @@ namespace AcademyGestor
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            if(cmbSelect.SelectedItem == null)
+            if (cmbSelect.SelectedItem == null)
             {
                 MessageBox.Show("Selecciona una opción");
                 return;
@@ -446,30 +451,54 @@ namespace AcademyGestor
                 formRecibo.ShowDialog();
                 cargaRecibos();
             }
+            else if (cmbSelect.SelectedItem.ToString() == "Publicaciones")
+            {
+                PublicacionView formPublicacion = new PublicacionView();
+                formPublicacion.ShowDialog();
+                cargaPublicaciones();
+            }
         }
 
-        private void btnFaltas_Click(object sender, EventArgs e)
+        private void btnMultifuncion_Click(object sender, EventArgs e)
         {
-            if(dgvDatos.SelectedRows.Count > 0)
+            if (cmbSelect.SelectedItem.ToString() == "Alumnos")
             {
-                DataGridViewRow selectedRow = dgvDatos.SelectedRows[0];
-                if (selectedRow.Tag is Alumno alumno)
+                btnMultifuncion.Text = "Faltas de asistencia";
+
+                if (dgvDatos.SelectedRows.Count > 0)
                 {
-                    FaltaAsistenciaView formFaltas = new FaltaAsistenciaView(alumno);
-                    formFaltas.ShowDialog();
+                    DataGridViewRow selectedRow = dgvDatos.SelectedRows[0];
+                    if (selectedRow.Tag is Alumno alumno)
+                    {
+                        FaltaAsistenciaView formFaltas = new FaltaAsistenciaView(alumno);
+                        formFaltas.ShowDialog();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Selecciona un alumno", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
             }
-            else
+            else if (cmbSelect.SelectedItem.ToString() == "Cursos")
             {
-                MessageBox.Show("Selecciona un alumno", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                btnMultifuncion.Text = "Administrar profesores";
+
+                if (dgvDatos.SelectedRows.Count > 0)
+                {
+                    MessageBox.Show("se creara una ventana para gestionar los profesores participantez en cada curso");
+                }
+                else
+                {
+                    MessageBox.Show("Selecciona un curso", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
             }
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            if(cmbSelect.SelectedItem == null)
+            if (cmbSelect.SelectedItem == null)
             {
-                MessageBox.Show("Selecciona una opción");
+                MessageBox.Show("Selecciona una opción", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
             if (dgvDatos.SelectedRows.Count > 0)

@@ -7,14 +7,26 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using AcademyGestor.ApiService;
+using AcademyGestor.Modelos;
 
 namespace AcademyGestor.Vistas
 {
     public partial class PublicacionView : Form
     {
+        private CtrlPublicaciones ctrlPublicaciones;
+        private Publicacion publicacion;
         public PublicacionView()
         {
             InitializeComponent();
         }
+
+        public PublicacionView(Publicacion publicacion)
+        {
+            InitializeComponent();
+            this.publicacion = publicacion;
+        }
+
+
     }
 }

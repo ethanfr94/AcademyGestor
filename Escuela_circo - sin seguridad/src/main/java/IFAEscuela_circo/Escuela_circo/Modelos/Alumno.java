@@ -44,7 +44,7 @@ public class Alumno {
     private String telefono;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "tutor")
+    @JoinColumn(name = "tutor", nullable = true)
     private Tutor tutor;
 
     @ColumnDefault("0")

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Loggin));
             this.btnLog = new System.Windows.Forms.Button();
             this.txtUser = new System.Windows.Forms.TextBox();
             this.txtPass = new System.Windows.Forms.TextBox();
@@ -82,9 +83,11 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(53, 50);
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.InitialImage = null;
+            this.pictureBox1.Location = new System.Drawing.Point(25, 12);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(204, 183);
+            this.pictureBox1.Size = new System.Drawing.Size(253, 236);
             this.pictureBox1.TabIndex = 6;
             this.pictureBox1.TabStop = false;
             // 

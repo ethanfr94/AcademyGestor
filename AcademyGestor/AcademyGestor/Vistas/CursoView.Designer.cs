@@ -104,6 +104,7 @@
             this.btnEliminar.TabIndex = 8;
             this.btnEliminar.Text = "Eliminar curso";
             this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnGuardar
             // 
@@ -116,6 +117,7 @@
             this.btnGuardar.TabStop = false;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // btnSalir
             // 

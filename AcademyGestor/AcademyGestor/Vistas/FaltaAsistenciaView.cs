@@ -17,6 +17,7 @@ namespace AcademyGestor.Vistas
         private CtrlFaltas ctrlFaltas;
         private List<Falta_Asistencia> faltas;
         private Alumno alumno;
+        private int faltasMes = 0;
         public FaltaAsistenciaView(Alumno alumno)
         {
             InitializeComponent();
@@ -27,47 +28,63 @@ namespace AcademyGestor.Vistas
             cargarFaltas(alumno.id);
         }
 
-        private async void cargarFaltas(int alumnoId)
+        private async void cargarFaltas(int? alumnoId)
         {
             try
             {
-                faltas = await ctrlFaltas.getFaltasAlumno(alumnoId);
-                if (faltas != null)
+                if (alumnoId != null)
                 {
-                    var faltasAlumno = faltas.Where(f => f.alumno.id == alumnoId).ToList();
 
-                    if (faltasAlumno.Count > 0)
+                    faltas = await ctrlFaltas.getFaltasAlumno((int)alumnoId);
+
+                    if (faltas != null)
                     {
-                        dgvFaltas.Columns.Add("Fecha", "Fecha");
-                        dgvFaltas.Columns.Add("Alumno", "Alumno");
-                        dgvFaltas.Columns.Add("Curso", "Curso");
+                        var faltasAlumno = faltas.Where(f => f.alumno.id == alumnoId).ToList();
 
-                        foreach (var falta in faltasAlumno)
+                        if (faltasAlumno.Count > 0)
                         {
-                            DataGridViewRow row = dgvFaltas.Rows[dgvFaltas.Rows.Add(
-                                falta.fecha.ToString("dd/MM/yyyy"),
-                                falta.alumno.nombre+" "+falta.alumno.apellido1+" "+falta.alumno.apellido2,
-                                falta.curso.nombre
-                             )];
-                            row.Tag = falta;
+                            dgvFaltas.Columns.Add("Fecha", "Fecha");
+                            dgvFaltas.Columns.Add("Alumno", "Alumno");
+                            dgvFaltas.Columns.Add("Curso", "Curso");
+
+                            foreach (var falta in faltasAlumno)
+                            {
+                                DataGridViewRow row = dgvFaltas.Rows[dgvFaltas.Rows.Add(
+                                    falta.fecha.ToString("dd/MM/yyyy"),
+                                    falta.alumno.nombre + " " + falta.alumno.apellido1 + " " + falta.alumno.apellido2,
+                                    falta.curso.nombre
+                                 )];
+                                row.Tag = falta;
+
+                                if (falta.fecha >= DateTime.Now.AddDays(-30))
+                                {
+                                    faltasMes++;
+                                }
+                            }
+                            dgvFaltas.CurrentCell = null;
                         }
-                        dgvFaltas.CurrentCell = null;
+                        else
+                        {
+                            MessageBox.Show("No se han encontrado faltas para el alumno.");
+                        }
                     }
                     else
                     {
                         MessageBox.Show("No se han encontrado faltas para el alumno.");
+                        this.Close();
                     }
+
+                    lblFaltasMes.Text = "- Faltas de asistencia ultimo mes: " + faltasMes.ToString();
+                    lblFaltasTotales.Text = "- Faltas de asistencia totales: " + faltas.Count.ToString();
+
                 }
-                else
-                {
-                    MessageBox.Show("No se han encontrado faltas para el alumno.");
-                    this.Close();
-                }
+
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error al cargar las faltas: " + ex.Message);
             }
         }
+
     }
 }

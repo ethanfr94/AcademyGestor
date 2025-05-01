@@ -87,7 +87,8 @@ namespace AcademyGestor.ApiService
             {
                 string json = JsonConvert.SerializeObject(alumno, Formatting.Indented);
 
-                Debug.WriteLine(json);
+                Console.WriteLine(json);
+                MessageBox.Show(json);
 
                 StringContent content = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
 
@@ -100,19 +101,17 @@ namespace AcademyGestor.ApiService
                 else
                 {
                     string errorContent = await resp.Content.ReadAsStringAsync();
-                    Debug.WriteLine($"Error status code: {resp.StatusCode}, Content: {errorContent}");
-                    MessageBox.Show($"Error al crear el alumno. Detalles: {errorContent}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
+                   return false;
                 }
             }
             catch (HttpRequestException e)
             {
-                MessageBox.Show("ErrorHttp: " + e.Message);
+                Console.Write("ErrorHttp: " + e.Message);
                 return false;
             }
             catch (Exception e)
             {
-                MessageBox.Show("Errorsdag: " + e.Message);
+                Console.Write("Errorsdag: " + e.Message);
                 return false;
             }
         }

@@ -35,7 +35,7 @@
             this.cmbSelect = new System.Windows.Forms.ComboBox();
             this.btnCarga = new System.Windows.Forms.Button();
             this.txtDatos = new System.Windows.Forms.RichTextBox();
-            this.btnFaltas = new System.Windows.Forms.Button();
+            this.btnMultifuncion = new System.Windows.Forms.Button();
             this.pTablas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
             this.SuspendLayout();
@@ -123,23 +123,23 @@
             this.txtDatos.Text = "";
             this.txtDatos.Visible = false;
             // 
-            // btnFaltas
+            // btnMultifuncion
             // 
-            this.btnFaltas.Location = new System.Drawing.Point(404, 505);
-            this.btnFaltas.Name = "btnFaltas";
-            this.btnFaltas.Size = new System.Drawing.Size(160, 21);
-            this.btnFaltas.TabIndex = 13;
-            this.btnFaltas.Text = "Faltas de asistencia";
-            this.btnFaltas.UseVisualStyleBackColor = true;
-            this.btnFaltas.Visible = false;
-            this.btnFaltas.Click += new System.EventHandler(this.btnFaltas_Click);
+            this.btnMultifuncion.Location = new System.Drawing.Point(404, 505);
+            this.btnMultifuncion.Name = "btnMultifuncion";
+            this.btnMultifuncion.Size = new System.Drawing.Size(160, 21);
+            this.btnMultifuncion.TabIndex = 13;
+            this.btnMultifuncion.Text = "Faltas de asistencia";
+            this.btnMultifuncion.UseVisualStyleBackColor = true;
+            this.btnMultifuncion.Visible = false;
+            this.btnMultifuncion.Click += new System.EventHandler(this.btnMultifuncion_Click);
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(908, 537);
-            this.Controls.Add(this.btnFaltas);
+            this.Controls.Add(this.btnMultifuncion);
             this.Controls.Add(this.txtDatos);
             this.Controls.Add(this.btnCarga);
             this.Controls.Add(this.cmbSelect);
@@ -164,7 +164,7 @@
         private System.Windows.Forms.ComboBox cmbSelect;
         private System.Windows.Forms.Button btnCarga;
         private System.Windows.Forms.RichTextBox txtDatos;
-        private System.Windows.Forms.Button btnFaltas;
+        private System.Windows.Forms.Button btnMultifuncion;
     }
 }
 

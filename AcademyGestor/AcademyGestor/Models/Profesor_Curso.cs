@@ -11,6 +11,6 @@ namespace AcademyGestor.Modelos
         public int id { get; set; }
         public Profesor profesor { get; set; }
         public Curso curso { get; set; }
-        public bool coordinador { get; set; }
+        public byte coordinador { get; set; }
     }
 }
