@@ -101,7 +101,7 @@ namespace AcademyGestor.Vistas
                 cmbCoordinador.Items.Clear();
                 foreach (Profesor profesor in profesores)
                 {
-                    cmbCoordinador.Items.Add(profesor.nombreCompleto());
+                    cmbCoordinador.Items.Add(profesor.nombre_completo);
                 }
             }
 
@@ -116,7 +116,7 @@ namespace AcademyGestor.Vistas
                         {
                             if (profesor.id == prof_curso.profesor.id)
                             {
-                                cmbCoordinador.SelectedItem = profesor.nombreCompleto();
+                                cmbCoordinador.SelectedItem = profesor.nombre_completo;
                                 break;
                             }
                         }
@@ -129,26 +129,6 @@ namespace AcademyGestor.Vistas
         private void btnSalir_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private async void btnEliminar_Click(object sender, EventArgs e)
-        {
-            DialogResult result = MessageBox.Show("¿Está seguro de que desea eliminar el curso?", "Eliminar Curso", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-
-            if (result == DialogResult.Yes)
-            {
-                bool eliminado = await ctrlCursos.deleteCurso((int)curso.id);
-                if (!eliminado)
-                {
-                    MessageBox.Show("Error al eliminar el curso.", "Eliminar Alumno", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-                else
-                {
-                    MessageBox.Show("Curso eliminado correctamente.", "Eliminar Alumno", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.Close();
-                }
-            }
         }
 
         private async void btnGuardar_Click(object sender, EventArgs e)

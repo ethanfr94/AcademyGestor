@@ -4,19 +4,20 @@ import jakarta.persistence.*;
 import org.hibernate.annotations.ColumnDefault;
 
 import java.time.Instant;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "publicaciones")
 public class Publicacion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Generación automática del ID
-
     @Column(name = "id", nullable = false)
     private Integer id;
 
     @ColumnDefault("CURRENT_TIMESTAMP")
     @Column(name = "timestamp", nullable = false)
-    private Instant timestamp;
+    private LocalDateTime timestamp;
 
     @Lob
     @Column(name = "tipo")
@@ -45,11 +46,11 @@ public class Publicacion {
         this.id = id;
     }
 
-    public Instant getTimestamp() {
+    public LocalDateTime getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(Instant timestamp) {
+    public void setTimestamp(LocalDateTime timestamp) {
         this.timestamp = timestamp;
     }
 

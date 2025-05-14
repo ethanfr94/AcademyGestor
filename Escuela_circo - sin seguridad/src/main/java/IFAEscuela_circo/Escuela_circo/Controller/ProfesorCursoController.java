@@ -30,9 +30,19 @@ public class ProfesorCursoController {
         return serv.findByCursoId(id);
     }
 
+    @GetMapping("/profesoresCurso/curso/profesor/{idCurso}/{idProfesor}")
+    public ProfesorCurso getProfesoresByCursoYProfesor(@PathVariable Integer idCurso, @PathVariable Integer idProfesor) {
+        return serv.findByCursoYProfesor(idCurso, idProfesor);
+    }
+
     @PutMapping("/profesoresCurso/modificar/{id}")
     public ProfesorCurso updateProfesor(@RequestBody ProfesorCurso profesor, @PathVariable Integer id) {
         return serv.modificar(profesor, id);
+    }
+
+    @PutMapping("/profesoresCurso/modificar/coordinador/{id}")
+    public ProfesorCurso updateCoordinadorByProfesorYCurso(@PathVariable ProfesorCurso id) {
+        return serv.updateCoordinadorByProfesorYCurso(id.getCurso().getId(), id.getProfesor().getId());
     }
 
     @PostMapping("/profesoresCurso/insertar")
@@ -43,5 +53,10 @@ public class ProfesorCursoController {
     @DeleteMapping("/profesoresCurso/eliminar/{id}")
     public ProfesorCurso deleteProfesor(@PathVariable Integer id) {
         return serv.delete(id);
+    }
+
+    @DeleteMapping("/profesoresCurso/eliminar/curso/profesor/{idCurso}/{idProfesor}")
+    public ProfesorCurso deleteProfesorCursoByCursoAndProfesor(@PathVariable Integer idCurso, @PathVariable Integer idProfesor) {
+        return serv.deleteByProfesorYCurso(idCurso, idProfesor);
     }
 }

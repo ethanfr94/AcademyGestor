@@ -25,6 +25,11 @@ public class UsuarioController {
         return serv.findById(id);
     }
 
+    @GetMapping("/usuarios/login/{usuario}/{password}")
+    public Usuario getUsuarioByLogin(@PathVariable String usuario, @PathVariable String password) {
+        return serv.loggin(usuario, password);
+    }
+
     @PutMapping("/usuarios/modificar/{id}")
     public Usuario updateUsuarioById(@RequestBody Usuario usuario, @PathVariable int id) {
         return serv.modificar(usuario, id);

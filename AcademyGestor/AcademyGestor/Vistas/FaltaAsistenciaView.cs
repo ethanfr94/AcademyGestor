@@ -43,13 +43,13 @@ namespace AcademyGestor.Vistas
 
                         if (faltasAlumno.Count > 0)
                         {
-                            dgvFaltas.Columns.Add("Fecha", "Fecha");
-                            dgvFaltas.Columns.Add("Alumno", "Alumno");
-                            dgvFaltas.Columns.Add("Curso", "Curso");
+                            dgvRecibos.Columns.Add("Fecha", "Fecha");
+                            dgvRecibos.Columns.Add("Alumno", "Alumno");
+                            dgvRecibos.Columns.Add("Curso", "Curso");
 
                             foreach (var falta in faltasAlumno)
                             {
-                                DataGridViewRow row = dgvFaltas.Rows[dgvFaltas.Rows.Add(
+                                DataGridViewRow row = dgvRecibos.Rows[dgvRecibos.Rows.Add(
                                     falta.fecha.ToString("dd/MM/yyyy"),
                                     falta.alumno.nombre + " " + falta.alumno.apellido1 + " " + falta.alumno.apellido2,
                                     falta.curso.nombre
@@ -61,7 +61,10 @@ namespace AcademyGestor.Vistas
                                     faltasMes++;
                                 }
                             }
-                            dgvFaltas.CurrentCell = null;
+                            dgvRecibos.CurrentCell = null;
+
+                            lblFaltasMes.Text += faltasMes.ToString();
+                            lblFaltasTotales.Text += faltas.Count.ToString();
                         }
                         else
                         {
@@ -74,8 +77,7 @@ namespace AcademyGestor.Vistas
                         this.Close();
                     }
 
-                    lblFaltasMes.Text = "- Faltas de asistencia ultimo mes: " + faltasMes.ToString();
-                    lblFaltasTotales.Text = "- Faltas de asistencia totales: " + faltas.Count.ToString();
+                    
 
                 }
 
@@ -86,5 +88,9 @@ namespace AcademyGestor.Vistas
             }
         }
 
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

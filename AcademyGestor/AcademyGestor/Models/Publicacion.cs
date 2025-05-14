@@ -8,7 +8,7 @@ namespace AcademyGestor.Modelos
 {
     public enum TipoPublicacion
     {
-        Texto, Foto, Video
+        Texto, Foto
     }
 
     public class Publicacion

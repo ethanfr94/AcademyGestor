@@ -19,9 +19,12 @@ namespace AcademyGestor.Modelos
         public string telefono { get; set; }
         public byte activo { get; set; }
 
-        public string nombreCompleto()
+        public string nombre_completo
         {
-            return $"{nombre} {apellido1} {apellido2}";
+            get
+            {
+                return $"{nombre} {apellido1} {apellido2}";
+            }
         }
     }
 }

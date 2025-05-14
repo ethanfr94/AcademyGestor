@@ -15,7 +15,6 @@ namespace AcademyGestor.ApiService
     internal class CtrlTutores
     {
         private HttpClient cli;
-        private string token;
 
         public CtrlTutores()
         {
@@ -53,6 +52,29 @@ namespace AcademyGestor.ApiService
             {
                 Tutor tutor = new Tutor();
                 HttpResponseMessage resp = await cli.GetAsync($"http://localhost:8080/escuela_circo/tutores/{id}");
+                resp.EnsureSuccessStatusCode();
+                string json = await resp.Content.ReadAsStringAsync();
+                tutor = JsonConvert.DeserializeObject<Tutor>(json);
+                return tutor;
+            }
+            catch (HttpRequestException e)
+            {
+                Console.WriteLine("Error: " + e.Message);
+                return null;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error: " + e.Message);
+                return null;
+            }
+        }
+
+        public async Task<Tutor> getTutorByDni(string dni)
+        {
+            try
+            {
+                Tutor tutor = new Tutor();
+                HttpResponseMessage resp = await cli.GetAsync($"http://localhost:8080/escuela_circo/tutores/dni/{dni}");
                 resp.EnsureSuccessStatusCode();
                 string json = await resp.Content.ReadAsStringAsync();
                 tutor = JsonConvert.DeserializeObject<Tutor>(json);

@@ -66,13 +66,12 @@
             this.txtApe1 = new System.Windows.Forms.TextBox();
             this.btnSalir = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
-            this.btnEliminar = new System.Windows.Forms.Button();
             this.dtpFecha_nac = new System.Windows.Forms.DateTimePicker();
             this.gbTutor = new System.Windows.Forms.GroupBox();
             this.cmbTutor = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.chkNuevoTutor = new System.Windows.Forms.CheckBox();
-            this.chkEditarTutor = new System.Windows.Forms.CheckBox();
+            this.btnTutores = new System.Windows.Forms.Button();
             this.gbTutor.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -421,6 +420,7 @@
             // 
             this.btnSalir.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSalir.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnSalir.Location = new System.Drawing.Point(387, 555);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(77, 23);
@@ -433,6 +433,7 @@
             // 
             this.btnGuardar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnGuardar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnGuardar.Location = new System.Drawing.Point(306, 555);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(77, 23);
@@ -440,18 +441,6 @@
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
-            // 
-            // btnEliminar
-            // 
-            this.btnEliminar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnEliminar.Location = new System.Drawing.Point(192, 555);
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(110, 23);
-            this.btnEliminar.TabIndex = 23;
-            this.btnEliminar.Text = "Eliminar Alumno";
-            this.btnEliminar.UseVisualStyleBackColor = true;
-            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // dtpFecha_nac
             // 
@@ -468,7 +457,7 @@
             // 
             // gbTutor
             // 
-            this.gbTutor.Controls.Add(this.chkEditarTutor);
+            this.gbTutor.Controls.Add(this.btnTutores);
             this.gbTutor.Controls.Add(this.cmbTutor);
             this.gbTutor.Controls.Add(this.label6);
             this.gbTutor.Controls.Add(this.chkNuevoTutor);
@@ -501,7 +490,7 @@
             this.cmbTutor.FormattingEnabled = true;
             this.cmbTutor.Location = new System.Drawing.Point(125, 30);
             this.cmbTutor.Name = "cmbTutor";
-            this.cmbTutor.Size = new System.Drawing.Size(332, 21);
+            this.cmbTutor.Size = new System.Drawing.Size(230, 21);
             this.cmbTutor.TabIndex = 35;
             this.cmbTutor.SelectedValueChanged += new System.EventHandler(this.cmbTutor_SelectedValueChanged);
             // 
@@ -525,25 +514,27 @@
             this.chkNuevoTutor.UseVisualStyleBackColor = true;
             this.chkNuevoTutor.CheckedChanged += new System.EventHandler(this.chkNuevoTutor_CheckedChanged);
             // 
-            // chkEditarTutor
+            // btnTutores
             // 
-            this.chkEditarTutor.AutoSize = true;
-            this.chkEditarTutor.Location = new System.Drawing.Point(125, 64);
-            this.chkEditarTutor.Name = "chkEditarTutor";
-            this.chkEditarTutor.Size = new System.Drawing.Size(82, 17);
-            this.chkEditarTutor.TabIndex = 36;
-            this.chkEditarTutor.Text = "Editar datos";
-            this.chkEditarTutor.UseVisualStyleBackColor = true;
-            this.chkEditarTutor.CheckedChanged += new System.EventHandler(this.chkEditarTutor_CheckedChanged);
+            this.btnTutores.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnTutores.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnTutores.Location = new System.Drawing.Point(361, 28);
+            this.btnTutores.Name = "btnTutores";
+            this.btnTutores.Size = new System.Drawing.Size(97, 23);
+            this.btnTutores.TabIndex = 37;
+            this.btnTutores.Text = "Ver tutores";
+            this.btnTutores.UseVisualStyleBackColor = true;
             // 
             // AlumnoView
             // 
+            this.AcceptButton = this.btnGuardar;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.btnSalir;
             this.ClientSize = new System.Drawing.Size(473, 588);
             this.Controls.Add(this.gbTutor);
             this.Controls.Add(this.dtpFecha_nac);
-            this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.txtApe2);
@@ -618,12 +609,11 @@
         private System.Windows.Forms.TextBox txtApe1;
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.Button btnGuardar;
-        private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.DateTimePicker dtpFecha_nac;
         private System.Windows.Forms.GroupBox gbTutor;
         private System.Windows.Forms.ComboBox cmbTutor;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.CheckBox chkNuevoTutor;
-        private System.Windows.Forms.CheckBox chkEditarTutor;
+        private System.Windows.Forms.Button btnTutores;
     }
 }

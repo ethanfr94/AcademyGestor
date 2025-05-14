@@ -28,59 +28,81 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dgvFaltas = new System.Windows.Forms.DataGridView();
             this.lblFaltasMes = new System.Windows.Forms.Label();
             this.lblFaltasTotales = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvFaltas)).BeginInit();
+            this.btnSalir = new System.Windows.Forms.Button();
+            this.dgvRecibos = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRecibos)).BeginInit();
             this.SuspendLayout();
-            // 
-            // dgvFaltas
-            // 
-            this.dgvFaltas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvFaltas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvFaltas.Location = new System.Drawing.Point(12, 12);
-            this.dgvFaltas.MultiSelect = false;
-            this.dgvFaltas.Name = "dgvFaltas";
-            this.dgvFaltas.Size = new System.Drawing.Size(672, 176);
-            this.dgvFaltas.TabIndex = 0;
             // 
             // lblFaltasMes
             // 
             this.lblFaltasMes.AutoSize = true;
             this.lblFaltasMes.Location = new System.Drawing.Point(12, 200);
             this.lblFaltasMes.Name = "lblFaltasMes";
-            this.lblFaltasMes.Size = new System.Drawing.Size(0, 13);
+            this.lblFaltasMes.Size = new System.Drawing.Size(164, 13);
             this.lblFaltasMes.TabIndex = 1;
+            this.lblFaltasMes.Text = "- Faltas de asistencia ultimo mes: ";
             // 
             // lblFaltasTotales
             // 
             this.lblFaltasTotales.AutoSize = true;
             this.lblFaltasTotales.Location = new System.Drawing.Point(303, 200);
             this.lblFaltasTotales.Name = "lblFaltasTotales";
-            this.lblFaltasTotales.Size = new System.Drawing.Size(0, 13);
+            this.lblFaltasTotales.Size = new System.Drawing.Size(146, 13);
             this.lblFaltasTotales.TabIndex = 2;
+            this.lblFaltasTotales.Text = "- Faltas de asistencia totales: ";
+            // 
+            // btnSalir
+            // 
+            this.btnSalir.Location = new System.Drawing.Point(609, 195);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(75, 23);
+            this.btnSalir.TabIndex = 3;
+            this.btnSalir.Text = "Salir";
+            this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
+            // 
+            // dgvRecibos
+            // 
+            this.dgvRecibos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvRecibos.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgvRecibos.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
+            this.dgvRecibos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dgvRecibos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgvRecibos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvRecibos.Location = new System.Drawing.Point(15, 12);
+            this.dgvRecibos.MultiSelect = false;
+            this.dgvRecibos.Name = "dgvRecibos";
+            this.dgvRecibos.ReadOnly = true;
+            this.dgvRecibos.RowHeadersVisible = false;
+            this.dgvRecibos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvRecibos.Size = new System.Drawing.Size(669, 177);
+            this.dgvRecibos.TabIndex = 13;
             // 
             // FaltaAsistenciaView
             // 
+            this.AcceptButton = this.btnSalir;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(696, 226);
+            this.Controls.Add(this.dgvRecibos);
+            this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.lblFaltasTotales);
             this.Controls.Add(this.lblFaltasMes);
-            this.Controls.Add(this.dgvFaltas);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "FaltaAsistenciaView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            ((System.ComponentModel.ISupportInitialize)(this.dgvFaltas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRecibos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridView dgvFaltas;
         private System.Windows.Forms.Label lblFaltasMes;
         private System.Windows.Forms.Label lblFaltasTotales;
+        private System.Windows.Forms.Button btnSalir;
+        private System.Windows.Forms.DataGridView dgvRecibos;
     }
 }

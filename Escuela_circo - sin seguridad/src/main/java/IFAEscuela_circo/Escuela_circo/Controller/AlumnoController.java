@@ -25,6 +25,11 @@ public class AlumnoController {
         return serv.findById(id);
     }
 
+    @GetMapping("/alumnos/dni/{dni}")
+    public Alumno getAlumnoByDni(@PathVariable String dni) {
+        return serv.findByDni(dni);
+    }
+
     @PutMapping("/alumnos/modificar/{id}")
     public Alumno updateAlumno(@RequestBody Alumno alumno, @PathVariable Integer id) {
         return serv.modificar(alumno, id);

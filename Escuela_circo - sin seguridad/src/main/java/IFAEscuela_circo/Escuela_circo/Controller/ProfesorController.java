@@ -25,6 +25,11 @@ public class ProfesorController {
         return serv.findById(id);
     }
 
+    @GetMapping("/profesores/dni/{dni}")
+    public Profesor getProfesorByDni(@PathVariable String dni) {
+        return serv.findByDni(dni);
+    }
+
     @PutMapping("/profesores/modificar/{id}")
     public Profesor updateProfesor(@RequestBody Profesor profesor, @PathVariable Integer id) {
         return serv.modificar(profesor, id);

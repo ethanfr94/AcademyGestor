@@ -113,6 +113,12 @@
     <Compile Include="Vistas\MatriculaView.Designer.cs">
       <DependentUpon>MatriculaView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Vistas\ProfesoresCursoView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\ProfesoresCursoView.Designer.cs">
+      <DependentUpon>ProfesoresCursoView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vistas\ProfesorView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -136,6 +142,12 @@
     </Compile>
     <Compile Include="Vistas\SolicitudView.Designer.cs">
       <DependentUpon>SolicitudView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\TutorView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\TutorView.Designer.cs">
+      <DependentUpon>TutorView.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Vistas\AlumnoView.resx">
       <DependentUpon>AlumnoView.cs</DependentUpon>
@@ -164,6 +176,9 @@
     <EmbeddedResource Include="Vistas\MatriculaView.resx">
       <DependentUpon>MatriculaView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\ProfesoresCursoView.resx">
+      <DependentUpon>ProfesoresCursoView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Vistas\ProfesorView.resx">
       <DependentUpon>ProfesorView.cs</DependentUpon>
     </EmbeddedResource>
@@ -175,6 +190,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Vistas\SolicitudView.resx">
       <DependentUpon>SolicitudView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\TutorView.resx">
+      <DependentUpon>TutorView.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -190,6 +208,8 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="images\Exit.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

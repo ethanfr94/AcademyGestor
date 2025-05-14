@@ -5,6 +5,8 @@ import IFAEscuela_circo.Escuela_circo.Repositorios.MatriculaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -33,6 +35,16 @@ public class MatriculaServiceImp implements MatriculaService {
         Matricula mat = repo.findById(id).orElse(null);
         if (mat != null) {
             matricula.setId(id);
+            return repo.save(matricula);
+        }
+        return null;
+    }
+
+    public Matricula baja(Matricula matricula) {
+        Matricula mat = repo.findById(matricula.getId()).orElse(null);
+        if (mat != null) {
+            matricula.setId(matricula.getId());
+            matricula.setFechBaja(LocalDate.of(LocalDate.now().getYear(), LocalDate.now().getMonthValue(), LocalDate.now().getDayOfMonth()));
             return repo.save(matricula);
         }
         return null;

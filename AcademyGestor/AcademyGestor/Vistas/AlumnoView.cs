@@ -19,6 +19,7 @@ namespace AcademyGestor.Vistas
         private List<Tutor> tutores;
         private Alumno alumno;
         private Tutor tutor;
+        private Tutor nuevo = null;
 
 
         public AlumnoView()
@@ -28,7 +29,6 @@ namespace AcademyGestor.Vistas
             ctrlTutores = new CtrlTutores();
             cargarTutores();
             dtpFecha_nac_ValueChanged(null, null);
-            btnEliminar.Visible = false;
         }
 
         public AlumnoView(Alumno alumno)
@@ -62,7 +62,7 @@ namespace AcademyGestor.Vistas
             chkWhatsapp.Checked = (alumno.grupoWhatsapp == 1);
             chkComerc.Checked = (alumno.comunicacionesComerciales == 1);
 
-            
+
         }
 
 
@@ -81,7 +81,7 @@ namespace AcademyGestor.Vistas
             {
                 MessageBox.Show("Error al cargar los tutores");
             }
-            if(tutor != null)
+            if (tutor != null)
             {
                 foreach (var item in cmbTutor.Items)
                 {
@@ -116,7 +116,6 @@ namespace AcademyGestor.Vistas
         {
             if (chkNuevoTutor.Checked)
             {
-                chkEditarTutor.Checked = false;
                 cmbTutor.Enabled = false;
                 txtNombreTutor.Enabled = true;
                 txtApe1Tutor.Enabled = true;
@@ -139,7 +138,7 @@ namespace AcademyGestor.Vistas
                 txtDniTutor.Enabled = false;
                 txtDireccionTutor.Enabled = false;
                 txtLocalidadTutor.Enabled = false;
-                txtTlfnTutor.Enabled = false;
+                txtTlfnTutor.Enabled = false;          
             }
         }
 
@@ -153,6 +152,8 @@ namespace AcademyGestor.Vistas
             txtDireccionTutor.Text = "";
             txtLocalidadTutor.Text = "";
             txtTlfnTutor.Text = "";
+
+            cmbTutor.SelectedIndex = -1; // Limpiar la selección del ComboBox
         }
 
         private int CalcularEdad(DateTime fechaNacimiento)
@@ -176,6 +177,10 @@ namespace AcademyGestor.Vistas
             else
             {
                 gbTutor.Enabled = false; // Deshabilitar el GroupBox si es mayor o igual a 18 años
+                chkNuevoTutor.Checked = false; // Desmarcar la opción de nuevo tutor
+                cmbTutor.SelectedItem = null; // Limpiar la selección del ComboBox
+                limpiarCamposTutor(); // Limpiar los campos del tutor
+
             }
         }
 
@@ -184,39 +189,17 @@ namespace AcademyGestor.Vistas
             this.Close();
         }
 
-        private async void btnEliminar_Click(object sender, EventArgs e)
-        {
-            DialogResult result = MessageBox.Show("¿Está seguro de que desea eliminar el alumno?", "Eliminar Alumno", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-
-            if (result == DialogResult.Yes)
-            {
-                bool eliminado = await ctrlAlumnos.deleteAlumno((int)alumno.id);
-                if (!eliminado)
-                {
-                    MessageBox.Show("Error al eliminar el alumno.", "Eliminar Alumno", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-                else
-                {
-                    MessageBox.Show("Alumno eliminado correctamente.", "Eliminar Alumno", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.Close();
-                }
-            }
-        }
-
         private async void btnGuardar_Click(object sender, EventArgs e)
-        {
-            bool ok = ValidarCampos();
-
-            if (!ok)
+        {            
+            if (!ValidarCampos())
             {
                 return;
             }
+
             if (alumno == null)
             {
                 alumno = new Alumno();
 
-                alumno.id = 0;
                 alumno.nombre = txtNombre.Text;
                 alumno.apellido1 = txtApe1.Text;
                 alumno.apellido2 = txtApe2.Text;
@@ -232,63 +215,53 @@ namespace AcademyGestor.Vistas
 
                 if (chkNuevoTutor.Checked)
                 {
-                    alumno.tutor = new Tutor();
-                    
-                    alumno.tutor.nombre = txtNombreTutor.Text;
-                    alumno.tutor.apellido1 = txtApe1Tutor.Text;
-                    alumno.tutor.apellido2 = txtApe2Tutor.Text;
-                    alumno.tutor.email = txtEmailTutor.Text;
-                    alumno.tutor.dni = txtDniTutor.Text;
-                    alumno.tutor.direccion = txtDireccionTutor.Text;
-                    alumno.tutor.localidad = txtLocalidadTutor.Text;
-                    alumno.tutor.telefono = txtTlfnTutor.Text;
+                    nuevo = new Tutor();
+
+                    nuevo.nombre = txtNombreTutor.Text;
+                    nuevo.apellido1 = txtApe1Tutor.Text;
+                    nuevo.apellido2 = txtApe2Tutor.Text;
+                    nuevo.email = txtEmailTutor.Text;
+                    nuevo.dni = txtDniTutor.Text;
+                    nuevo.direccion = txtDireccionTutor.Text;
+                    nuevo.localidad = txtLocalidadTutor.Text;
+                    nuevo.telefono = txtTlfnTutor.Text;
+
+
+                    // Verificar si el tutor ya existe en la base de datos
+                    Tutor tutorExistente = await ctrlTutores.getTutorByDni(nuevo.dni);
+
+                    if (tutorExistente == null)
+                    {
+                        // Si no existe, crear un nuevo tutor
+                        bool tutorCreado = await ctrlTutores.addTutor(nuevo);
+                        if (!tutorCreado)
+                        {
+                            MessageBox.Show("Error al crear el tutor.", "Crear Tutor", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Tutor creado correctamente.", "Crear Tutor", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        nuevo = await ctrlTutores.getTutorByDni(nuevo.dni);
+                        alumno.tutor = nuevo;
+                    }
+                    else
+                    {
+                        MessageBox.Show("El tutor ya existe. Revise los datos o seleccionelo de la lista.", "Crear Tutor", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
                 }
                 else
                 {
-                    alumno.tutor = cmbTutor.SelectedItem as Tutor;
+
+                    nuevo = cmbTutor.SelectedItem as Tutor;
+                    if (nuevo != null)
+                    {
+                        alumno.tutor = nuevo;
+                    }
                 }
 
-            }
-            else
-            {
-                alumno.nombre = txtNombre.Text;
-                alumno.apellido1 = txtApe1.Text;
-                alumno.apellido2 = txtApe2.Text;
-                alumno.email = txtEmail.Text;
-                alumno.dni = txtDni.Text;
-                alumno.direccion = txtDireccion.Text;
-                alumno.localidad = txtLocalidad.Text;
-                alumno.telefono = txtTlfn.Text;
-                alumno.fechaNac = dtpFecha_nac.Value;
-                alumno.proteccionDatos = (byte)(chkProt_datos.Checked ? 1 : 0);
-                alumno.grupoWhatsapp = (byte)(chkWhatsapp.Checked ? 1 : 0);
-                alumno.comunicacionesComerciales = (byte)(chkComerc.Checked ? 1 : 0);
-                if (chkNuevoTutor.Checked)
-                {
-                    alumno.tutor = new Tutor();
-                    alumno.tutor.nombre = txtNombreTutor.Text;
-                    alumno.tutor.apellido1 = txtApe1Tutor.Text;
-                    alumno.tutor.apellido2 = txtApe2Tutor.Text;
-                    alumno.tutor.email = txtEmailTutor.Text;
-                    alumno.tutor.dni = txtDniTutor.Text;
-                    alumno.tutor.direccion = txtDireccionTutor.Text;
-                    alumno.tutor.localidad = txtLocalidadTutor.Text;
-                    alumno.tutor.telefono = txtTlfnTutor.Text;
-
-                   
-                }
-                else
-                {
-                    alumno.tutor = cmbTutor.SelectedItem as Tutor;
-
-                }
-            }
-
-
-            MessageBox.Show(alumno.ToString());
-
-            if (alumno.id < 1)
-            {
                 bool creado = await ctrlAlumnos.addAlumno(alumno);
                 if (!creado)
                 {
@@ -300,19 +273,95 @@ namespace AcademyGestor.Vistas
                     MessageBox.Show("Alumno creado correctamente.", "Crear Alumno", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
                 }
+
             }
             else
             {
-                bool modificado = await ctrlAlumnos.updateAlumno(alumno);
-                if (!modificado)
+                alumno.nombre = txtNombre.Text;
+                alumno.apellido1 = txtApe1.Text;
+                alumno.apellido2 = txtApe2.Text;
+                alumno.email = txtEmail.Text;
+                alumno.dni = txtDni.Text;
+                alumno.direccion = txtDireccion.Text;
+                alumno.localidad = txtLocalidad.Text;
+                alumno.telefono = txtTlfn.Text;
+                alumno.fechaNac = dtpFecha_nac.Value;
+                alumno.proteccionDatos = (byte)(chkProt_datos.Checked ? 1 : 0);
+                alumno.grupoWhatsapp = (byte)(chkWhatsapp.Checked ? 1 : 0);
+                alumno.comunicacionesComerciales = (byte)(chkComerc.Checked ? 1 : 0);
+
+                if (chkNuevoTutor.Checked)
                 {
-                    MessageBox.Show("Error al modificar el alumno.", "Modificar Alumno", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
+                    nuevo = new Tutor();
+
+                    nuevo.nombre = txtNombreTutor.Text;
+                    nuevo.apellido1 = txtApe1Tutor.Text;
+                    nuevo.apellido2 = txtApe2Tutor.Text;
+                    nuevo.email = txtEmailTutor.Text;
+                    nuevo.dni = txtDniTutor.Text;
+                    nuevo.direccion = txtDireccionTutor.Text;
+                    nuevo.localidad = txtLocalidadTutor.Text;
+                    nuevo.telefono = txtTlfnTutor.Text;
+
+
+                    // Verificar si el tutor ya existe en la base de datos
+                    Tutor tutorExistente = await ctrlTutores.getTutorByDni(nuevo.dni);
+
+                    if (tutorExistente == null)
+                    {
+                        // Si no existe, crear un nuevo tutor
+                        bool tutorCreado = await ctrlTutores.addTutor(nuevo);
+                        if (!tutorCreado)
+                        {
+                            MessageBox.Show("Error al crear el tutor.", "Crear Tutor", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Tutor creado correctamente.", "Crear Tutor", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        nuevo = await ctrlTutores.getTutorByDni(nuevo.dni);
+                        alumno.tutor = nuevo;
+                    }
+                    else
+                    {
+                        MessageBox.Show("El tutor ya existe. Revise los datos o seleccionelo de la lista.", "Crear Tutor", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Alumno modificado correctamente.", "Modificar Alumno", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    nuevo = cmbTutor.SelectedItem as Tutor;
+                    if (nuevo != null)
+                    {
+                        alumno.tutor = nuevo;
+                    }
+                }
+                if (CalcularEdad(alumno.fechaNac) >= 18)
+                {
+                    alumno.tutor = null;
+                }
+                else
+                {
+                    if (nuevo != null)
+                    {
+                        alumno.tutor = nuevo;
+                    }
+                }
+                bool actualizado = await ctrlAlumnos.updateAlumno(alumno);
+                if (!actualizado)
+                {
+                    MessageBox.Show("Error al actualizar el alumno.", "Actualizar Alumno", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                }
+                else
+                {
+                    MessageBox.Show("Alumno actualizado correctamente.", "Actualizar Alumno", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
+                }
+                if (alumno.tutor == null)
+                {
+                    MessageBox.Show("El tutor del alumno ha sido eliminado.", "Actualizar Alumno", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
         }
@@ -339,17 +388,17 @@ namespace AcademyGestor.Vistas
                 return false;
             }
 
-            if (!ValidarDni(txtDni.Text))
+            /*if (!ValidarDni(txtDni.Text))
             {
                 MessageBox.Show("El DNI del alumno no tiene un formato válido.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
-            }
+            }*/
 
-            if (!ValidarEmail(txtEmail.Text))
+            /*if (!ValidarEmail(txtEmail.Text))
             {
                 MessageBox.Show("El email del alumno no tiene un formato válido.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
-            }
+            }*/
 
             // Validar teléfono solo si no está vacío
             if (!string.IsNullOrWhiteSpace(txtTlfn.Text) && !ValidarTelefono(txtTlfn.Text))
@@ -380,7 +429,7 @@ namespace AcademyGestor.Vistas
                         MessageBox.Show("Todos los campos del tutor son obligatorios para alumnos menores de edad.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return false;
                     }
-
+                    /*
                     if (!ValidarDni(txtDniTutor.Text))
                     {
                         MessageBox.Show("El DNI del tutor no tiene un formato válido.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -397,7 +446,7 @@ namespace AcademyGestor.Vistas
                     {
                         MessageBox.Show("El teléfono del tutor no tiene un formato válido.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return false;
-                    }
+                    }*/
                 }
                 else if (cmbTutor.SelectedIndex == -1)
                 {
@@ -480,31 +529,15 @@ namespace AcademyGestor.Vistas
             return System.Text.RegularExpressions.Regex.IsMatch(email, patron);
         }
 
-        private void chkEditarTutor_CheckedChanged(object sender, EventArgs e)
+        private bool compararTutores(Tutor t1, Tutor t2)
         {
-            if (chkEditarTutor.Checked)
+            if (t1.dni == t2.dni)
             {
-                cmbTutor.Enabled = false;
-                txtNombreTutor.Enabled = true;
-                txtApe1Tutor.Enabled = true;
-                txtApe2Tutor.Enabled = true;
-                txtEmailTutor.Enabled = true;
-                txtDniTutor.Enabled = true;
-                txtDireccionTutor.Enabled = true;
-                txtLocalidadTutor.Enabled = true;
-                txtTlfnTutor.Enabled = true;
+                return true;
             }
             else
             {
-                cmbTutor.Enabled = true;
-                txtNombreTutor.Enabled = false;
-                txtApe1Tutor.Enabled = false;
-                txtApe2Tutor.Enabled = false;
-                txtEmailTutor.Enabled = false;
-                txtDniTutor.Enabled = false;
-                txtDireccionTutor.Enabled = false;
-                txtLocalidadTutor.Enabled = false;
-                txtTlfnTutor.Enabled = false;
+                return false;
             }
         }
     }

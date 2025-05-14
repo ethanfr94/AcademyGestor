@@ -10,7 +10,6 @@ import java.time.LocalDate;
 public class Matricula {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Generación automática del ID
-
     @Column(name = "id", nullable = false)
     private Integer id;
 

@@ -70,11 +70,11 @@ namespace AcademyGestor.ApiService
             try
             {
                 string json = JsonConvert.SerializeObject(profesor);
-
-                Console.WriteLine(json);
-
+                               
                 StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+                
                 HttpResponseMessage resp = await cli.PostAsync("http://localhost:8080/escuela_circo/profesores/insertar", content);
+                
                 resp.EnsureSuccessStatusCode();
                 return true;
             }

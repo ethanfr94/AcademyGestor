@@ -25,6 +25,11 @@ public class TutorController {
         return serv.findById(id);
     }
 
+    @GetMapping("/tutores/dni/{dni}")
+    public Tutor getTutorByDni(@PathVariable String dni) {
+        return serv.findByDni(dni);
+    }
+
     @PutMapping("/tutores/modificar/{id}")
     public Tutor updateTutor(@RequestBody Tutor tutor, @PathVariable Integer id) {
         return serv.modificar(tutor, id);

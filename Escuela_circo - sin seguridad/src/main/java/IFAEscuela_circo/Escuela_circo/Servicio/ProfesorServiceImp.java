@@ -1,6 +1,7 @@
 package IFAEscuela_circo.Escuela_circo.Servicio;
 
 import IFAEscuela_circo.Escuela_circo.Modelos.Profesor;
+import IFAEscuela_circo.Escuela_circo.Modelos.Tutor;
 import IFAEscuela_circo.Escuela_circo.Repositorios.ProfesorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,6 +23,16 @@ public class ProfesorServiceImp implements ProfesorService {
      public Profesor findById(Integer id) {
          return repo.findById(id).orElse(null);
      }
+
+    public Profesor findByDni(String dni) {
+        List<Profesor> profesores = repo.findAll();
+        for (Profesor profesor : profesores) {
+            if (profesor.getDni().equals(dni)) {
+                return profesor;
+            }
+        }
+        return null;
+    }
 
      @Override
      public Profesor guardar(Profesor profesor) {

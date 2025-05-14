@@ -23,8 +23,21 @@ public class AlumnoServiceImp implements AlumnoService {
         return repo.findById(id).orElse(null);
     }
 
+    public Alumno findByDni(String dni) {
+        List<Alumno> alumnos = repo.findAll();
+        for (Alumno alumno : alumnos) {
+            if (alumno.getDni().equals(dni)) {
+                return alumno;
+            }
+        }
+        return null;
+    }
+
     @Override
     public Alumno guardar(Alumno alumno) {
+        if(alumno.getTutor() == null) {
+            alumno.setTutor(null);
+        }
         return repo.save(alumno);
     }
 

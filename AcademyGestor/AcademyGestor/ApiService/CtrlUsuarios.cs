@@ -64,6 +64,29 @@ namespace AcademyGestor.ApiService
             }
         }
 
+        public async Task<Usuario> login(string user, string pass)
+        {
+            try
+            {
+                Usuario usuario = new Usuario();
+                HttpResponseMessage resp = await cli.GetAsync($"http://localhost:8080/escuela_circo/usuarios/login/{user}/{pass}");
+                resp.EnsureSuccessStatusCode();
+                string json = await resp.Content.ReadAsStringAsync();
+                usuario = JsonConvert.DeserializeObject<Usuario>(json);
+                return usuario;
+            }
+            catch (HttpRequestException e)
+            {
+                Console.WriteLine("Error: " + e.Message);
+                return null;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error: " + e.Message);
+                return null;
+            }
+        }
+
         public async Task<bool> addUsuario(Usuario usuario)
         {
             try

@@ -42,3 +42,5 @@ D:\Escritorio\AcademyGestor\AcademyGestor\AcademyGestor\bin\Debug\AcademyGestor.
 D:\Escritorio\AcademyGestor\AcademyGestor\AcademyGestor\bin\Debug\Newtonsoft.Json.dll
 D:\Escritorio\AcademyGestor\AcademyGestor\AcademyGestor\bin\Debug\Newtonsoft.Json.xml
 D:\Escritorio\AcademyGestor\AcademyGestor\AcademyGestor\obj\Debug\AcademyG.9097866C.Up2Date
+D:\Escritorio\AcademyGestor\AcademyGestor\AcademyGestor\obj\Debug\AcademyGestor.Vistas.TutorView.resources
+D:\Escritorio\AcademyGestor\AcademyGestor\AcademyGestor\obj\Debug\AcademyGestor.Vistas.ProfesoresCursoView.resources

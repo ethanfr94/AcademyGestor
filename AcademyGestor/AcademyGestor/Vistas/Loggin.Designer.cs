@@ -35,14 +35,16 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.chkRecordar = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnLog
             // 
-            this.btnLog.Location = new System.Drawing.Point(137, 368);
+            this.btnLog.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnLog.Location = new System.Drawing.Point(322, 168);
             this.btnLog.Name = "btnLog";
-            this.btnLog.Size = new System.Drawing.Size(120, 23);
+            this.btnLog.Size = new System.Drawing.Size(203, 23);
             this.btnLog.TabIndex = 11;
             this.btnLog.Text = "Confirmar";
             this.btnLog.UseVisualStyleBackColor = true;
@@ -50,14 +52,14 @@
             // 
             // txtUser
             // 
-            this.txtUser.Location = new System.Drawing.Point(118, 267);
+            this.txtUser.Location = new System.Drawing.Point(386, 39);
             this.txtUser.Name = "txtUser";
             this.txtUser.Size = new System.Drawing.Size(139, 20);
             this.txtUser.TabIndex = 10;
             // 
             // txtPass
             // 
-            this.txtPass.Location = new System.Drawing.Point(118, 319);
+            this.txtPass.Location = new System.Drawing.Point(386, 91);
             this.txtPass.Name = "txtPass";
             this.txtPass.PasswordChar = '*';
             this.txtPass.Size = new System.Drawing.Size(139, 20);
@@ -66,7 +68,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(51, 326);
+            this.label2.Location = new System.Drawing.Point(319, 98);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(61, 13);
             this.label2.TabIndex = 8;
@@ -75,7 +77,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(51, 270);
+            this.label1.Location = new System.Drawing.Point(319, 42);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(43, 13);
             this.label1.TabIndex = 7;
@@ -83,19 +85,34 @@
             // 
             // pictureBox1
             // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.InitialImage = null;
-            this.pictureBox1.Location = new System.Drawing.Point(25, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(25, -28);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(253, 236);
             this.pictureBox1.TabIndex = 6;
             this.pictureBox1.TabStop = false;
             // 
+            // chkRecordar
+            // 
+            this.chkRecordar.AutoSize = true;
+            this.chkRecordar.Location = new System.Drawing.Point(322, 130);
+            this.chkRecordar.Name = "chkRecordar";
+            this.chkRecordar.Size = new System.Drawing.Size(70, 17);
+            this.chkRecordar.TabIndex = 12;
+            this.chkRecordar.Text = "Recordar";
+            this.chkRecordar.UseVisualStyleBackColor = true;
+            this.chkRecordar.CheckedChanged += new System.EventHandler(this.chkRecordar_CheckedChanged);
+            // 
             // Loggin
             // 
+            this.AcceptButton = this.btnLog;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(301, 422);
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.ClientSize = new System.Drawing.Size(574, 210);
+            this.Controls.Add(this.chkRecordar);
             this.Controls.Add(this.btnLog);
             this.Controls.Add(this.txtUser);
             this.Controls.Add(this.txtPass);
@@ -103,8 +120,6 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.MaximumSize = new System.Drawing.Size(317, 461);
-            this.MinimumSize = new System.Drawing.Size(317, 461);
             this.Name = "Loggin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Loggin";
@@ -122,5 +137,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.CheckBox chkRecordar;
     }
 }

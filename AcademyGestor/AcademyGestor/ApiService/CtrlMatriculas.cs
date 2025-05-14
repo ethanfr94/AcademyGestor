@@ -27,8 +27,11 @@ namespace AcademyGestor.ApiService
                 HttpResponseMessage resp = await cli.GetAsync("http://localhost:8080/escuela_circo/matriculas");
                 resp.EnsureSuccessStatusCode();
                 string json = await resp.Content.ReadAsStringAsync();
-                MessageBox.Show(json);
+
+
                 matriculas = JsonConvert.DeserializeObject<List<Matricula>>(json);
+
+
                 return matriculas;
             }
             catch (HttpRequestException e)
@@ -71,19 +74,24 @@ namespace AcademyGestor.ApiService
             try
             {
                 string json = JsonConvert.SerializeObject(matricula);
+
+                MessageBox.Show(json);
+
                 StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
                 HttpResponseMessage resp = await cli.PostAsync("http://localhost:8080/escuela_circo/matriculas/insertar", content);
                 resp.EnsureSuccessStatusCode();
+
+
                 return true;
             }
             catch (HttpRequestException e)
             {
-                Console.WriteLine("Error: " + e.Message);
+                MessageBox.Show("Error: " + e.Message);
                 return false;
             }
             catch (Exception e)
             {
-                Console.WriteLine("Error: " + e.Message);
+                MessageBox.Show("Error: " + e.Message);
                 return false;
             }
         }
@@ -109,6 +117,29 @@ namespace AcademyGestor.ApiService
                 return false;
             }
         }
+
+        public async Task<bool> bajaMatricula(Matricula matricula)
+        {
+            try
+            {
+                string json = JsonConvert.SerializeObject(matricula);
+                StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+                HttpResponseMessage resp = await cli.PutAsync($"http://localhost:8080/escuela_circo/matriculas/baja", content);
+                resp.EnsureSuccessStatusCode();
+                return true;
+            }
+            catch (HttpRequestException e)
+            {
+                Console.WriteLine("Error: " + e.Message);
+                return false;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error: " + e.Message);
+                return false;
+            }
+        }
+
 
         public async Task<bool> deleteMatricula(int id)
         {

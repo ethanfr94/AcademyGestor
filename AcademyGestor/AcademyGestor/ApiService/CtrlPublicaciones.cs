@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Net.Http;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using AcademyGestor.Modelos;
 using Newtonsoft.Json;
 
@@ -63,7 +65,32 @@ namespace AcademyGestor.ApiService
             }
         }
 
-        public async Task<bool> addPublicacion(Publicacion publicacion)
+        public async Task<bool> updatePublicacion(Publicacion publicacion)
+        {
+            try
+            {
+                string json = JsonConvert.SerializeObject(publicacion);
+                StringContent content = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
+
+                MessageBox.Show("Publicacion: " + json);
+
+                HttpResponseMessage resp = await cli.PutAsync($"http://localhost:8080/escuela_circo/publicaciones/modificar/{publicacion.id}", content);
+                resp.EnsureSuccessStatusCode();
+                return true;
+            }
+            catch (HttpRequestException e)
+            {
+                Console.WriteLine("Error: " + e.Message);
+                return false;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error: " + e.Message);
+                return false;
+            }
+        }
+
+        public async Task<bool> addPublicacion(Publicacion publicacion, MultipartFormDataContent file)
         {
             try
             {
@@ -81,6 +108,34 @@ namespace AcademyGestor.ApiService
             catch (Exception e)
             {
                 Console.WriteLine("Error: " + e.Message);
+                return false;
+            }
+        }
+
+        public async Task<bool> AddPublicacionAsync(Publicacion publicacion, string rutaArchivo)
+        {
+            using (var form = new MultipartFormDataContent())
+            {
+                // Serializar el objeto Publicacion a JSON
+                string jsonPublicacion = JsonConvert.SerializeObject(publicacion);
+                form.Add(new StringContent(jsonPublicacion, System.Text.Encoding.UTF8, "application/json"), "publicacion");
+
+                // Adjuntar el archivo
+                var fileStream = File.OpenRead(rutaArchivo);
+                var fileName = Path.GetFileName(rutaArchivo);
+                form.Add(new StreamContent(fileStream), "fichero", fileName);
+
+                // Realizar la petición POST
+                string url = "http://localhost:8080/escuela_circo/publicaciones/insertar";
+                HttpResponseMessage resp = await cli.PostAsync(url, form);
+
+                fileStream.Close();
+
+                if (resp.IsSuccessStatusCode)
+                    return true;
+
+                string error = await resp.Content.ReadAsStringAsync();
+                System.Windows.Forms.MessageBox.Show($"Error: {resp.StatusCode}\n{error}");
                 return false;
             }
         }

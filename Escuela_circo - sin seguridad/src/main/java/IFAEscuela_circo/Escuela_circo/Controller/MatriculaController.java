@@ -6,6 +6,7 @@ import IFAEscuela_circo.Escuela_circo.Servicio.MatriculaServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -30,8 +31,15 @@ public class MatriculaController {
         return serv.modificar(matricula, id);
     }
 
+    @PutMapping("/matriculas/baja")
+    public Matricula bajaMatricula(@RequestBody Matricula matricula) {
+        return serv.baja(matricula);
+    }
+
     @PostMapping("/matriculas/insertar")
     public Matricula addMatricula(@RequestBody Matricula matricula) {
+        matricula.setFechAlta(LocalDate.now());
+        matricula.setFechBaja(null);
         return serv.guardar(matricula);
     }
 

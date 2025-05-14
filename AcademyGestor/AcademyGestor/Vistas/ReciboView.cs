@@ -7,12 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using AcademyGestor.Modelos;
 
 namespace AcademyGestor.Vistas
 {
     public partial class ReciboView : Form
     {
-        public ReciboView()
+        public ReciboView(Matricula matricula)
         {
             InitializeComponent();
         }

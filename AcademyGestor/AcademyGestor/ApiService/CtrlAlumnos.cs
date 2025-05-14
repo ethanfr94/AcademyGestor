@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -81,28 +80,42 @@ namespace AcademyGestor.ApiService
             }
         }
 
+        public async Task<Alumno> getAlumnoByDni(string dni)
+        {
+            try
+            {
+                Alumno alumno = new Alumno();
+                HttpResponseMessage resp = await cli.GetAsync($"http://localhost:8080/escuela_circo/alumnos/dni/{dni}");
+                resp.EnsureSuccessStatusCode();
+                string json = await resp.Content.ReadAsStringAsync();
+                alumno = JsonConvert.DeserializeObject<Alumno>(json);
+                return alumno;
+            }
+            catch (HttpRequestException e)
+            {
+                Console.WriteLine("Error: " + e.Message);
+                return null;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error: " + e.Message);
+                return null;
+            }
+        }
+
         public async Task<bool> addAlumno(Alumno alumno)
         {
             try
             {
-                string json = JsonConvert.SerializeObject(alumno, Formatting.Indented);
-
-                Console.WriteLine(json);
-                MessageBox.Show(json);
+                string json = JsonConvert.SerializeObject(alumno);
 
                 StringContent content = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
 
                 HttpResponseMessage resp = await cli.PostAsync("http://localhost:8080/escuela_circo/alumnos/insertar", content);
 
-                if (resp.IsSuccessStatusCode)
-                {
-                    return true;
-                }
-                else
-                {
-                    string errorContent = await resp.Content.ReadAsStringAsync();
-                   return false;
-                }
+                resp.EnsureSuccessStatusCode();
+
+                return true;
             }
             catch (HttpRequestException e)
             {
@@ -120,21 +133,15 @@ namespace AcademyGestor.ApiService
         {
             try
             {
-                string json = JsonConvert.SerializeObject(alumno);
+                string json = JsonConvert.SerializeObject(alumno);                               
 
                 StringContent content = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
 
                 HttpResponseMessage resp = await cli.PutAsync($"http://localhost:8080/escuela_circo/alumnos/modificar/{alumno.id}", content);
 
-                if (resp.IsSuccessStatusCode)
-                {
-                    return true;
-                }
-                else
-                {
-                    Console.WriteLine("Error: " + resp.StatusCode);
-                    return false;
-                }
+                resp.EnsureSuccessStatusCode();
+
+                return true;
             }
             catch (HttpRequestException e)
             {

@@ -39,7 +39,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.btnSalir = new System.Windows.Forms.Button();
-            this.btnEliminar = new System.Windows.Forms.Button();
+            this.btnFinalizar = new System.Windows.Forms.Button();
+            this.btnMatricular = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // cmbAlumno
@@ -60,6 +61,7 @@
             // 
             // dtpFechaAlta
             // 
+            this.dtpFechaAlta.Enabled = false;
             this.dtpFechaAlta.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpFechaAlta.Location = new System.Drawing.Point(95, 67);
             this.dtpFechaAlta.Name = "dtpFechaAlta";
@@ -68,6 +70,7 @@
             // 
             // dtpFechaBaja
             // 
+            this.dtpFechaBaja.Enabled = false;
             this.dtpFechaBaja.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpFechaBaja.Location = new System.Drawing.Point(95, 93);
             this.dtpFechaBaja.Name = "dtpFechaBaja";
@@ -132,6 +135,7 @@
             // 
             // btnSalir
             // 
+            this.btnSalir.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnSalir.Location = new System.Drawing.Point(275, 162);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(75, 23);
@@ -139,21 +143,35 @@
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
             // 
-            // btnEliminar
+            // btnFinalizar
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(161, 162);
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(108, 23);
-            this.btnEliminar.TabIndex = 7;
-            this.btnEliminar.Text = "Eliminar matricula";
-            this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnFinalizar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnFinalizar.Location = new System.Drawing.Point(47, 162);
+            this.btnFinalizar.Name = "btnFinalizar";
+            this.btnFinalizar.Size = new System.Drawing.Size(108, 23);
+            this.btnFinalizar.TabIndex = 7;
+            this.btnFinalizar.Text = "Dar de baja";
+            this.btnFinalizar.UseVisualStyleBackColor = true;
+            // 
+            // btnMatricular
+            // 
+            this.btnMatricular.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnMatricular.Location = new System.Drawing.Point(161, 162);
+            this.btnMatricular.Name = "btnMatricular";
+            this.btnMatricular.Size = new System.Drawing.Size(108, 23);
+            this.btnMatricular.TabIndex = 10;
+            this.btnMatricular.Text = "Matricular";
+            this.btnMatricular.UseVisualStyleBackColor = true;
             // 
             // MatriculaView
             // 
+            this.AcceptButton = this.btnMatricular;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.btnMatricular;
             this.ClientSize = new System.Drawing.Size(362, 203);
-            this.Controls.Add(this.btnEliminar);
+            this.Controls.Add(this.btnMatricular);
+            this.Controls.Add(this.btnFinalizar);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -187,6 +205,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnSalir;
-        private System.Windows.Forms.Button btnEliminar;
+        private System.Windows.Forms.Button btnFinalizar;
+        private System.Windows.Forms.Button btnMatricular;
     }
 }

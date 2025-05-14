@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using AcademyGestor.Modelos;
 using Newtonsoft.Json;
 
@@ -85,6 +86,29 @@ namespace AcademyGestor.ApiService
             }
         }
 
+        public async Task<Profesor_Curso> getByProfesoresByCurso(int cursoId, int profId)
+        {
+            try
+            {
+                Profesor_Curso profesoresCurso = new Profesor_Curso();
+                HttpResponseMessage resp = await cli.GetAsync($"http://localhost:8080/escuela_circo/profesoresCurso/curso/profesor/{cursoId}/{profId}");
+                resp.EnsureSuccessStatusCode();
+                string json = await resp.Content.ReadAsStringAsync();
+                profesoresCurso = JsonConvert.DeserializeObject<Profesor_Curso>(json);
+                return profesoresCurso;
+            }
+            catch (HttpRequestException e)
+            {
+                Console.WriteLine("Error: " + e.Message);
+                return null;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error: " + e.Message);
+                return null;
+            }
+        }
+
         public async Task<bool> addProfesorCurso(Profesor_Curso profesorCurso)
         {
             try
@@ -129,11 +153,56 @@ namespace AcademyGestor.ApiService
             }
         }
 
+        public async Task<bool> updateCoordinador(Profesor_Curso pc)
+        {
+            try
+            {
+                string json = JsonConvert.SerializeObject(new { pc });
+                StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+                HttpResponseMessage resp = await cli.PutAsync($"http://localhost:8080/escuela_circo/profesoresCurso/modificar/coordinador/{pc.id}",content);
+                resp.EnsureSuccessStatusCode();
+
+                return true;
+            }
+            catch (HttpRequestException e)
+            {
+                MessageBox.Show("Error: " + e.Message);
+                return false;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error: " + e.Message);
+                return false;
+            }
+        }
+
+
+
         public async Task<bool> deleteProfesorCurso(int id)
         {
             try
             {
                 HttpResponseMessage resp = await cli.DeleteAsync($"http://localhost:8080/escuela_circo/profesoresCurso/eliminar/{id}");
+                resp.EnsureSuccessStatusCode();
+                return true;
+            }
+            catch (HttpRequestException e)
+            {
+                Console.WriteLine("Error: " + e.Message);
+                return false;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error: " + e.Message);
+                return false;
+            }
+        }
+
+        public async Task<bool> deleteProfesorCursoByCursoYProfesor(int idCurso, int idProf)
+        {
+            try
+            {
+                HttpResponseMessage resp = await cli.DeleteAsync($"http://localhost:8080/escuela_circo/profesoresCurso/eliminar/curso/profesor/{idCurso}/{idProf}");
                 resp.EnsureSuccessStatusCode();
                 return true;
             }

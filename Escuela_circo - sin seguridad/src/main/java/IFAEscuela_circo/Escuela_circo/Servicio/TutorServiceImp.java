@@ -28,6 +28,16 @@ public class TutorServiceImp implements TutorService {
         return repo.save(tutor);
     }
 
+    public Tutor findByDni(String dni) {
+        List<Tutor> tutores = repo.findAll();
+        for (Tutor tutor : tutores) {
+            if (tutor.getDni().equals(dni)) {
+                return tutor;
+            }
+        }
+        return null;
+    }
+
     @Override
     public Tutor modificar(Tutor tutor, Integer id) {
         Tutor tut = repo.findById(id).orElse(null);

@@ -28,6 +28,16 @@ public class UsuarioServiceImp implements UsuarioService {
         return repo.save(usuario);
     }
 
+    public Usuario loggin(String usuario, String password) {
+        List<Usuario> usuarios = repo.findAll();
+        for (Usuario user : usuarios) {
+            if(user.getUser().equals(usuario) && user.getPass().equals(password)) {
+                return user;
+            }
+        }
+        return null;
+    }
+
     @Override
     public Usuario modificar(Usuario usuario, Integer id) {
         Usuario user = repo.findById(id).orElse(null);

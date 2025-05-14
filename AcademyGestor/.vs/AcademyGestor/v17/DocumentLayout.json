@@ -7,16 +7,32 @@
       "RelativeMoniker": "D:0:0:{69DBCFF2-143A-4733-A4C6-A3EED272A0FE}|AcademyGestor\\AcademyGestor.csproj|solutionrelative:academygestor\\vistas\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{69DBCFF2-143A-4733-A4C6-A3EED272A0FE}|AcademyGestor\\AcademyGestor.csproj|d:\\escritorio\\academygestor\\academygestor\\academygestor\\vistas\\main.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{69DBCFF2-143A-4733-A4C6-A3EED272A0FE}|AcademyGestor\\AcademyGestor.csproj|solutionrelative:academygestor\\vistas\\main.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{69DBCFF2-143A-4733-A4C6-A3EED272A0FE}|AcademyGestor\\AcademyGestor.csproj|d:\\escritorio\\academygestor\\academygestor\\academygestor\\apiservice\\ctrlpublicaciones.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{69DBCFF2-143A-4733-A4C6-A3EED272A0FE}|AcademyGestor\\AcademyGestor.csproj|solutionrelative:academygestor\\apiservice\\ctrlpublicaciones.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{69DBCFF2-143A-4733-A4C6-A3EED272A0FE}|AcademyGestor\\AcademyGestor.csproj|d:\\escritorio\\academygestor\\academygestor\\academygestor\\models\\publicacion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{69DBCFF2-143A-4733-A4C6-A3EED272A0FE}|AcademyGestor\\AcademyGestor.csproj|solutionrelative:academygestor\\models\\publicacion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{69DBCFF2-143A-4733-A4C6-A3EED272A0FE}|AcademyGestor\\AcademyGestor.csproj|d:\\escritorio\\academygestor\\academygestor\\academygestor\\vistas\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{69DBCFF2-143A-4733-A4C6-A3EED272A0FE}|AcademyGestor\\AcademyGestor.csproj|solutionrelative:academygestor\\vistas\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{69DBCFF2-143A-4733-A4C6-A3EED272A0FE}|AcademyGestor\\AcademyGestor.csproj|d:\\escritorio\\academygestor\\academygestor\\academygestor\\vistas\\loggin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{69DBCFF2-143A-4733-A4C6-A3EED272A0FE}|AcademyGestor\\AcademyGestor.csproj|solutionrelative:academygestor\\vistas\\loggin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{69DBCFF2-143A-4733-A4C6-A3EED272A0FE}|AcademyGestor\\AcademyGestor.csproj|d:\\escritorio\\academygestor\\academygestor\\academygestor\\models\\matricula.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{69DBCFF2-143A-4733-A4C6-A3EED272A0FE}|AcademyGestor\\AcademyGestor.csproj|solutionrelative:academygestor\\models\\matricula.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{69DBCFF2-143A-4733-A4C6-A3EED272A0FE}|AcademyGestor\\AcademyGestor.csproj|d:\\escritorio\\academygestor\\academygestor\\academygestor\\vistas\\solicitudview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{69DBCFF2-143A-4733-A4C6-A3EED272A0FE}|AcademyGestor\\AcademyGestor.csproj|solutionrelative:academygestor\\vistas\\solicitudview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{69DBCFF2-143A-4733-A4C6-A3EED272A0FE}|AcademyGestor\\AcademyGestor.csproj|d:\\escritorio\\academygestor\\academygestor\\academygestor\\vistas\\solicitudview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{69DBCFF2-143A-4733-A4C6-A3EED272A0FE}|AcademyGestor\\AcademyGestor.csproj|solutionrelative:academygestor\\vistas\\solicitudview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{69DBCFF2-143A-4733-A4C6-A3EED272A0FE}|AcademyGestor\\AcademyGestor.csproj|d:\\escritorio\\academygestor\\academygestor\\academygestor\\apiservice\\ctrlsolicitudes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{69DBCFF2-143A-4733-A4C6-A3EED272A0FE}|AcademyGestor\\AcademyGestor.csproj|solutionrelative:academygestor\\apiservice\\ctrlsolicitudes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -25,21 +41,54 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 249,
-          "SelectedChildIndex": 1,
+          "DockedWidth": 425,
+          "SelectedChildIndex": 5,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Publicacion.cs",
+              "DocumentMoniker": "D:\\Escritorio\\AcademyGestor\\AcademyGestor\\AcademyGestor\\Models\\Publicacion.cs",
+              "RelativeDocumentMoniker": "AcademyGestor\\Models\\Publicacion.cs",
+              "ToolTip": "D:\\Escritorio\\AcademyGestor\\AcademyGestor\\AcademyGestor\\Models\\Publicacion.cs",
+              "RelativeToolTip": "AcademyGestor\\Models\\Publicacion.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-14T16:51:23.917Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Main.Designer.cs",
-              "DocumentMoniker": "D:\\Escritorio\\AcademyGestor\\AcademyGestor\\AcademyGestor\\Vistas\\Main.Designer.cs",
-              "RelativeDocumentMoniker": "AcademyGestor\\Vistas\\Main.Designer.cs",
-              "ToolTip": "D:\\Escritorio\\AcademyGestor\\AcademyGestor\\AcademyGestor\\Vistas\\Main.Designer.cs",
-              "RelativeToolTip": "AcademyGestor\\Vistas\\Main.Designer.cs",
-              "ViewState": "AgIAAG8AAAAAAAAAAAAuwI0AAAA0AAAAAAAAAA==",
+              "Title": "CtrlPublicaciones.cs",
+              "DocumentMoniker": "D:\\Escritorio\\AcademyGestor\\AcademyGestor\\AcademyGestor\\ApiService\\CtrlPublicaciones.cs",
+              "RelativeDocumentMoniker": "AcademyGestor\\ApiService\\CtrlPublicaciones.cs",
+              "ToolTip": "D:\\Escritorio\\AcademyGestor\\AcademyGestor\\AcademyGestor\\ApiService\\CtrlPublicaciones.cs",
+              "RelativeToolTip": "AcademyGestor\\ApiService\\CtrlPublicaciones.cs",
+              "ViewState": "AgIAAGoAAAAAAAAAAAAcwHMAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-01T13:15:10.655Z",
+              "WhenOpened": "2025-05-14T16:46:30.522Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Main.cs [Dise\u00F1o]",
+              "DocumentMoniker": "D:\\Escritorio\\AcademyGestor\\AcademyGestor\\AcademyGestor\\Vistas\\Main.cs",
+              "RelativeDocumentMoniker": "AcademyGestor\\Vistas\\Main.cs",
+              "ToolTip": "D:\\Escritorio\\AcademyGestor\\AcademyGestor\\AcademyGestor\\Vistas\\Main.cs [Dise\u00F1o]",
+              "RelativeToolTip": "AcademyGestor\\Vistas\\Main.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-14T16:41:31.873Z",
+              "EditorCaption": " [Dise\u00F1o]"
             },
             {
               "$type": "Document",
@@ -49,42 +98,61 @@
               "RelativeDocumentMoniker": "AcademyGestor\\Vistas\\Main.cs",
               "ToolTip": "D:\\Escritorio\\AcademyGestor\\AcademyGestor\\AcademyGestor\\Vistas\\Main.cs",
               "RelativeToolTip": "AcademyGestor\\Vistas\\Main.cs",
-              "ViewState": "AgIAAMwBAAAAAAAAAAAswOcBAAB0AAAAAAAAAA==",
+              "ViewState": "AgIAAPcDAAAAAAAAAAAQwA8EAABIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-01T13:14:41.543Z",
+              "WhenOpened": "2025-05-14T15:36:09.502Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Loggin.cs [Dise\u00F1o]",
-              "DocumentMoniker": "D:\\Escritorio\\AcademyGestor\\AcademyGestor\\AcademyGestor\\Vistas\\Loggin.cs",
-              "RelativeDocumentMoniker": "AcademyGestor\\Vistas\\Loggin.cs",
-              "ToolTip": "D:\\Escritorio\\AcademyGestor\\AcademyGestor\\AcademyGestor\\Vistas\\Loggin.cs [Dise\u00F1o]",
-              "RelativeToolTip": "AcademyGestor\\Vistas\\Loggin.cs [Dise\u00F1o]",
+              "DocumentIndex": 4,
+              "Title": "Matricula.cs",
+              "DocumentMoniker": "D:\\Escritorio\\AcademyGestor\\AcademyGestor\\AcademyGestor\\Models\\Matricula.cs",
+              "RelativeDocumentMoniker": "AcademyGestor\\Models\\Matricula.cs",
+              "ToolTip": "D:\\Escritorio\\AcademyGestor\\AcademyGestor\\AcademyGestor\\Models\\Matricula.cs",
+              "RelativeToolTip": "AcademyGestor\\Models\\Matricula.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-30T19:48:22.186Z",
-              "EditorCaption": " [Dise\u00F1o]"
+              "WhenOpened": "2025-05-14T15:35:26.316Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Main.cs [Dise\u00F1o]",
-              "DocumentMoniker": "D:\\Escritorio\\AcademyGestor\\AcademyGestor\\AcademyGestor\\Vistas\\Main.cs",
-              "RelativeDocumentMoniker": "AcademyGestor\\Vistas\\Main.cs",
-              "ToolTip": "D:\\Escritorio\\AcademyGestor\\AcademyGestor\\AcademyGestor\\Vistas\\Main.cs [Dise\u00F1o]",
-              "RelativeToolTip": "AcademyGestor\\Vistas\\Main.cs [Dise\u00F1o]",
+              "DocumentIndex": 5,
+              "Title": "SolicitudView.cs",
+              "DocumentMoniker": "D:\\Escritorio\\AcademyGestor\\AcademyGestor\\AcademyGestor\\Vistas\\SolicitudView.cs",
+              "RelativeDocumentMoniker": "AcademyGestor\\Vistas\\SolicitudView.cs",
+              "ToolTip": "D:\\Escritorio\\AcademyGestor\\AcademyGestor\\AcademyGestor\\Vistas\\SolicitudView.cs",
+              "RelativeToolTip": "AcademyGestor\\Vistas\\SolicitudView.cs",
+              "ViewState": "AgIAAIQAAAAAAAAAAAAmwJsAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-30T19:01:29.389Z",
+              "WhenOpened": "2025-05-14T15:31:54.925Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "CtrlSolicitudes.cs",
+              "DocumentMoniker": "D:\\Escritorio\\AcademyGestor\\AcademyGestor\\AcademyGestor\\ApiService\\CtrlSolicitudes.cs",
+              "RelativeDocumentMoniker": "AcademyGestor\\ApiService\\CtrlSolicitudes.cs",
+              "ToolTip": "D:\\Escritorio\\AcademyGestor\\AcademyGestor\\AcademyGestor\\ApiService\\CtrlSolicitudes.cs",
+              "RelativeToolTip": "AcademyGestor\\ApiService\\CtrlSolicitudes.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-14T15:31:50.874Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "SolicitudView.cs [Dise\u00F1o]",
+              "DocumentMoniker": "D:\\Escritorio\\AcademyGestor\\AcademyGestor\\AcademyGestor\\Vistas\\SolicitudView.cs",
+              "RelativeDocumentMoniker": "AcademyGestor\\Vistas\\SolicitudView.cs",
+              "ToolTip": "D:\\Escritorio\\AcademyGestor\\AcademyGestor\\AcademyGestor\\Vistas\\SolicitudView.cs [Dise\u00F1o]",
+              "RelativeToolTip": "AcademyGestor\\Vistas\\SolicitudView.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-14T15:31:48.079Z",
               "EditorCaption": " [Dise\u00F1o]"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
             }
           ]
         }
