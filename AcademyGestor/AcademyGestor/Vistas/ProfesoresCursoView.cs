@@ -47,7 +47,8 @@ namespace AcademyGestor.Vistas
         private async void cargaCoordinador()
         {
 
-            profesoresCurso = await ctrlProfesoresCurso.getProfesoresByCurso(curso.id);
+            int id = (int)curso.id;
+            profesoresCurso = await ctrlProfesoresCurso.getProfesoresByCurso(id);
 
             if (profesoresCurso != null)
             {
@@ -75,7 +76,9 @@ namespace AcademyGestor.Vistas
         private async void cargaProfesores()
         {
             profesores = await ctrlProfesores.getProfesores();
-            profesoresCurso = await ctrlProfesoresCurso.getProfesoresByCurso(curso.id);
+
+            int id = (int)curso.id;
+            profesoresCurso = await ctrlProfesoresCurso.getProfesoresByCurso(id);
 
             List<Profesor> profesoresCursoList = new List<Profesor>();
             List<Profesor> participantes = new List<Profesor>();
@@ -116,13 +119,15 @@ namespace AcademyGestor.Vistas
         {
             if (dgvProfs.SelectedRows.Count > 0)
             {
-                btnDesasignar.Enabled = false;
                 btnAsignar.Enabled = true;
+                btnDesasignar.Enabled = false;
+                btnCoordinador.Enabled = false;
                 selectedRow = dgvProfs.SelectedRows[0];
 
                 if (selectedRow.Tag != null)
                 {
                     seleccionado = (Profesor)selectedRow.Tag;
+
                 }
 
             }
@@ -141,6 +146,16 @@ namespace AcademyGestor.Vistas
                 if (selectedRow.Tag != null)
                 {
                     seleccionado = (Profesor)selectedRow.Tag;
+                    if (coordinador.profesor.id == seleccionado.id)
+                    {
+                        btnDesasignar.Enabled = false;
+                        btnCoordinador.Enabled = false;
+                    }
+                    else
+                    {
+                        btnDesasignar.Enabled = true;
+                        btnCoordinador.Enabled = true;
+                    }
                 }
 
             }
@@ -159,8 +174,25 @@ namespace AcademyGestor.Vistas
 
                 if (exito)
                 {
+                    if (coordinador == null)
+                    {
+                        int id = (int)seleccionado.id;
+
+                        int idCurso = (int)curso.id;
+                        Profesor_Curso pc = await ctrlProfesoresCurso.getByProfesoresByCurso(idCurso, id);
+                        if (pc != null)
+                        {
+                            bool ok = await ctrlProfesoresCurso.updateCoordinador(pc);
+                            if (ok)
+                            {
+                                cargaCoordinador();
+                            }
+                        }
+                    }
                     cargaProfesores();
                     cargaCoordinador();
+                    seleccionado = null;
+                    btnAsignar.Enabled = false;
                 }
                 else
                 {
@@ -179,16 +211,25 @@ namespace AcademyGestor.Vistas
             {
                 int id = (int)seleccionado.id;
 
-                bool exito = await ctrlProfesoresCurso.deleteProfesorCursoByCursoYProfesor(curso.id, id);
-
-                if (exito)
+                if (id != coordinador.profesor.id)
                 {
-                    cargaCoordinador();
-                    cargaProfesores();
+
+                    int idCurso = (int)curso.id;
+                    bool exito = await ctrlProfesoresCurso.deleteProfesorCursoByCursoYProfesor(idCurso, id);
+
+                    if (exito)
+                    {
+                        cargaCoordinador();
+                        cargaProfesores();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error al desasignar el profesor");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Error al desasignar el profesor");
+                    MessageBox.Show("No puedes desasignar al coordinador");
                 }
             }
             else
@@ -205,48 +246,38 @@ namespace AcademyGestor.Vistas
 
         private async void btnCoordinador_Click(object sender, EventArgs e)
         {
-            if (seleccionado != null && coordinador != null)
+            if (coordinador != null)
             {
                 int idCoord = (int)coordinador.id;
+                bool exito = await ctrlProfesoresCurso.updateCoordinador(coordinador);
+                if (exito)
+                {
+                    cargaCoordinador();
+                    cargaProfesores();
+                }
+            }
+            if (seleccionado != null)
+            {
                 int idNuevo = (int)seleccionado.id;
 
-                if (idCoord != idNuevo)
+                int idCurso = (int)curso.id;
+                Profesor_Curso pc = await ctrlProfesoresCurso.getByProfesoresByCurso(idCurso, idNuevo);
+                if (pc != null)
                 {
-                    bool exito = await ctrlProfesoresCurso.updateCoordinador(coordinador);
+                    bool exito = await ctrlProfesoresCurso.updateCoordinador(pc);
                     if (exito)
                     {
-                        Profesor_Curso pc = await ctrlProfesoresCurso.getByProfesoresByCurso(curso.id, idNuevo);
-                        if (pc != null)
-                        {
-                            exito = await ctrlProfesoresCurso.updateCoordinador(pc);
-                            if (exito)
-                            {
-                                MessageBox.Show("Coordinador asignado correctamente","Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                cargaCoordinador();
-                                cargaProfesores();
-                            }
-                            else
-                            {
-                                MessageBox.Show("Error al asignar el coordinador", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
-                        }
-                        else
-                        {
-                            MessageBox.Show("El profesor no esta en el curso", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
+                        cargaCoordinador();
+                        cargaProfesores();
                     }
                     else
                     {
-                        MessageBox.Show("Error al desasignar el coordinador", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Error al asignar el coordinador", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                }
-                else
-                {
-                    MessageBox.Show("El profesor ya es el coordinador", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
-        
+
 
         private async Task<bool> updateCoord(Profesor_Curso pc)
         {

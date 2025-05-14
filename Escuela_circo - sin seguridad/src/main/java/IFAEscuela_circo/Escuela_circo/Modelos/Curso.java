@@ -8,7 +8,6 @@ import org.hibernate.annotations.ColumnDefault;
 public class Curso {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Generación automática del ID
-
     @Column(name = "id", nullable = false)
     private Integer id;
 

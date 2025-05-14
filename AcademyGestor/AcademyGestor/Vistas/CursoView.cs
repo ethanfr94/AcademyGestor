@@ -24,6 +24,7 @@ namespace AcademyGestor.Vistas
         private List<Tipo> tipos;
 
         private Curso curso;
+        private Tipo tipo;
 
         public CursoView()
         {
@@ -93,7 +94,8 @@ namespace AcademyGestor.Vistas
             profesores = await ctrlProfesores.getProfesores();
             if (curso != null)
             {
-                profs_curso = await ctrlProfs_curso.getProfesoresByCurso(curso.id);
+                int id = (int)curso.id;
+                profs_curso = await ctrlProfs_curso.getProfesoresByCurso(id);
             }
 
             if (profesores != null)
@@ -145,11 +147,6 @@ namespace AcademyGestor.Vistas
                     MessageBox.Show("Por favor, seleccione un tipo de curso.", "Insertar Curso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
-                if (cmbCoordinador.SelectedItem == null)
-                {
-                    MessageBox.Show("Por favor, seleccione un coordinador.", "Insertar Curso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
 
 
                 curso = new Curso();
@@ -157,8 +154,8 @@ namespace AcademyGestor.Vistas
                 curso.descripcion = txtDescripcion.Text;
                 curso.cod_curso = txtCodCurso.Text;
                 curso.horario = txtHorario.Text;
-                curso.activo = (chkActivo.Checked) ? (byte)1 : (byte)0;
-                curso.tipo = cmbTipo.SelectedItem as Tipo;
+                curso.tipo = tipo;
+
                 try
                 {
                     bool insertado = await ctrlCursos.addCurso(curso);
@@ -187,7 +184,7 @@ namespace AcademyGestor.Vistas
                 curso.cod_curso = txtCodCurso.Text;
                 curso.horario = txtHorario.Text;
                 curso.activo = (chkActivo.Checked) ? (byte)1 : (byte)0;
-                curso.tipo = cmbTipo.SelectedItem as Tipo;
+                curso.tipo = tipo;
                 try
                 {
                     bool actualizado = await ctrlCursos.updateCurso(curso);
@@ -206,6 +203,21 @@ namespace AcademyGestor.Vistas
                 {
                     MessageBox.Show("Error al actualizar el curso: " + ex.Message, "Actualizar Curso", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
+                }
+            }
+        }
+
+        private void cmbTipo_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if (cmbTipo.SelectedItem != null)
+            {
+                foreach (Tipo tipo in tipos)
+                {
+                    if (tipo.nombre == cmbTipo.SelectedItem.ToString())
+                    {
+                        this.tipo = tipo;
+                        break;
+                    }
                 }
             }
         }

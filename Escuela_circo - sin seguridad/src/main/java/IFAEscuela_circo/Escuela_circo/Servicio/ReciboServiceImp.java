@@ -28,6 +28,15 @@ public class ReciboServiceImp implements ReciboService {
         return repo.save(recibo);
     }
 
+    public Recibo cobrar(Recibo recibo) {
+        Recibo rec = repo.findById(recibo.getId()).orElse(null);
+        if (rec != null) {
+            rec.setPagado((byte)1);
+            return repo.save(rec);
+        }
+        return null;
+    }
+
     @Override
     public Recibo modificar(Recibo recibo, Integer id) {
         Recibo rec = repo.findById(id).orElse(null);

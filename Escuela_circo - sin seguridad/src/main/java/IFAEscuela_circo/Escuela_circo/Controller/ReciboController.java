@@ -29,6 +29,10 @@ public class ReciboController {
     public Recibo updateRecibo(@RequestBody Recibo recibo, @PathVariable Integer id) {
         return serv.modificar(recibo, id);
     }
+    @PutMapping("/recibos/cobrar")
+    public Recibo cobrarRecibo(@RequestBody Recibo recibo) {
+        return serv.cobrar(recibo);
+    }
 
     @PostMapping("/recibos/insertar")
     public Recibo addRecibo(@RequestBody Recibo recibo) {

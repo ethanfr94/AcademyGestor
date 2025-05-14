@@ -13,7 +13,7 @@ namespace AcademyGestor.Modelos
         public string detalle { get; set; }
         public DateTime fecha { get; set; }
         public double importe { get; set; }
-        public bool descuento { get; set; }
-        public bool pagado { get; set; }
+        public byte descuento { get; set; }
+        public byte pagado { get; set; }
     }
 }

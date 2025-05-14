@@ -108,6 +108,30 @@ namespace AcademyGestor.ApiService
             }
         }
 
+        public async Task<bool> cobrar(Recibo recibo)
+        {
+            try
+            {
+                string json = JsonConvert.SerializeObject(recibo);
+                StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+                HttpResponseMessage resp = await cli.PutAsync($"http://localhost:8080/escuela_circo/recibos/cobrar", content);
+                resp.EnsureSuccessStatusCode();
+                return true;
+            }
+            catch (HttpRequestException e)
+            {
+                Console.WriteLine("Error: " + e.Message);
+                return false;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error: " + e.Message);
+                return false;
+            }
+        }
+
+
+
         public async Task<bool> deleteRecibo(int id)
         {
             try

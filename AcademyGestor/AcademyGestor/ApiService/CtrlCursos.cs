@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using AcademyGestor.Modelos;
 using Newtonsoft.Json;
 
@@ -70,8 +71,9 @@ namespace AcademyGestor.ApiService
             try
             {
                 string json = JsonConvert.SerializeObject(curso);
+
                 StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
-                HttpResponseMessage resp = await cli.PostAsync("http://localhost:8080/escuela_circo/insertar/cursos", content);
+                HttpResponseMessage resp = await cli.PostAsync("http://localhost:8080/escuela_circo/cursos/insertar", content);
                 resp.EnsureSuccessStatusCode();
                 return true;
             }
@@ -93,8 +95,13 @@ namespace AcademyGestor.ApiService
             try
             {
                 string json = JsonConvert.SerializeObject(curso);
+
+                int id = (int)curso.id;
+
+                MessageBox.Show(json, "JSON", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                 StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
-                HttpResponseMessage resp = await cli.PutAsync($"http://localhost:8080/escuela_circo/cursos/modificar/{curso.id}", content);
+                HttpResponseMessage resp = await cli.PutAsync($"http://localhost:8080/escuela_circo/cursos/modificar/{id}", content);
                 resp.EnsureSuccessStatusCode();
                 return true;
             }

@@ -33,7 +33,6 @@
             this.txtDescripcion = new System.Windows.Forms.TextBox();
             this.txtHorario = new System.Windows.Forms.TextBox();
             this.cmbTipo = new System.Windows.Forms.ComboBox();
-            this.chkActivo = new System.Windows.Forms.CheckBox();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -43,6 +42,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.cmbCoordinador = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.chkActivo = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // txtCodCurso
@@ -82,16 +82,7 @@
             this.cmbTipo.Name = "cmbTipo";
             this.cmbTipo.Size = new System.Drawing.Size(287, 21);
             this.cmbTipo.TabIndex = 4;
-            // 
-            // chkActivo
-            // 
-            this.chkActivo.AutoSize = true;
-            this.chkActivo.Location = new System.Drawing.Point(15, 239);
-            this.chkActivo.Name = "chkActivo";
-            this.chkActivo.Size = new System.Drawing.Size(56, 17);
-            this.chkActivo.TabIndex = 5;
-            this.chkActivo.Text = "Activo";
-            this.chkActivo.UseVisualStyleBackColor = true;
+            this.cmbTipo.SelectedValueChanged += new System.EventHandler(this.cmbTipo_SelectedValueChanged);
             // 
             // btnGuardar
             // 
@@ -168,6 +159,7 @@
             // cmbCoordinador
             // 
             this.cmbCoordinador.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbCoordinador.Enabled = false;
             this.cmbCoordinador.FormattingEnabled = true;
             this.cmbCoordinador.Location = new System.Drawing.Point(113, 196);
             this.cmbCoordinador.Name = "cmbCoordinador";
@@ -182,6 +174,16 @@
             this.label6.Size = new System.Drawing.Size(64, 13);
             this.label6.TabIndex = 33;
             this.label6.Text = "Coordinador";
+            // 
+            // chkActivo
+            // 
+            this.chkActivo.AutoSize = true;
+            this.chkActivo.Location = new System.Drawing.Point(15, 239);
+            this.chkActivo.Name = "chkActivo";
+            this.chkActivo.Size = new System.Drawing.Size(56, 17);
+            this.chkActivo.TabIndex = 5;
+            this.chkActivo.Text = "Activo";
+            this.chkActivo.UseVisualStyleBackColor = true;
             // 
             // CursoView
             // 
@@ -221,7 +223,6 @@
         private System.Windows.Forms.TextBox txtDescripcion;
         private System.Windows.Forms.TextBox txtHorario;
         private System.Windows.Forms.ComboBox cmbTipo;
-        private System.Windows.Forms.CheckBox chkActivo;
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.Label label1;
@@ -231,5 +232,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox cmbCoordinador;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.CheckBox chkActivo;
     }
 }

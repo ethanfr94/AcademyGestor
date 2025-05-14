@@ -33,7 +33,7 @@ public class CursoServiceImp implements CursoService {
         Curso cur = repo.findById(id).orElse(null);
         if (cur != null) {
             curso.setId(id);
-            return repo.save(cur);
+            return repo.save(curso);
         }
         return null;
     }

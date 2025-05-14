@@ -227,7 +227,7 @@ namespace AcademyGestor
                     item.matricula.alumno.nombre + " " + item.matricula.alumno.apellido1 + " " + item.matricula.alumno.apellido2,
                     item.matricula.curso.nombre,
                     item.importe,
-                    item.pagado ? "si" : "no"
+                    item.pagado == 1 ? "si" : "no"
                     )];
                 row.Tag = item;
             }
@@ -380,7 +380,8 @@ namespace AcademyGestor
                 else if (selectedRow.Tag is Curso curso)
                 {
                     btnEdit.Enabled = true;
-                    List<Profesor_Curso> profs = await ctrlProfesoresCurso.getProfesoresByCurso(curso.id);
+                    int id = (int)curso.id;
+                    List<Profesor_Curso> profs = await ctrlProfesoresCurso.getProfesoresByCurso(id);
 
                     Profesor pr = null;
 
@@ -457,15 +458,7 @@ namespace AcademyGestor
                                     "- Fecha baja: " + (matricula.fechBaja != null ? matricula.fechBaja.Value.ToString("dd/MM/yyyy") : "") + "\n\n" +
                                     "- Autorizacion de fotos: " + (matricula.autorizacionFotos == 1 ? "si" : "no") + "\t" + "- Beca: " + (matricula.beca == 1 ? "si" : "no");
                 }
-                else if (selectedRow.Tag is Recibo recibo)
-                {
-                    txtDatos.Text = "- Fecha: " + recibo.fecha.ToString("dd/MM/yyyy") + "\n\n" +
-                                    "- Alumno: " + recibo.matricula.alumno.nombre + " " + recibo.matricula.alumno.apellido1 + " " + recibo.matricula.alumno.apellido2 + "\n\n" +
-                                    "- Curso: " + recibo.matricula.curso.nombre + "\n\n" +
-                                    "- Detalle: ºn" + recibo.detalle + "\n\n" +
-                                    "- Importe: " + recibo.importe + "\n\n" +
-                                    "- Pagado: " + (recibo.pagado ? "si" : "no");
-                }
+                
                 else if (selectedRow.Tag is Publicacion publicacion)
                 {
                     btnEdit.Enabled = true;
@@ -941,7 +934,7 @@ namespace AcademyGestor
                         r.matricula.alumno.nombre + " " + r.matricula.alumno.apellido1 + " " + r.matricula.alumno.apellido2,
                         r.matricula.curso.nombre,
                         r.importe,
-                        r.pagado ? "si" : "no"
+                        r.pagado == 1 ? "si" : "no"
                         )];
                     row.Tag = r;
                 }

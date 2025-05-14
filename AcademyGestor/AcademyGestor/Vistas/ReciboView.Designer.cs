@@ -39,11 +39,13 @@
             this.label4 = new System.Windows.Forms.Label();
             this.btnRecibo = new System.Windows.Forms.Button();
             this.dgvRecibos = new System.Windows.Forms.DataGridView();
+            this.btnCobrar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRecibos)).BeginInit();
             this.SuspendLayout();
             // 
             // txtDetalle
             // 
+            this.txtDetalle.Enabled = false;
             this.txtDetalle.Location = new System.Drawing.Point(285, 157);
             this.txtDetalle.Multiline = true;
             this.txtDetalle.Name = "txtDetalle";
@@ -52,6 +54,7 @@
             // 
             // dtpFecha
             // 
+            this.dtpFecha.Enabled = false;
             this.dtpFecha.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpFecha.Location = new System.Drawing.Point(94, 157);
             this.dtpFecha.Name = "dtpFecha";
@@ -60,6 +63,7 @@
             // 
             // txtImporte
             // 
+            this.txtImporte.Enabled = false;
             this.txtImporte.Location = new System.Drawing.Point(94, 199);
             this.txtImporte.Name = "txtImporte";
             this.txtImporte.Size = new System.Drawing.Size(143, 20);
@@ -68,17 +72,20 @@
             // chkDescuento
             // 
             this.chkDescuento.AutoSize = true;
+            this.chkDescuento.Enabled = false;
             this.chkDescuento.Location = new System.Drawing.Point(17, 234);
             this.chkDescuento.Name = "chkDescuento";
             this.chkDescuento.Size = new System.Drawing.Size(108, 17);
             this.chkDescuento.TabIndex = 4;
             this.chkDescuento.Text = "Aplica descuento";
             this.chkDescuento.UseVisualStyleBackColor = true;
+            this.chkDescuento.CheckedChanged += new System.EventHandler(this.chkDescuento_CheckedChanged);
             // 
             // chkPagado
             // 
             this.chkPagado.AutoSize = true;
-            this.chkPagado.Location = new System.Drawing.Point(144, 234);
+            this.chkPagado.Enabled = false;
+            this.chkPagado.Location = new System.Drawing.Point(143, 234);
             this.chkPagado.Name = "chkPagado";
             this.chkPagado.Size = new System.Drawing.Size(63, 17);
             this.chkPagado.TabIndex = 5;
@@ -125,7 +132,7 @@
             // btnRecibo
             // 
             this.btnRecibo.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnRecibo.Location = new System.Drawing.Point(502, 230);
+            this.btnRecibo.Location = new System.Drawing.Point(515, 230);
             this.btnRecibo.Name = "btnRecibo";
             this.btnRecibo.Size = new System.Drawing.Size(123, 23);
             this.btnRecibo.TabIndex = 11;
@@ -148,6 +155,18 @@
             this.dgvRecibos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvRecibos.Size = new System.Drawing.Size(707, 126);
             this.dgvRecibos.TabIndex = 12;
+            this.dgvRecibos.SelectionChanged += new System.EventHandler(this.dgvRecibos_SelectionChanged);
+            // 
+            // btnCobrar
+            // 
+            this.btnCobrar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnCobrar.Location = new System.Drawing.Point(386, 230);
+            this.btnCobrar.Name = "btnCobrar";
+            this.btnCobrar.Size = new System.Drawing.Size(123, 23);
+            this.btnCobrar.TabIndex = 13;
+            this.btnCobrar.Text = "Cobrado";
+            this.btnCobrar.UseVisualStyleBackColor = true;
+            this.btnCobrar.Click += new System.EventHandler(this.btnCobrar_Click);
             // 
             // ReciboView
             // 
@@ -156,6 +175,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnSalir;
             this.ClientSize = new System.Drawing.Size(731, 264);
+            this.Controls.Add(this.btnCobrar);
             this.Controls.Add(this.dgvRecibos);
             this.Controls.Add(this.btnRecibo);
             this.Controls.Add(this.label4);
@@ -188,5 +208,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnRecibo;
         private System.Windows.Forms.DataGridView dgvRecibos;
+        private System.Windows.Forms.Button btnCobrar;
     }
 }
