@@ -68,12 +68,12 @@ namespace AcademyGestor.Vistas
                         }
                         else
                         {
-                            MessageBox.Show("No se han encontrado faltas para el alumno.");
+                            MessageBox.Show("No se han encontrado faltas para el alumno.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                     else
                     {
-                        MessageBox.Show("No se han encontrado faltas para el alumno.");
+                        MessageBox.Show("No se han encontrado faltas para el alumno.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         this.Close();
                     }
 
@@ -84,7 +84,7 @@ namespace AcademyGestor.Vistas
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al cargar las faltas: " + ex.Message);
+                MessageBox.Show("Error al cargar las faltas: ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

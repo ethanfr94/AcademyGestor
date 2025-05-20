@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SolicitudView));
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
             this.btnAceptar = new System.Windows.Forms.Button();
@@ -44,6 +45,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.gbAlumno = new System.Windows.Forms.GroupBox();
+            this.dtpFecha_nac = new System.Windows.Forms.DateTimePicker();
             this.txtTlfn = new System.Windows.Forms.Label();
             this.txtEmail = new System.Windows.Forms.Label();
             this.txtLocalidad = new System.Windows.Forms.Label();
@@ -75,7 +77,6 @@
             this.label20 = new System.Windows.Forms.Label();
             this.txtCurso = new System.Windows.Forms.Label();
             this.dtpFecha = new System.Windows.Forms.DateTimePicker();
-            this.dtpFecha_nac = new System.Windows.Forms.DateTimePicker();
             this.gbAlumno.SuspendLayout();
             this.gbTutor.SuspendLayout();
             this.SuspendLayout();
@@ -86,7 +87,7 @@
             this.btnEliminar.Location = new System.Drawing.Point(166, 584);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(108, 23);
-            this.btnEliminar.TabIndex = 27;
+            this.btnEliminar.TabIndex = 24;
             this.btnEliminar.Text = "Eliminar solicitud";
             this.btnEliminar.UseVisualStyleBackColor = true;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
@@ -97,7 +98,7 @@
             this.btnSalir.Location = new System.Drawing.Point(400, 584);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(77, 23);
-            this.btnSalir.TabIndex = 25;
+            this.btnSalir.TabIndex = 26;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
@@ -108,7 +109,7 @@
             this.btnAceptar.Location = new System.Drawing.Point(280, 584);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(114, 23);
-            this.btnAceptar.TabIndex = 26;
+            this.btnAceptar.TabIndex = 25;
             this.btnAceptar.Text = "Aceptar solicitud";
             this.btnAceptar.UseVisualStyleBackColor = true;
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
@@ -247,6 +248,19 @@
             this.gbAlumno.TabStop = false;
             this.gbAlumno.Text = "Alumno";
             // 
+            // dtpFecha_nac
+            // 
+            this.dtpFecha_nac.Cursor = System.Windows.Forms.Cursors.Default;
+            this.dtpFecha_nac.DropDownAlign = System.Windows.Forms.LeftRightAlignment.Right;
+            this.dtpFecha_nac.Enabled = false;
+            this.dtpFecha_nac.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFecha_nac.Location = new System.Drawing.Point(122, 100);
+            this.dtpFecha_nac.MaxDate = new System.DateTime(2025, 4, 24, 0, 0, 0, 0);
+            this.dtpFecha_nac.Name = "dtpFecha_nac";
+            this.dtpFecha_nac.Size = new System.Drawing.Size(332, 20);
+            this.dtpFecha_nac.TabIndex = 6;
+            this.dtpFecha_nac.Value = new System.DateTime(2025, 4, 24, 0, 0, 0, 0);
+            // 
             // txtTlfn
             // 
             this.txtTlfn.BackColor = System.Drawing.Color.White;
@@ -254,7 +268,7 @@
             this.txtTlfn.Location = new System.Drawing.Point(123, 206);
             this.txtTlfn.Name = "txtTlfn";
             this.txtTlfn.Size = new System.Drawing.Size(331, 20);
-            this.txtTlfn.TabIndex = 92;
+            this.txtTlfn.TabIndex = 10;
             this.txtTlfn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // txtEmail
@@ -264,7 +278,7 @@
             this.txtEmail.Location = new System.Drawing.Point(123, 181);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(331, 19);
-            this.txtEmail.TabIndex = 91;
+            this.txtEmail.TabIndex = 9;
             this.txtEmail.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // txtLocalidad
@@ -274,7 +288,7 @@
             this.txtLocalidad.Location = new System.Drawing.Point(123, 155);
             this.txtLocalidad.Name = "txtLocalidad";
             this.txtLocalidad.Size = new System.Drawing.Size(331, 19);
-            this.txtLocalidad.TabIndex = 90;
+            this.txtLocalidad.TabIndex = 8;
             this.txtLocalidad.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // txtDireccion
@@ -284,7 +298,7 @@
             this.txtDireccion.Location = new System.Drawing.Point(123, 129);
             this.txtDireccion.Name = "txtDireccion";
             this.txtDireccion.Size = new System.Drawing.Size(331, 19);
-            this.txtDireccion.TabIndex = 89;
+            this.txtDireccion.TabIndex = 7;
             this.txtDireccion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // txtDni
@@ -294,7 +308,7 @@
             this.txtDni.Location = new System.Drawing.Point(123, 77);
             this.txtDni.Name = "txtDni";
             this.txtDni.Size = new System.Drawing.Size(331, 19);
-            this.txtDni.TabIndex = 87;
+            this.txtDni.TabIndex = 5;
             this.txtDni.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // txtApe1
@@ -304,7 +318,7 @@
             this.txtApe1.Location = new System.Drawing.Point(123, 51);
             this.txtApe1.Name = "txtApe1";
             this.txtApe1.Size = new System.Drawing.Size(165, 19);
-            this.txtApe1.TabIndex = 86;
+            this.txtApe1.TabIndex = 3;
             this.txtApe1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // txtApe2
@@ -314,7 +328,7 @@
             this.txtApe2.Location = new System.Drawing.Point(292, 51);
             this.txtApe2.Name = "txtApe2";
             this.txtApe2.Size = new System.Drawing.Size(162, 19);
-            this.txtApe2.TabIndex = 85;
+            this.txtApe2.TabIndex = 4;
             this.txtApe2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // txtNombre
@@ -324,7 +338,7 @@
             this.txtNombre.Location = new System.Drawing.Point(123, 25);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(331, 19);
-            this.txtNombre.TabIndex = 84;
+            this.txtNombre.TabIndex = 2;
             this.txtNombre.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // chkComerc
@@ -334,7 +348,7 @@
             this.chkComerc.Location = new System.Drawing.Point(297, 531);
             this.chkComerc.Name = "chkComerc";
             this.chkComerc.Size = new System.Drawing.Size(163, 17);
-            this.chkComerc.TabIndex = 22;
+            this.chkComerc.TabIndex = 21;
             this.chkComerc.Text = "Comunicaciones comerciales";
             this.chkComerc.UseVisualStyleBackColor = true;
             // 
@@ -345,7 +359,7 @@
             this.chkWhatsapp.Location = new System.Drawing.Point(155, 531);
             this.chkWhatsapp.Name = "chkWhatsapp";
             this.chkWhatsapp.Size = new System.Drawing.Size(122, 17);
-            this.chkWhatsapp.TabIndex = 21;
+            this.chkWhatsapp.TabIndex = 20;
             this.chkWhatsapp.Text = "Grupo de Whatsapp";
             this.chkWhatsapp.UseVisualStyleBackColor = true;
             // 
@@ -356,7 +370,7 @@
             this.chkProt_datos.Location = new System.Drawing.Point(11, 531);
             this.chkProt_datos.Name = "chkProt_datos";
             this.chkProt_datos.Size = new System.Drawing.Size(121, 17);
-            this.chkProt_datos.TabIndex = 20;
+            this.chkProt_datos.TabIndex = 19;
             this.chkProt_datos.Text = "Proteccion de datos";
             this.chkProt_datos.UseVisualStyleBackColor = true;
             // 
@@ -367,7 +381,7 @@
             this.chkBeca.Location = new System.Drawing.Point(155, 554);
             this.chkBeca.Name = "chkBeca";
             this.chkBeca.Size = new System.Drawing.Size(51, 17);
-            this.chkBeca.TabIndex = 24;
+            this.chkBeca.TabIndex = 23;
             this.chkBeca.Text = "Beca";
             this.chkBeca.UseVisualStyleBackColor = true;
             // 
@@ -378,7 +392,7 @@
             this.chkFotos.Location = new System.Drawing.Point(11, 554);
             this.chkFotos.Name = "chkFotos";
             this.chkFotos.Size = new System.Drawing.Size(110, 17);
-            this.chkFotos.TabIndex = 23;
+            this.chkFotos.TabIndex = 22;
             this.chkFotos.Text = "Autorizacion fotos";
             this.chkFotos.UseVisualStyleBackColor = true;
             // 
@@ -414,7 +428,7 @@
             this.txtTlfnTutor.Location = new System.Drawing.Point(127, 181);
             this.txtTlfnTutor.Name = "txtTlfnTutor";
             this.txtTlfnTutor.Size = new System.Drawing.Size(331, 19);
-            this.txtTlfnTutor.TabIndex = 100;
+            this.txtTlfnTutor.TabIndex = 18;
             this.txtTlfnTutor.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // txtEmailTutor
@@ -424,7 +438,7 @@
             this.txtEmailTutor.Location = new System.Drawing.Point(127, 155);
             this.txtEmailTutor.Name = "txtEmailTutor";
             this.txtEmailTutor.Size = new System.Drawing.Size(331, 19);
-            this.txtEmailTutor.TabIndex = 99;
+            this.txtEmailTutor.TabIndex = 17;
             this.txtEmailTutor.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // txtLocalidadTutor
@@ -434,7 +448,7 @@
             this.txtLocalidadTutor.Location = new System.Drawing.Point(127, 129);
             this.txtLocalidadTutor.Name = "txtLocalidadTutor";
             this.txtLocalidadTutor.Size = new System.Drawing.Size(331, 19);
-            this.txtLocalidadTutor.TabIndex = 98;
+            this.txtLocalidadTutor.TabIndex = 16;
             this.txtLocalidadTutor.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // txtDireccionTutor
@@ -444,7 +458,7 @@
             this.txtDireccionTutor.Location = new System.Drawing.Point(127, 103);
             this.txtDireccionTutor.Name = "txtDireccionTutor";
             this.txtDireccionTutor.Size = new System.Drawing.Size(331, 19);
-            this.txtDireccionTutor.TabIndex = 97;
+            this.txtDireccionTutor.TabIndex = 15;
             this.txtDireccionTutor.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // txtDniTutor
@@ -454,7 +468,7 @@
             this.txtDniTutor.Location = new System.Drawing.Point(127, 77);
             this.txtDniTutor.Name = "txtDniTutor";
             this.txtDniTutor.Size = new System.Drawing.Size(331, 19);
-            this.txtDniTutor.TabIndex = 96;
+            this.txtDniTutor.TabIndex = 14;
             this.txtDniTutor.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // txtApe1Tutor
@@ -464,7 +478,7 @@
             this.txtApe1Tutor.Location = new System.Drawing.Point(127, 51);
             this.txtApe1Tutor.Name = "txtApe1Tutor";
             this.txtApe1Tutor.Size = new System.Drawing.Size(165, 19);
-            this.txtApe1Tutor.TabIndex = 95;
+            this.txtApe1Tutor.TabIndex = 12;
             this.txtApe1Tutor.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // txtApe2Tutor
@@ -474,7 +488,7 @@
             this.txtApe2Tutor.Location = new System.Drawing.Point(296, 51);
             this.txtApe2Tutor.Name = "txtApe2Tutor";
             this.txtApe2Tutor.Size = new System.Drawing.Size(162, 19);
-            this.txtApe2Tutor.TabIndex = 94;
+            this.txtApe2Tutor.TabIndex = 13;
             this.txtApe2Tutor.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // txtNombreTutor
@@ -484,7 +498,7 @@
             this.txtNombreTutor.Location = new System.Drawing.Point(127, 25);
             this.txtNombreTutor.Name = "txtNombreTutor";
             this.txtNombreTutor.Size = new System.Drawing.Size(331, 19);
-            this.txtNombreTutor.TabIndex = 93;
+            this.txtNombreTutor.TabIndex = 11;
             this.txtNombreTutor.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label13
@@ -557,32 +571,21 @@
             this.txtCurso.Location = new System.Drawing.Point(129, 12);
             this.txtCurso.Name = "txtCurso";
             this.txtCurso.Size = new System.Drawing.Size(331, 19);
-            this.txtCurso.TabIndex = 83;
+            this.txtCurso.TabIndex = 0;
             this.txtCurso.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // dtpFecha
             // 
             this.dtpFecha.Cursor = System.Windows.Forms.Cursors.Default;
             this.dtpFecha.DropDownAlign = System.Windows.Forms.LeftRightAlignment.Right;
+            this.dtpFecha.Enabled = false;
             this.dtpFecha.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpFecha.Location = new System.Drawing.Point(128, 34);
             this.dtpFecha.MaxDate = new System.DateTime(2025, 4, 24, 0, 0, 0, 0);
             this.dtpFecha.Name = "dtpFecha";
             this.dtpFecha.Size = new System.Drawing.Size(332, 20);
-            this.dtpFecha.TabIndex = 84;
+            this.dtpFecha.TabIndex = 1;
             this.dtpFecha.Value = new System.DateTime(2025, 4, 24, 0, 0, 0, 0);
-            // 
-            // dtpFecha_nac
-            // 
-            this.dtpFecha_nac.Cursor = System.Windows.Forms.Cursors.Default;
-            this.dtpFecha_nac.DropDownAlign = System.Windows.Forms.LeftRightAlignment.Right;
-            this.dtpFecha_nac.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFecha_nac.Location = new System.Drawing.Point(122, 100);
-            this.dtpFecha_nac.MaxDate = new System.DateTime(2025, 4, 24, 0, 0, 0, 0);
-            this.dtpFecha_nac.Name = "dtpFecha_nac";
-            this.dtpFecha_nac.Size = new System.Drawing.Size(332, 20);
-            this.dtpFecha_nac.TabIndex = 93;
-            this.dtpFecha_nac.Value = new System.DateTime(2025, 4, 24, 0, 0, 0, 0);
             // 
             // SolicitudView
             // 
@@ -606,9 +609,9 @@
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.btnAceptar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SolicitudView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Detalle de solicitud";
             this.gbAlumno.ResumeLayout(false);
             this.gbAlumno.PerformLayout();
             this.gbTutor.ResumeLayout(false);

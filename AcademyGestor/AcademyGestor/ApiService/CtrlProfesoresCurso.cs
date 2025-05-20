@@ -166,7 +166,7 @@ namespace AcademyGestor.ApiService
             }
             catch (HttpRequestException e)
             {
-                MessageBox.Show("Error: " + e.Message);
+                Console.WriteLine("Error: " + e.Message);
                 return false;
             }
             catch (Exception e)

@@ -29,6 +29,7 @@ namespace AcademyGestor.Vistas
         public CursoView()
         {
             InitializeComponent();
+            this.Text = "Nuevo Curso";
             ctrlProfesores = new CtrlProfesores();
             ctrlCursos = new CtrlCursos();
             ctrlProfs_curso = new CtrlProfesoresCurso();
@@ -41,6 +42,7 @@ namespace AcademyGestor.Vistas
         public CursoView(Curso curso)
         {
             InitializeComponent();
+            this.Text = "Modificar Curso";
             this.curso = curso;
 
             ctrlCursos = new CtrlCursos();
@@ -135,16 +137,22 @@ namespace AcademyGestor.Vistas
 
         private async void btnGuardar_Click(object sender, EventArgs e)
         {
+            if (!validarCampos())
+            {
+                MessageBox.Show("Por favor, complete todos los campos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             if (curso == null)
             {
-                if(string.IsNullOrEmpty(txtNombre.Text) || string.IsNullOrEmpty(txtDescripcion.Text) || string.IsNullOrEmpty(txtCodCurso.Text) || string.IsNullOrEmpty(txtHorario.Text))
+                if (string.IsNullOrEmpty(txtNombre.Text) || string.IsNullOrEmpty(txtDescripcion.Text) || string.IsNullOrEmpty(txtCodCurso.Text) || string.IsNullOrEmpty(txtHorario.Text))
                 {
-                    MessageBox.Show("Por favor, complete todos los campos.", "Insertar Curso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Por favor, complete todos los campos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
-                if(cmbTipo.SelectedItem == null)
+                if (cmbTipo.SelectedItem == null)
                 {
-                    MessageBox.Show("Por favor, seleccione un tipo de curso.", "Insertar Curso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Por favor, seleccione un tipo de curso.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
@@ -154,6 +162,7 @@ namespace AcademyGestor.Vistas
                 curso.descripcion = txtDescripcion.Text;
                 curso.cod_curso = txtCodCurso.Text;
                 curso.horario = txtHorario.Text;
+                curso.activo = (byte)1;
                 curso.tipo = tipo;
 
                 try
@@ -162,18 +171,17 @@ namespace AcademyGestor.Vistas
 
                     if (!insertado)
                     {
-                        MessageBox.Show("Error al insertar el curso.", "Insertar Curso", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Error al insertar el curso.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
                     else
                     {
-                        MessageBox.Show("Curso insertado correctamente.", "Insertar Curso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         this.Close();
                     }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error al insertar el curso: " + ex.Message, "Insertar Curso", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Error al insertar el curso: ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
             }
@@ -185,25 +193,18 @@ namespace AcademyGestor.Vistas
                 curso.horario = txtHorario.Text;
                 curso.activo = (chkActivo.Checked) ? (byte)1 : (byte)0;
                 curso.tipo = tipo;
-                try
+
+                bool actualizado = await ctrlCursos.updateCurso(curso);
+                if (!actualizado)
                 {
-                    bool actualizado = await ctrlCursos.updateCurso(curso);
-                    if (!actualizado)
-                    {
-                        MessageBox.Show("Error al actualizar el curso.", "Actualizar Curso", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-                    else
-                    {
-                        MessageBox.Show("Curso actualizado correctamente.", "Actualizar Curso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        this.Close();
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error al actualizar el curso: " + ex.Message, "Actualizar Curso", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Error al actualizar el curso.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
+                else
+                {                    
+                    this.Close();
+                }
+
             }
         }
 
@@ -221,5 +222,36 @@ namespace AcademyGestor.Vistas
                 }
             }
         }
+
+        private bool validarCampos()
+        {
+            if (string.IsNullOrEmpty(txtNombre.Text))
+            {
+                MessageBox.Show("Por favor, complete el campo Nombre.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            if (string.IsNullOrEmpty(txtDescripcion.Text))
+            {
+                MessageBox.Show("Por favor, complete el campo Descripción.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            if (string.IsNullOrEmpty(txtCodCurso.Text))
+            {
+                MessageBox.Show("Por favor, complete el campo Código de Curso.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            if (string.IsNullOrEmpty(txtHorario.Text))
+            {
+                MessageBox.Show("Por favor, complete el campo Horario.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            if (cmbTipo.SelectedItem == null)
+            {
+                MessageBox.Show("Por favor, seleccione un tipo de curso.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            return true;
+        }
+
     }
 }

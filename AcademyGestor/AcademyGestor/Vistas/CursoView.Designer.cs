@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CursoView));
             this.txtCodCurso = new System.Windows.Forms.TextBox();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.txtDescripcion = new System.Windows.Forms.TextBox();
@@ -106,7 +107,7 @@
             this.btnSalir.Location = new System.Drawing.Point(330, 276);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(70, 23);
-            this.btnSalir.TabIndex = 6;
+            this.btnSalir.TabIndex = 8;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
@@ -164,7 +165,7 @@
             this.cmbCoordinador.Location = new System.Drawing.Point(113, 196);
             this.cmbCoordinador.Name = "cmbCoordinador";
             this.cmbCoordinador.Size = new System.Drawing.Size(287, 21);
-            this.cmbCoordinador.TabIndex = 32;
+            this.cmbCoordinador.TabIndex = 5;
             // 
             // label6
             // 
@@ -181,7 +182,7 @@
             this.chkActivo.Location = new System.Drawing.Point(15, 239);
             this.chkActivo.Name = "chkActivo";
             this.chkActivo.Size = new System.Drawing.Size(56, 17);
-            this.chkActivo.TabIndex = 5;
+            this.chkActivo.TabIndex = 6;
             this.chkActivo.Text = "Activo";
             this.chkActivo.UseVisualStyleBackColor = true;
             // 
@@ -208,9 +209,9 @@
             this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.txtCodCurso);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CursoView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Detalle de curso";
             this.ResumeLayout(false);
             this.PerformLayout();
 

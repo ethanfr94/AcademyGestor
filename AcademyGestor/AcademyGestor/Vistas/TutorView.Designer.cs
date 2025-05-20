@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TutorView));
             this.btnGuardar = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
             this.txtApe2 = new System.Windows.Forms.TextBox();
@@ -57,7 +58,7 @@
             this.btnGuardar.Location = new System.Drawing.Point(314, 372);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(76, 23);
-            this.btnGuardar.TabIndex = 82;
+            this.btnGuardar.TabIndex = 11;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
@@ -68,7 +69,7 @@
             this.btnSalir.Location = new System.Drawing.Point(395, 372);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(76, 23);
-            this.btnSalir.TabIndex = 81;
+            this.btnSalir.TabIndex = 12;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
@@ -79,7 +80,7 @@
             this.txtApe2.Location = new System.Drawing.Point(297, 205);
             this.txtApe2.Name = "txtApe2";
             this.txtApe2.Size = new System.Drawing.Size(174, 20);
-            this.txtApe2.TabIndex = 74;
+            this.txtApe2.TabIndex = 3;
             // 
             // txtApe1
             // 
@@ -87,7 +88,7 @@
             this.txtApe1.Location = new System.Drawing.Point(128, 205);
             this.txtApe1.Name = "txtApe1";
             this.txtApe1.Size = new System.Drawing.Size(163, 20);
-            this.txtApe1.TabIndex = 73;
+            this.txtApe1.TabIndex = 2;
             // 
             // txtTlfn
             // 
@@ -95,7 +96,7 @@
             this.txtTlfn.Location = new System.Drawing.Point(128, 335);
             this.txtTlfn.Name = "txtTlfn";
             this.txtTlfn.Size = new System.Drawing.Size(343, 20);
-            this.txtTlfn.TabIndex = 79;
+            this.txtTlfn.TabIndex = 8;
             // 
             // txtEmail
             // 
@@ -103,7 +104,7 @@
             this.txtEmail.Location = new System.Drawing.Point(128, 309);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(343, 20);
-            this.txtEmail.TabIndex = 78;
+            this.txtEmail.TabIndex = 7;
             // 
             // txtLocalidad
             // 
@@ -111,7 +112,7 @@
             this.txtLocalidad.Location = new System.Drawing.Point(128, 283);
             this.txtLocalidad.Name = "txtLocalidad";
             this.txtLocalidad.Size = new System.Drawing.Size(343, 20);
-            this.txtLocalidad.TabIndex = 77;
+            this.txtLocalidad.TabIndex = 6;
             // 
             // txtDireccion
             // 
@@ -119,7 +120,7 @@
             this.txtDireccion.Location = new System.Drawing.Point(128, 257);
             this.txtDireccion.Name = "txtDireccion";
             this.txtDireccion.Size = new System.Drawing.Size(343, 20);
-            this.txtDireccion.TabIndex = 76;
+            this.txtDireccion.TabIndex = 5;
             // 
             // txtDni
             // 
@@ -127,7 +128,7 @@
             this.txtDni.Location = new System.Drawing.Point(128, 231);
             this.txtDni.Name = "txtDni";
             this.txtDni.Size = new System.Drawing.Size(343, 20);
-            this.txtDni.TabIndex = 75;
+            this.txtDni.TabIndex = 4;
             // 
             // txtNombre
             // 
@@ -135,7 +136,7 @@
             this.txtNombre.Location = new System.Drawing.Point(128, 179);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(343, 20);
-            this.txtNombre.TabIndex = 72;
+            this.txtNombre.TabIndex = 1;
             // 
             // label12
             // 
@@ -206,7 +207,7 @@
             this.chkEdit.Location = new System.Drawing.Point(12, 376);
             this.chkEdit.Name = "chkEdit";
             this.chkEdit.Size = new System.Drawing.Size(53, 17);
-            this.chkEdit.TabIndex = 91;
+            this.chkEdit.TabIndex = 9;
             this.chkEdit.Text = "Editar";
             this.chkEdit.UseVisualStyleBackColor = true;
             this.chkEdit.CheckedChanged += new System.EventHandler(this.chkEdit_CheckedChanged);
@@ -226,7 +227,7 @@
             this.dgvTutores.RowHeadersVisible = false;
             this.dgvTutores.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvTutores.Size = new System.Drawing.Size(459, 150);
-            this.dgvTutores.TabIndex = 92;
+            this.dgvTutores.TabIndex = 0;
             this.dgvTutores.SelectionChanged += new System.EventHandler(this.dgvTutores_SelectionChanged);
             // 
             // btnEliminar
@@ -235,7 +236,7 @@
             this.btnEliminar.Location = new System.Drawing.Point(232, 372);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(76, 23);
-            this.btnEliminar.TabIndex = 93;
+            this.btnEliminar.TabIndex = 10;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
@@ -266,6 +267,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "TutorView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Administrar tutores";

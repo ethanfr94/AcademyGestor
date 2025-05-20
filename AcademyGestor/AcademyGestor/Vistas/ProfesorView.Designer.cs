@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProfesorView));
             this.btnGuardar = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
             this.txtApe2 = new System.Windows.Forms.TextBox();
@@ -70,7 +71,7 @@
             this.btnSalir.Location = new System.Drawing.Point(400, 231);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(76, 23);
-            this.btnSalir.TabIndex = 10;
+            this.btnSalir.TabIndex = 12;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
             // 
@@ -229,7 +230,7 @@
             this.btnEliminar.Location = new System.Drawing.Point(237, 231);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(76, 23);
-            this.btnEliminar.TabIndex = 72;
+            this.btnEliminar.TabIndex = 10;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
@@ -261,6 +262,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ProfesorView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Detalle de profesor";

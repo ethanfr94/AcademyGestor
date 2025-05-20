@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReciboView));
             this.txtDetalle = new System.Windows.Forms.TextBox();
             this.dtpFecha = new System.Windows.Forms.DateTimePicker();
             this.txtImporte = new System.Windows.Forms.TextBox();
@@ -46,7 +47,7 @@
             // txtDetalle
             // 
             this.txtDetalle.Enabled = false;
-            this.txtDetalle.Location = new System.Drawing.Point(285, 157);
+            this.txtDetalle.Location = new System.Drawing.Point(285, 159);
             this.txtDetalle.Multiline = true;
             this.txtDetalle.Name = "txtDetalle";
             this.txtDetalle.Size = new System.Drawing.Size(434, 62);
@@ -76,7 +77,7 @@
             this.chkDescuento.Location = new System.Drawing.Point(17, 234);
             this.chkDescuento.Name = "chkDescuento";
             this.chkDescuento.Size = new System.Drawing.Size(108, 17);
-            this.chkDescuento.TabIndex = 4;
+            this.chkDescuento.TabIndex = 1;
             this.chkDescuento.Text = "Aplica descuento";
             this.chkDescuento.UseVisualStyleBackColor = true;
             this.chkDescuento.CheckedChanged += new System.EventHandler(this.chkDescuento_CheckedChanged);
@@ -95,10 +96,10 @@
             // btnSalir
             // 
             this.btnSalir.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnSalir.Location = new System.Drawing.Point(644, 230);
+            this.btnSalir.Location = new System.Drawing.Point(644, 232);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(75, 23);
-            this.btnSalir.TabIndex = 6;
+            this.btnSalir.TabIndex = 3;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
             // 
@@ -114,11 +115,11 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(282, 141);
+            this.label3.Location = new System.Drawing.Point(282, 143);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(40, 13);
+            this.label3.Size = new System.Drawing.Size(53, 13);
             this.label3.TabIndex = 9;
-            this.label3.Text = "Detalle";
+            this.label3.Text = "Concepto";
             // 
             // label4
             // 
@@ -132,10 +133,10 @@
             // btnRecibo
             // 
             this.btnRecibo.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnRecibo.Location = new System.Drawing.Point(515, 230);
+            this.btnRecibo.Location = new System.Drawing.Point(515, 232);
             this.btnRecibo.Name = "btnRecibo";
             this.btnRecibo.Size = new System.Drawing.Size(123, 23);
-            this.btnRecibo.TabIndex = 11;
+            this.btnRecibo.TabIndex = 2;
             this.btnRecibo.Text = "Generar recibo";
             this.btnRecibo.UseVisualStyleBackColor = true;
             // 
@@ -154,17 +155,17 @@
             this.dgvRecibos.RowHeadersVisible = false;
             this.dgvRecibos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvRecibos.Size = new System.Drawing.Size(707, 126);
-            this.dgvRecibos.TabIndex = 12;
+            this.dgvRecibos.TabIndex = 0;
             this.dgvRecibos.SelectionChanged += new System.EventHandler(this.dgvRecibos_SelectionChanged);
             // 
             // btnCobrar
             // 
             this.btnCobrar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCobrar.Location = new System.Drawing.Point(386, 230);
+            this.btnCobrar.Location = new System.Drawing.Point(386, 232);
             this.btnCobrar.Name = "btnCobrar";
             this.btnCobrar.Size = new System.Drawing.Size(123, 23);
-            this.btnCobrar.TabIndex = 13;
-            this.btnCobrar.Text = "Cobrado";
+            this.btnCobrar.TabIndex = 1;
+            this.btnCobrar.Text = "Cobrar";
             this.btnCobrar.UseVisualStyleBackColor = true;
             this.btnCobrar.Click += new System.EventHandler(this.btnCobrar_Click);
             // 
@@ -188,8 +189,10 @@
             this.Controls.Add(this.dtpFecha);
             this.Controls.Add(this.txtDetalle);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ReciboView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "Recibos";
             ((System.ComponentModel.ISupportInitialize)(this.dgvRecibos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

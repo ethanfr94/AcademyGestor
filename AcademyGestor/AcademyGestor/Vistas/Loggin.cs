@@ -44,7 +44,7 @@ namespace AcademyGestor
 
             if (string.IsNullOrEmpty(user) || string.IsNullOrEmpty(pass))
             {
-                MessageBox.Show("Por favor, introduce un nombre de usuario y una contraseña.");
+                MessageBox.Show("Por favor, introduce un nombre de usuario y una contraseña.", "Login", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -52,7 +52,7 @@ namespace AcademyGestor
 
             if (usuario == null)
             {
-                MessageBox.Show("Usuario o contraseña incorrectos.");
+                MessageBox.Show("Usuario o contraseña incorrectos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             if (chkRecordar.Checked)

@@ -98,8 +98,6 @@ namespace AcademyGestor.ApiService
 
                 int id = (int)curso.id;
 
-                MessageBox.Show(json, "JSON", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
                 StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
                 HttpResponseMessage resp = await cli.PutAsync($"http://localhost:8080/escuela_circo/cursos/modificar/{id}", content);
                 resp.EnsureSuccessStatusCode();

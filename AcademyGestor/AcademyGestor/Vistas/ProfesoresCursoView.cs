@@ -196,12 +196,12 @@ namespace AcademyGestor.Vistas
                 }
                 else
                 {
-                    MessageBox.Show("Error al asignar el profesor");
+                    MessageBox.Show("Error al asignar el profesor", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
             {
-                MessageBox.Show("Selecciona un profesor");
+                MessageBox.Show("Selecciona un profesor", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -224,17 +224,17 @@ namespace AcademyGestor.Vistas
                     }
                     else
                     {
-                        MessageBox.Show("Error al desasignar el profesor");
+                        MessageBox.Show("Error al desasignar el profesor", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 else
                 {
-                    MessageBox.Show("No puedes desasignar al coordinador");
+                    MessageBox.Show("No puedes desasignar al coordinador", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
             {
-                MessageBox.Show("Selecciona un profesor");
+                MessageBox.Show("Selecciona un profesor", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -276,27 +276,6 @@ namespace AcademyGestor.Vistas
                     }
                 }
             }
-        }
-
-
-        private async Task<bool> updateCoord(Profesor_Curso pc)
-        {
-            bool exito = false;
-            try
-            {
-                exito = await ctrlProfesoresCurso.updateCoordinador(pc);
-            }
-            catch (HttpRequestException e)
-            {
-                MessageBox.Show("Error: " + e.Message);
-                exito = false;
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show("Error: " + e.Message);
-                exito = false;
-            }
-            return exito;
         }
     }
 }

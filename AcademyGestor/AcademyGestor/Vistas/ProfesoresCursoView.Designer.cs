@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProfesoresCursoView));
             this.dgvProfs = new System.Windows.Forms.DataGridView();
             this.lblCurso = new System.Windows.Forms.Label();
             this.btnAsignar = new System.Windows.Forms.Button();
@@ -75,7 +76,7 @@
             this.btnAsignar.Location = new System.Drawing.Point(212, 72);
             this.btnAsignar.Name = "btnAsignar";
             this.btnAsignar.Size = new System.Drawing.Size(40, 23);
-            this.btnAsignar.TabIndex = 84;
+            this.btnAsignar.TabIndex = 2;
             this.btnAsignar.Text = "Asignar";
             this.btnAsignar.UseVisualStyleBackColor = true;
             this.btnAsignar.Click += new System.EventHandler(this.btnAsignar_Click);
@@ -86,7 +87,7 @@
             this.btnSalir.Location = new System.Drawing.Point(376, 192);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(76, 23);
-            this.btnSalir.TabIndex = 83;
+            this.btnSalir.TabIndex = 6;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
@@ -106,7 +107,7 @@
             this.dgvParticipantes.RowHeadersVisible = false;
             this.dgvParticipantes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvParticipantes.Size = new System.Drawing.Size(194, 140);
-            this.dgvParticipantes.TabIndex = 86;
+            this.dgvParticipantes.TabIndex = 5;
             this.dgvParticipantes.SelectionChanged += new System.EventHandler(this.dgvParticipantes_SelectionChanged);
             // 
             // btnDesasignar
@@ -116,7 +117,7 @@
             this.btnDesasignar.Location = new System.Drawing.Point(212, 102);
             this.btnDesasignar.Name = "btnDesasignar";
             this.btnDesasignar.Size = new System.Drawing.Size(40, 23);
-            this.btnDesasignar.TabIndex = 87;
+            this.btnDesasignar.TabIndex = 3;
             this.btnDesasignar.Text = "Desasignar";
             this.btnDesasignar.UseVisualStyleBackColor = true;
             this.btnDesasignar.Click += new System.EventHandler(this.btnDesasignar_Click);
@@ -128,7 +129,7 @@
             this.btnCoordinador.Location = new System.Drawing.Point(212, 152);
             this.btnCoordinador.Name = "btnCoordinador";
             this.btnCoordinador.Size = new System.Drawing.Size(40, 23);
-            this.btnCoordinador.TabIndex = 88;
+            this.btnCoordinador.TabIndex = 4;
             this.btnCoordinador.Text = "Coordinador";
             this.btnCoordinador.UseVisualStyleBackColor = true;
             this.btnCoordinador.Click += new System.EventHandler(this.btnCoordinador_Click);
@@ -156,9 +157,10 @@
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.lblCurso);
             this.Controls.Add(this.dgvProfs);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ProfesoresCursoView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "ProfesoresCursoView";
+            this.Text = "Asignar profesores";
             ((System.ComponentModel.ISupportInitialize)(this.dgvProfs)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvParticipantes)).EndInit();
             this.ResumeLayout(false);

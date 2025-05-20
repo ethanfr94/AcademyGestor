@@ -45,7 +45,7 @@
             this.btnLog.Location = new System.Drawing.Point(322, 168);
             this.btnLog.Name = "btnLog";
             this.btnLog.Size = new System.Drawing.Size(203, 23);
-            this.btnLog.TabIndex = 11;
+            this.btnLog.TabIndex = 3;
             this.btnLog.Text = "Confirmar";
             this.btnLog.UseVisualStyleBackColor = true;
             this.btnLog.Click += new System.EventHandler(this.btnLog_Click);
@@ -55,7 +55,7 @@
             this.txtUser.Location = new System.Drawing.Point(386, 39);
             this.txtUser.Name = "txtUser";
             this.txtUser.Size = new System.Drawing.Size(139, 20);
-            this.txtUser.TabIndex = 10;
+            this.txtUser.TabIndex = 0;
             // 
             // txtPass
             // 
@@ -63,7 +63,7 @@
             this.txtPass.Name = "txtPass";
             this.txtPass.PasswordChar = '*';
             this.txtPass.Size = new System.Drawing.Size(139, 20);
-            this.txtPass.TabIndex = 9;
+            this.txtPass.TabIndex = 1;
             // 
             // label2
             // 
@@ -100,7 +100,7 @@
             this.chkRecordar.Location = new System.Drawing.Point(322, 130);
             this.chkRecordar.Name = "chkRecordar";
             this.chkRecordar.Size = new System.Drawing.Size(70, 17);
-            this.chkRecordar.TabIndex = 12;
+            this.chkRecordar.TabIndex = 2;
             this.chkRecordar.Text = "Recordar";
             this.chkRecordar.UseVisualStyleBackColor = true;
             this.chkRecordar.CheckedChanged += new System.EventHandler(this.chkRecordar_CheckedChanged);
@@ -120,9 +120,10 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Loggin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Loggin";
+            this.Text = "AcademyGestor";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

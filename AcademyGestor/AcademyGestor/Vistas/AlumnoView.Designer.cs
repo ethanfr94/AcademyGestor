@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AlumnoView));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -71,7 +72,6 @@
             this.cmbTutor = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.chkNuevoTutor = new System.Windows.Forms.CheckBox();
-            this.btnTutores = new System.Windows.Forms.Button();
             this.gbTutor.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -263,7 +263,7 @@
             this.txtTlfnTutor.Location = new System.Drawing.Point(125, 250);
             this.txtTlfnTutor.Name = "txtTlfnTutor";
             this.txtTlfnTutor.Size = new System.Drawing.Size(332, 20);
-            this.txtTlfnTutor.TabIndex = 20;
+            this.txtTlfnTutor.TabIndex = 22;
             // 
             // txtEmailTutor
             // 
@@ -273,7 +273,7 @@
             this.txtEmailTutor.Location = new System.Drawing.Point(125, 224);
             this.txtEmailTutor.Name = "txtEmailTutor";
             this.txtEmailTutor.Size = new System.Drawing.Size(332, 20);
-            this.txtEmailTutor.TabIndex = 19;
+            this.txtEmailTutor.TabIndex = 21;
             // 
             // txtLocalidadTutor
             // 
@@ -283,7 +283,7 @@
             this.txtLocalidadTutor.Location = new System.Drawing.Point(125, 198);
             this.txtLocalidadTutor.Name = "txtLocalidadTutor";
             this.txtLocalidadTutor.Size = new System.Drawing.Size(332, 20);
-            this.txtLocalidadTutor.TabIndex = 18;
+            this.txtLocalidadTutor.TabIndex = 20;
             // 
             // txtDireccionTutor
             // 
@@ -293,7 +293,7 @@
             this.txtDireccionTutor.Location = new System.Drawing.Point(125, 172);
             this.txtDireccionTutor.Name = "txtDireccionTutor";
             this.txtDireccionTutor.Size = new System.Drawing.Size(332, 20);
-            this.txtDireccionTutor.TabIndex = 17;
+            this.txtDireccionTutor.TabIndex = 19;
             // 
             // txtDniTutor
             // 
@@ -303,7 +303,7 @@
             this.txtDniTutor.Location = new System.Drawing.Point(125, 146);
             this.txtDniTutor.Name = "txtDniTutor";
             this.txtDniTutor.Size = new System.Drawing.Size(332, 20);
-            this.txtDniTutor.TabIndex = 16;
+            this.txtDniTutor.TabIndex = 18;
             // 
             // txtApe1Tutor
             // 
@@ -313,7 +313,7 @@
             this.txtApe1Tutor.Location = new System.Drawing.Point(125, 120);
             this.txtApe1Tutor.Name = "txtApe1Tutor";
             this.txtApe1Tutor.Size = new System.Drawing.Size(165, 20);
-            this.txtApe1Tutor.TabIndex = 14;
+            this.txtApe1Tutor.TabIndex = 16;
             // 
             // txtNombreTutor
             // 
@@ -323,7 +323,7 @@
             this.txtNombreTutor.Location = new System.Drawing.Point(125, 94);
             this.txtNombreTutor.Name = "txtNombreTutor";
             this.txtNombreTutor.Size = new System.Drawing.Size(332, 20);
-            this.txtNombreTutor.TabIndex = 13;
+            this.txtNombreTutor.TabIndex = 15;
             // 
             // label8
             // 
@@ -396,7 +396,7 @@
             this.txtApe2Tutor.Location = new System.Drawing.Point(294, 120);
             this.txtApe2Tutor.Name = "txtApe2Tutor";
             this.txtApe2Tutor.Size = new System.Drawing.Size(163, 20);
-            this.txtApe2Tutor.TabIndex = 15;
+            this.txtApe2Tutor.TabIndex = 17;
             // 
             // txtApe2
             // 
@@ -424,7 +424,7 @@
             this.btnSalir.Location = new System.Drawing.Point(387, 555);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(77, 23);
-            this.btnSalir.TabIndex = 21;
+            this.btnSalir.TabIndex = 24;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
@@ -437,7 +437,7 @@
             this.btnGuardar.Location = new System.Drawing.Point(306, 555);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(77, 23);
-            this.btnGuardar.TabIndex = 22;
+            this.btnGuardar.TabIndex = 23;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
@@ -457,7 +457,6 @@
             // 
             // gbTutor
             // 
-            this.gbTutor.Controls.Add(this.btnTutores);
             this.gbTutor.Controls.Add(this.cmbTutor);
             this.gbTutor.Controls.Add(this.label6);
             this.gbTutor.Controls.Add(this.chkNuevoTutor);
@@ -490,8 +489,8 @@
             this.cmbTutor.FormattingEnabled = true;
             this.cmbTutor.Location = new System.Drawing.Point(125, 30);
             this.cmbTutor.Name = "cmbTutor";
-            this.cmbTutor.Size = new System.Drawing.Size(230, 21);
-            this.cmbTutor.TabIndex = 35;
+            this.cmbTutor.Size = new System.Drawing.Size(330, 21);
+            this.cmbTutor.TabIndex = 13;
             this.cmbTutor.SelectedValueChanged += new System.EventHandler(this.cmbTutor_SelectedValueChanged);
             // 
             // label6
@@ -509,22 +508,10 @@
             this.chkNuevoTutor.Location = new System.Drawing.Point(9, 64);
             this.chkNuevoTutor.Name = "chkNuevoTutor";
             this.chkNuevoTutor.Size = new System.Drawing.Size(58, 17);
-            this.chkNuevoTutor.TabIndex = 33;
+            this.chkNuevoTutor.TabIndex = 14;
             this.chkNuevoTutor.Text = "Nuevo";
             this.chkNuevoTutor.UseVisualStyleBackColor = true;
             this.chkNuevoTutor.CheckedChanged += new System.EventHandler(this.chkNuevoTutor_CheckedChanged);
-            // 
-            // btnTutores
-            // 
-            this.btnTutores.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnTutores.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnTutores.Location = new System.Drawing.Point(361, 28);
-            this.btnTutores.Name = "btnTutores";
-            this.btnTutores.Size = new System.Drawing.Size(97, 23);
-            this.btnTutores.TabIndex = 37;
-            this.btnTutores.Text = "Ver tutores";
-            this.btnTutores.UseVisualStyleBackColor = true;
             // 
             // AlumnoView
             // 
@@ -559,9 +546,9 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AlumnoView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = " Detalle de alumno";
             this.gbTutor.ResumeLayout(false);
             this.gbTutor.PerformLayout();
             this.ResumeLayout(false);
@@ -614,6 +601,5 @@
         private System.Windows.Forms.ComboBox cmbTutor;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.CheckBox chkNuevoTutor;
-        private System.Windows.Forms.Button btnTutores;
     }
 }

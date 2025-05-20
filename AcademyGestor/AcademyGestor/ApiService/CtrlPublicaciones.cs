@@ -72,7 +72,7 @@ namespace AcademyGestor.ApiService
                 string json = JsonConvert.SerializeObject(publicacion);
                 StringContent content = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
 
-                MessageBox.Show("Publicacion: " + json);
+                Console.WriteLine("Publicacion: " + json);
 
                 HttpResponseMessage resp = await cli.PutAsync($"http://localhost:8080/escuela_circo/publicaciones/modificar/{publicacion.id}", content);
                 resp.EnsureSuccessStatusCode();
@@ -135,7 +135,7 @@ namespace AcademyGestor.ApiService
                     return true;
 
                 string error = await resp.Content.ReadAsStringAsync();
-                System.Windows.Forms.MessageBox.Show($"Error: {resp.StatusCode}\n{error}");
+                MessageBox.Show($"Error: {resp.StatusCode}\n{error}");
                 return false;
             }
         }

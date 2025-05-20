@@ -18,16 +18,56 @@ namespace AcademyGestor.Vistas
 
         private List<Recibo> recibos;
 
+        private Empresa empresa;
         private Matricula matricula;
         private Recibo recibo;
-        public ReciboView(Matricula matricula)
+        public ReciboView(Matricula matricula, Empresa empresa)
+        {
+            InitializeComponent();
+            this.Text = "Recibos de la matricula: " + matricula.id;
+            ctrlRecibos = new CtrlRecibos();
+            recibos = new List<Recibo>();
+            this.matricula = matricula;
+            this.empresa = empresa;
+
+            cargaRecibos();
+        }
+
+        public ReciboView()
         {
             InitializeComponent();
             ctrlRecibos = new CtrlRecibos();
             recibos = new List<Recibo>();
             this.matricula = matricula;
+            this.empresa = empresa;
 
-            cargaRecibos();
+            cargaTodosRecibos();
+        }
+
+        private async Task cargaTodosRecibos()
+        {
+            recibos = await ctrlRecibos.getRecibos();
+
+            dgvRecibos.Columns.Clear();
+            dgvRecibos.Columns.Add("fecha", "Fecha");
+            dgvRecibos.Columns.Add("alumno", "Alumno");
+            dgvRecibos.Columns.Add("curso", "Curso");
+            dgvRecibos.Columns.Add("importe", "Importe");
+            dgvRecibos.Columns.Add("pagado", "Pagado");
+            foreach (var item in recibos)
+            {
+
+                DataGridViewRow row = dgvRecibos.Rows[dgvRecibos.Rows.Add(
+                                    item.fecha.ToString("dd/MM/yyyy"),
+                                    item.matricula.alumno.nombre + " " + item.matricula.alumno.apellido1 + " " + item.matricula.alumno.apellido2,
+                                    item.matricula.curso.nombre,
+                                    item.importe,
+                                    item.pagado == 1 ? "si" : "no"
+                                    )];
+                row.Tag = item;
+
+            }
+            dgvRecibos.CurrentCell = null;
         }
 
         private async Task cargaRecibos()
@@ -91,17 +131,17 @@ namespace AcademyGestor.Vistas
                 bool pagado = await ctrlRecibos.cobrar(recibo);
                 if (pagado)
                 {
-                    MessageBox.Show("Recibo cobrado");
+                    MessageBox.Show("Recibo cobrado", "Registro de cobro", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     cargaRecibos();
                 }
                 else
                 {
-                    MessageBox.Show("Error al cobrar el recibo");
+                    MessageBox.Show("Error al cobrar el recibo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
             {
-                MessageBox.Show("No hay recibo seleccionado", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("No hay recibo seleccionado", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
     }

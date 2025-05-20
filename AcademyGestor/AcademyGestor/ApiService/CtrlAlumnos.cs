@@ -46,7 +46,7 @@ namespace AcademyGestor.ApiService
             }
             catch (Exception e)
             {
-                MessageBox.Show("Error: " + e.Message);
+                Console.WriteLine("Error: " + e.Message);
                 return new List<Alumno>();
 
             }
@@ -172,12 +172,12 @@ namespace AcademyGestor.ApiService
             }
             catch (HttpRequestException e)
             {
-                MessageBox.Show("Error: " + e.Message);
+                Console.WriteLine("Error: " + e.Message);
                 return false;
             }
             catch (Exception e)
             {
-                MessageBox.Show("Error: " + e.Message);
+                Console.WriteLine("Error: " + e.Message);
                 return false;
             }
         }

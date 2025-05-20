@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using AcademyGestor.ApiService;
 using AcademyGestor.Modelos;
@@ -21,6 +22,7 @@ namespace AcademyGestor
         private CtrlRecibos ctrlRecibos;
         private CtrlPublicaciones ctrlPublicaciones;
         private CtrlProfesoresCurso ctrlProfesoresCurso;
+        private CtrlEmpresa ctrlEmpresa;
 
         private List<Alumno> alumnos;
         private List<Curso> cursos;
@@ -30,6 +32,7 @@ namespace AcademyGestor
         private List<Recibo> recibos;
         private List<Publicacion> publicaciones;
         private List<Profesor_Curso> profesoresCurso;
+        private Empresa empresa;
 
 
 
@@ -48,7 +51,9 @@ namespace AcademyGestor
             ctrlRecibos = new CtrlRecibos();
             ctrlPublicaciones = new CtrlPublicaciones();
             ctrlProfesoresCurso = new CtrlProfesoresCurso();
+            ctrlEmpresa = new CtrlEmpresa();
 
+            empresa = new Empresa();
             alumnos = new List<Alumno>();
             cursos = new List<Curso>();
             solicitudes = new List<Solicitud>();
@@ -57,9 +62,14 @@ namespace AcademyGestor
             recibos = new List<Recibo>();
             publicaciones = new List<Publicacion>();
             profesoresCurso = new List<Profesor_Curso>();
+
+            cargaEmpresa();
         }
 
-
+        private async void cargaEmpresa()
+        {
+            empresa = await ctrlEmpresa.getEmpresa();
+        }
 
         private async void cargaAlumnos()
         {
@@ -121,7 +131,7 @@ namespace AcademyGestor
             dgvDatos.CurrentCell = null;
         }
 
-        private async void cargaCursos()
+        protected async void cargaCursos()
         {
             cursos = await ctrlCursos.getCursos();
 
@@ -258,6 +268,8 @@ namespace AcademyGestor
         {
 
             cmbSelect.Visible = true;
+            btnRefr.Enabled = true;
+            btnRefr.Visible = true;
             dgvDatos.Visible = true;
             txtDatos.Visible = true;
             pnlMain.Visible = false;
@@ -273,6 +285,7 @@ namespace AcademyGestor
                 cargaAlumnos();
                 btnMulti2.Visible = true;
                 btnMulti2.Enabled = true;
+                btnMulti2.Text = "Administrar tutores";
                 btnEdit.Enabled = false;
                 btnAdd.Enabled = false;
                 btnMulti.Text = "Faltas de asistencia";
@@ -475,11 +488,6 @@ namespace AcademyGestor
         }
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            if (cmbSelect.SelectedItem == null)
-            {
-                MessageBox.Show("Selecciona una opción");
-                return;
-            }
             switch(cmbSelect.SelectedItem.ToString())
             {
                 case "Profesores":
@@ -487,7 +495,7 @@ namespace AcademyGestor
                     formProfesor.ShowDialog();
                     cargaProfesores();
                     break;
-                case "Cursos":
+                case "Cursos":                    
                     CursoView formCurso = new CursoView();
                     formCurso.ShowDialog();
                     cargaCursos();
@@ -496,12 +504,7 @@ namespace AcademyGestor
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
-        {
-            if (cmbSelect.SelectedItem == null)
-            {
-                MessageBox.Show("Selecciona una opción", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                return;
-            }
+        {           
             if (dgvDatos.SelectedRows.Count > 0)
             {
                 DataGridViewRow selectedRow = dgvDatos.SelectedRows[0];
@@ -519,8 +522,11 @@ namespace AcademyGestor
                         if (selectedRow.Tag is Profesor profesor)
                         {
                             ProfesorView formProfesor = new ProfesorView(profesor);
-                            formProfesor.ShowDialog();
-                            cargaProfesores();
+                            DialogResult result = formProfesor.ShowDialog();
+                            if (result == DialogResult.OK)
+                            {
+                                cargaProfesores();
+                            }
                         }
                         break;
                     case "Cursos":
@@ -967,14 +973,14 @@ namespace AcademyGestor
                     DataGridViewRow selectedRow = dgvDatos.SelectedRows[0];
                     if (selectedRow.Tag is Matricula matricula)
                     {
-                        ReciboView reciboView = new ReciboView(matricula);
+                        ReciboView reciboView = new ReciboView(matricula, empresa);
                         reciboView.ShowDialog();
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Selecciona una matricula", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-
+                    ReciboView reciboView = new ReciboView();
+                    reciboView.ShowDialog();
                 }
             }
         }
@@ -995,20 +1001,6 @@ namespace AcademyGestor
                 this.Close();
             }
 
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-            btnAlumnos.Visible = true;
-            btnCursos.Visible = true;
-            btnMatriculas.Visible = true;
-            btnProfesores.Visible = true;
-            btnPublicaciones.Visible = true;
-            btnSolicitudes.Visible = true;
-
-            cmbSelect.Visible = true;
-            txtBuscar.Visible = true;
-            lblBuscar.Visible = true;
         }
 
         private async void button1_Click(object sender, EventArgs e)
@@ -1046,7 +1038,26 @@ namespace AcademyGestor
 
         }
 
-        
 
+
+        private void btnRefr_Click(object sender, EventArgs e)
+        {
+            btnCarga_Click(sender, e);
+        }
+
+        private void btnStart_Click(object sender, EventArgs e)
+        {
+            btnAlumnos.Visible = true;
+            btnCursos.Visible = true;
+            btnMatriculas.Visible = true;
+            btnProfesores.Visible = true;
+            btnPublicaciones.Visible = true;
+            btnSolicitudes.Visible = true;
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            this.tsmiLogout_Click(sender, e);
+        }
     }
 }

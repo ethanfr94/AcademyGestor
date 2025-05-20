@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PublicacionView));
             this.txtTimeStamp = new System.Windows.Forms.TextBox();
             this.txtTitulo = new System.Windows.Forms.TextBox();
             this.txtDescripcion = new System.Windows.Forms.TextBox();
@@ -56,7 +57,7 @@
             this.txtTitulo.Location = new System.Drawing.Point(123, 47);
             this.txtTitulo.Name = "txtTitulo";
             this.txtTitulo.Size = new System.Drawing.Size(282, 20);
-            this.txtTitulo.TabIndex = 3;
+            this.txtTitulo.TabIndex = 1;
             // 
             // txtDescripcion
             // 
@@ -64,7 +65,7 @@
             this.txtDescripcion.Multiline = true;
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(282, 65);
-            this.txtDescripcion.TabIndex = 4;
+            this.txtDescripcion.TabIndex = 2;
             // 
             // cmbProfesor
             // 
@@ -73,7 +74,7 @@
             this.cmbProfesor.Location = new System.Drawing.Point(123, 144);
             this.cmbProfesor.Name = "cmbProfesor";
             this.cmbProfesor.Size = new System.Drawing.Size(282, 21);
-            this.cmbProfesor.TabIndex = 5;
+            this.cmbProfesor.TabIndex = 0;
             // 
             // label1
             // 
@@ -125,7 +126,7 @@
             this.btnSalir.Location = new System.Drawing.Point(330, 395);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(75, 23);
-            this.btnSalir.TabIndex = 13;
+            this.btnSalir.TabIndex = 5;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
             // 
@@ -135,7 +136,7 @@
             this.btnGuardar.Location = new System.Drawing.Point(249, 395);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(75, 23);
-            this.btnGuardar.TabIndex = 14;
+            this.btnGuardar.TabIndex = 4;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
@@ -146,7 +147,7 @@
             this.btnEliminar.Location = new System.Drawing.Point(131, 395);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(112, 23);
-            this.btnEliminar.TabIndex = 15;
+            this.btnEliminar.TabIndex = 3;
             this.btnEliminar.Text = "Eliminar publicacion";
             this.btnEliminar.UseVisualStyleBackColor = true;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
@@ -171,9 +172,9 @@
             this.Controls.Add(this.txtTitulo);
             this.Controls.Add(this.txtTimeStamp);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "PublicacionView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Detalle de publicacion";
             ((System.ComponentModel.ISupportInitialize)(this.pbVistaPrevia)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

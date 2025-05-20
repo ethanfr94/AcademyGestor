@@ -75,7 +75,7 @@ namespace AcademyGestor.ApiService
             {
                 string json = JsonConvert.SerializeObject(matricula);
 
-                MessageBox.Show(json);
+                Console.WriteLine(json);
 
                 StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
                 HttpResponseMessage resp = await cli.PostAsync("http://localhost:8080/escuela_circo/matriculas/insertar", content);
@@ -86,12 +86,12 @@ namespace AcademyGestor.ApiService
             }
             catch (HttpRequestException e)
             {
-                MessageBox.Show("Error: " + e.Message);
+                Console.WriteLine("Error: " + e.Message);
                 return false;
             }
             catch (Exception e)
             {
-                MessageBox.Show("Error: " + e.Message);
+                Console.WriteLine("Error: " + e.Message);
                 return false;
             }
         }

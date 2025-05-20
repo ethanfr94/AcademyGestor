@@ -3,6 +3,7 @@ package com.example.academygestormobile.Navigation
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Call
 import androidx.compose.material.icons.filled.DateRange
+import androidx.compose.material.icons.filled.Face
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Menu
@@ -19,7 +20,7 @@ sealed class ItemsNav (
     object Item_bottom_nav_home:ItemsNav(
         Icons.Filled.Home,"Home", "home")
     object Item_bottom_nav_info:ItemsNav(
-        Icons.Filled.Info,"Informacion", "informacion")
+        Icons.Filled.Face,"cursos", "cursos")
     object Item_bottom_nav_contact:ItemsNav(
         Icons.Default.Call,"Contacto", "contacto")
     object Item_bottom_nav_profesor:ItemsNav(

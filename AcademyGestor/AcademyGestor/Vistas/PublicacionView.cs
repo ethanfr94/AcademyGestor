@@ -23,6 +23,7 @@ namespace AcademyGestor.Vistas
         public PublicacionView(Publicacion publicacion)
         {
             InitializeComponent();
+            this.Text = publicacion.titulo;
             ctrlPublicaciones = new CtrlPublicaciones();
             ctrlProfesores = new CtrlProfesores();
             this.publicacion = publicacion;
@@ -70,6 +71,12 @@ namespace AcademyGestor.Vistas
 
         private async void btnGuardar_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(txtTitulo.Text))
+            {
+                MessageBox.Show("La publicacion debe tener un titulo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             DialogResult result = MessageBox.Show("¿Está seguro de que desea guardar los cambios?", "Confirmar", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
             {
@@ -87,12 +94,12 @@ namespace AcademyGestor.Vistas
 
                 if (res)
                 {
-                    MessageBox.Show("Publicación actualizada correctamente");
+                    MessageBox.Show("Publicación actualizada correctamente", "Publicación actualizada", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
                 }
                 else
                 {
-                    MessageBox.Show("Error al actualizar la publicación");
+                    MessageBox.Show("Error al actualizar la publicación", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -105,12 +112,11 @@ namespace AcademyGestor.Vistas
                 bool res = await ctrlPublicaciones.deletePublicacion(publicacion.id);
                 if (res)
                 {
-                    MessageBox.Show("Publicación eliminada correctamente");
                     this.Close();
                 }
                 else
                 {
-                    MessageBox.Show("Error al eliminar la publicación");
+                    MessageBox.Show("Error al eliminar la publicación", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }

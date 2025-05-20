@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FaltaAsistenciaView));
             this.lblFaltasMes = new System.Windows.Forms.Label();
             this.lblFaltasTotales = new System.Windows.Forms.Label();
             this.btnSalir = new System.Windows.Forms.Button();
@@ -58,7 +59,7 @@
             this.btnSalir.Location = new System.Drawing.Point(609, 195);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(75, 23);
-            this.btnSalir.TabIndex = 3;
+            this.btnSalir.TabIndex = 0;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
@@ -91,6 +92,7 @@
             this.Controls.Add(this.lblFaltasTotales);
             this.Controls.Add(this.lblFaltasMes);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FaltaAsistenciaView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             ((System.ComponentModel.ISupportInitialize)(this.dgvRecibos)).EndInit();

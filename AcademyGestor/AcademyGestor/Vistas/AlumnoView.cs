@@ -25,6 +25,7 @@ namespace AcademyGestor.Vistas
         public AlumnoView()
         {
             InitializeComponent();
+            this.Text = "Nuevo Alumno";
             ctrlAlumnos = new CtrlAlumnos();
             ctrlTutores = new CtrlTutores();
             cargarTutores();
@@ -34,6 +35,7 @@ namespace AcademyGestor.Vistas
         public AlumnoView(Alumno alumno)
         {
             InitializeComponent();
+            this.Text = "Modificar Alumno";
             this.alumno = alumno;
             this.tutor = alumno.tutor;
             this.Text = "Datos del Alumno " + alumno.nombre + " " + alumno.apellido1 + " " + alumno.apellido2;
@@ -79,7 +81,7 @@ namespace AcademyGestor.Vistas
             }
             else
             {
-                MessageBox.Show("Error al cargar los tutores");
+                MessageBox.Show("Error al cargar los tutores", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             if (tutor != null)
             {
@@ -236,19 +238,19 @@ namespace AcademyGestor.Vistas
                         bool tutorCreado = await ctrlTutores.addTutor(nuevo);
                         if (!tutorCreado)
                         {
-                            MessageBox.Show("Error al crear el tutor.", "Crear Tutor", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Error al crear el tutor.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
                         else
                         {
-                            MessageBox.Show("Tutor creado correctamente.", "Crear Tutor", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("Tutor creado correctamente.", "Tutor creado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         nuevo = await ctrlTutores.getTutorByDni(nuevo.dni);
                         alumno.tutor = nuevo;
                     }
                     else
                     {
-                        MessageBox.Show("El tutor ya existe. Revise los datos o seleccionelo de la lista.", "Crear Tutor", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("El tutor ya existe. Revise los datos o seleccionelo de la lista.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return;
                     }
                 }
@@ -265,12 +267,12 @@ namespace AcademyGestor.Vistas
                 bool creado = await ctrlAlumnos.addAlumno(alumno);
                 if (!creado)
                 {
-                    MessageBox.Show("Error al crear el alumno.", "Crear Alumno", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Error al crear el alumno.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 else
                 {
-                    MessageBox.Show("Alumno creado correctamente.", "Crear Alumno", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Alumno creado correctamente.", "Alumno creado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
                 }
 
@@ -313,19 +315,19 @@ namespace AcademyGestor.Vistas
                         bool tutorCreado = await ctrlTutores.addTutor(nuevo);
                         if (!tutorCreado)
                         {
-                            MessageBox.Show("Error al crear el tutor.", "Crear Tutor", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Error al crear el tutor.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
                         else
                         {
-                            MessageBox.Show("Tutor creado correctamente.", "Crear Tutor", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("Tutor creado correctamente.", "Tutor creado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         nuevo = await ctrlTutores.getTutorByDni(nuevo.dni);
                         alumno.tutor = nuevo;
                     }
                     else
                     {
-                        MessageBox.Show("El tutor ya existe. Revise los datos o seleccionelo de la lista.", "Crear Tutor", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("El tutor ya existe. Revise los datos o seleccionelo de la lista.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return;
                     }
                 }
@@ -351,17 +353,17 @@ namespace AcademyGestor.Vistas
                 bool actualizado = await ctrlAlumnos.updateAlumno(alumno);
                 if (!actualizado)
                 {
-                    MessageBox.Show("Error al actualizar el alumno.", "Actualizar Alumno", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Error al actualizar el alumno.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 }
                 else
                 {
-                    MessageBox.Show("Alumno actualizado correctamente.", "Actualizar Alumno", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Alumno actualizado correctamente.", "Alumno actualizado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
                 }
                 if (alumno.tutor == null)
                 {
-                    MessageBox.Show("El tutor del alumno ha sido eliminado.", "Actualizar Alumno", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("El tutor del alumno ha sido eliminado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
         }
@@ -388,17 +390,17 @@ namespace AcademyGestor.Vistas
                 return false;
             }
 
-            /*if (!ValidarDni(txtDni.Text))
+            if (!ValidarDni(txtDni.Text))
             {
                 MessageBox.Show("El DNI del alumno no tiene un formato válido.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
-            }*/
+            }
 
-            /*if (!ValidarEmail(txtEmail.Text))
+            if (!ValidarEmail(txtEmail.Text))
             {
                 MessageBox.Show("El email del alumno no tiene un formato válido.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
-            }*/
+            }
 
             // Validar teléfono solo si no está vacío
             if (!string.IsNullOrWhiteSpace(txtTlfn.Text) && !ValidarTelefono(txtTlfn.Text))
@@ -429,7 +431,7 @@ namespace AcademyGestor.Vistas
                         MessageBox.Show("Todos los campos del tutor son obligatorios para alumnos menores de edad.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return false;
                     }
-                    /*
+                    
                     if (!ValidarDni(txtDniTutor.Text))
                     {
                         MessageBox.Show("El DNI del tutor no tiene un formato válido.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -446,7 +448,7 @@ namespace AcademyGestor.Vistas
                     {
                         MessageBox.Show("El teléfono del tutor no tiene un formato válido.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return false;
-                    }*/
+                    }
                 }
                 else if (cmbTutor.SelectedIndex == -1)
                 {
@@ -455,8 +457,6 @@ namespace AcademyGestor.Vistas
                 }
             }
 
-            // Si todas las validaciones pasan
-            MessageBox.Show("Los datos son correctos.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Information);
             return true;
         }
 
@@ -529,16 +529,5 @@ namespace AcademyGestor.Vistas
             return System.Text.RegularExpressions.Regex.IsMatch(email, patron);
         }
 
-        private bool compararTutores(Tutor t1, Tutor t2)
-        {
-            if (t1.dni == t2.dni)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
     }
 }
