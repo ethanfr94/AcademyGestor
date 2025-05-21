@@ -31,6 +31,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import com.example.academygestormobile.Components.User
 import com.example.academygestormobile.R
 
 @Composable
@@ -97,7 +98,9 @@ fun Loggin(nav: NavHostController) {
             )
 
             Button(
-                onClick = { /* verificacion de campos rellenos y de credenciales en la api*/ },
+                onClick = {
+                    User.currentUser = true
+                    nav.navigate("home") },
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(top = 20.dp),  // Padding superior para el botón

@@ -64,7 +64,6 @@ fun SolicitudView(nav: NavController) {
     var selectedDate by remember { mutableStateOf("") }
     var isMinor by remember { mutableStateOf(true) }
 
-
     Scaffold(
         topBar = { TopAppBar(nav) },
         bottomBar = { BottomAppBar(nav) }
@@ -380,7 +379,21 @@ fun SolicitudView(nav: NavController) {
 
 
                                     Button(
-                                        onClick = { /* verificacion de campos rellenos y de credenciales en la api*/ },
+                                        onClick = {
+                                            if(nombre.isNotEmpty() && ape1.isNotEmpty() && ape2.isNotEmpty() && dni.isNotEmpty() && selectedDate.isNotEmpty() && direccion.isNotEmpty() && localidad.isNotEmpty() && email.isNotEmpty() && tlfn.isNotEmpty()) {
+                                                if(isMinor){
+                                                    if(nombreTut.isNotEmpty() && ape1Tut.isNotEmpty() && ape2Tut.isNotEmpty() && dniTut.isNotEmpty() && direccionTut.isNotEmpty() && localidadTut.isNotEmpty() && emailTut.isNotEmpty() && tlfnTut.isNotEmpty()){
+                                                        // comprobar si existen alumno y tutor y crear solicitud
+                                                    }else{
+                                                        // Mostrar mensaje de error todos los campos del tutor obligatorios
+                                                    }
+                                                }else{
+                                                    // comprobar si existe alumno y crear solicitud
+                                                }
+                                            }else{
+                                                // Mostrar mensaje de error todos los campos obligatorios
+                                            }
+                                        },
                                         modifier = Modifier
                                             .fillMaxWidth()
                                             .padding(top = 20.dp),  // Padding superior para el botón
@@ -466,3 +479,5 @@ fun calculateAge(birthDate: String): Int {
 
     return age
 }
+
+

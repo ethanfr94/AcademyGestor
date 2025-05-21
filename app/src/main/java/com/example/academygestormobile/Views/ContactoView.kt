@@ -5,6 +5,7 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -30,6 +31,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
@@ -52,94 +54,183 @@ fun Contact(nav: NavController) {
                 .fillMaxSize()
                 .padding(innerPadding)
         ) {
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(16.dp)
-            ) {
-                Card(
+            Column {
+                Row(
                     modifier = Modifier
-                        .weight(1f)
-                        .padding(10.dp)
-                        .border(1.dp, Color.Gray, RoundedCornerShape(12.dp)),
-                    shape = RoundedCornerShape(12.dp),
-                    //colors = CardDefaults.cardColors(containerColor = color),
-                    //border = if (actividad.fini == LocalDate.now().toString()) BorderStroke(3.dp, GreenBar) else null
+                        .fillMaxWidth()
                 ) {
-                    Box(modifier = Modifier.padding(16.dp)) {
-                        Column {
-                            // Aquí puedes agregar el contenido de la tarjeta
-
-                            OutlinedTextField(
-                                value = email,
-                                onValueChange = { email = it },
-                                label = {
-                                    Text("EMAIL", modifier = Modifier.padding(30.dp, 0.dp, 0.dp, 0.dp));
-                                    Icon(
-                                        imageVector = Icons.Default.Email,
-                                    contentDescription = "Icono"
-                                    ) },
-                                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .padding(vertical = 12.dp), // Margen uniforme vertical
-                                shape = RoundedCornerShape(12.dp), // Bordes más suaves
-                            )
-
-                            OutlinedTextField(
-                                value = asunto,
-                                onValueChange = { asunto = it },
-                                label = {
-                                    Text("ASUNTO", modifier = Modifier.padding(30.dp, 0.dp, 0.dp, 0.dp));
-                                    Icon(
-                                        imageVector = Icons.Default.MailOutline,
-                                    contentDescription = "Icono"
-                                    )},
-                                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .padding(vertical = 12.dp), // Margen uniforme vertical
-                                shape = RoundedCornerShape(12.dp), // Bordes más suaves
-                            )
-
-                            OutlinedTextField(
-                                value = cuerpo,
-                                onValueChange = { cuerpo = it },
-                                label = {
-                                    Text("CUERPO", modifier = Modifier.padding(30.dp, 0.dp, 0.dp, 0.dp));
-                                    Icon(
-                                        imageVector = Icons.Default.Create,
-                                    contentDescription = "Icono",
-                                    )},
-                                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .height(200.dp) // Ajusta la altura según sea necesario
-                                    .padding(vertical = 12.dp), // Margen uniforme vertical
-                                shape = RoundedCornerShape(12.dp), // Bordes más suaves
-                            )
-
-                            Button(
-                                onClick = { /* verificacion de campos rellenos y de credenciales en la api*/ },
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .padding(top = 20.dp),  // Padding superior para el botón
-                                shape = RoundedCornerShape(50.dp)
-                            )
-                            {
+                    Card(
+                        modifier = Modifier
+                            .weight(1f)
+                            .padding(10.dp)
+                            .border(1.dp, Color.Gray, RoundedCornerShape(12.dp)),
+                        shape = RoundedCornerShape(12.dp),
+                        //colors = CardDefaults.cardColors(containerColor = color),
+                        //border = if (actividad.fini == LocalDate.now().toString()) BorderStroke(3.dp, GreenBar) else null
+                    ) {
+                        Box(modifier = Modifier.padding(16.dp)) {
+                            Column {
                                 Text(
-                                    text = "Enviar consulta",
-                                    fontSize = 20.sp,
-                                    fontWeight = FontWeight.Bold
+                                    text = "Envianos tu consulta",
+                                    fontSize = 18.sp,
+                                    fontWeight = FontWeight.Bold,
+                                    textAlign = TextAlign.Justify,
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .padding(bottom = 8.dp) // Espacio entre el texto y el número
                                 )
+
+                                OutlinedTextField(
+                                    value = email,
+                                    onValueChange = { email = it },
+                                    label = {
+                                        Text(
+                                            "EMAIL",
+                                            modifier = Modifier.padding(30.dp, 0.dp, 0.dp, 0.dp)
+                                        );
+                                        Icon(
+                                            imageVector = Icons.Default.Email,
+                                            contentDescription = "Icono"
+                                        )
+                                    },
+                                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .padding(vertical = 12.dp), // Margen uniforme vertical
+                                    shape = RoundedCornerShape(12.dp), // Bordes más suaves
+                                )
+
+                                OutlinedTextField(
+                                    value = asunto,
+                                    onValueChange = { asunto = it },
+                                    label = {
+                                        Text(
+                                            "ASUNTO",
+                                            modifier = Modifier.padding(30.dp, 0.dp, 0.dp, 0.dp)
+                                        );
+                                        Icon(
+                                            imageVector = Icons.Default.MailOutline,
+                                            contentDescription = "Icono"
+                                        )
+                                    },
+                                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .padding(vertical = 12.dp), // Margen uniforme vertical
+                                    shape = RoundedCornerShape(12.dp), // Bordes más suaves
+                                )
+
+                                OutlinedTextField(
+                                    value = cuerpo,
+                                    onValueChange = { cuerpo = it },
+                                    label = {
+                                        Text(
+                                            "CUERPO",
+                                            modifier = Modifier.padding(30.dp, 0.dp, 0.dp, 0.dp)
+                                        );
+                                        Icon(
+                                            imageVector = Icons.Default.Create,
+                                            contentDescription = "Icono",
+                                        )
+                                    },
+                                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .height(200.dp) // Ajusta la altura según sea necesario
+                                        .padding(vertical = 12.dp), // Margen uniforme vertical
+                                    shape = RoundedCornerShape(12.dp), // Bordes más suaves
+                                )
+
+                                Button(
+                                    onClick = { /* verificacion de campos rellenos y de credenciales en la api*/ },
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .padding(top = 20.dp),  // Padding superior para el botón
+                                    shape = RoundedCornerShape(50.dp)
+                                )
+                                {
+                                    Text(
+                                        text = "Enviar consulta",
+                                        fontSize = 20.sp,
+                                        fontWeight = FontWeight.Bold
+                                    )
+                                }
+                            }
+                        }
+                    }
+                }
+
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                ) {
+                    Card(
+                        modifier = Modifier
+                            .weight(1f)
+                            .padding(10.dp)
+                            .border(1.dp, Color.Gray, RoundedCornerShape(12.dp)),
+                        shape = RoundedCornerShape(12.dp),
+                        //colors = CardDefaults.cardColors(containerColor = color),
+                        //border = if (actividad.fini == LocalDate.now().toString()) BorderStroke(3.dp, GreenBar) else null
+                    ) {
+                        Box(modifier = Modifier.padding(16.dp)) {
+                            Column(
+                                modifier = Modifier.fillMaxWidth()
+                            ) {
+                                // Texto informativo justificado
+                                Text(
+                                    text = "También puedes contactar a  nuestro número de teléfono:",
+                                    fontSize = 18.sp,
+                                    fontWeight = FontWeight.Bold,
+                                    textAlign = TextAlign.Justify,
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .padding(bottom = 8.dp) // Espacio entre el texto y el número
+                                )
+                                // Número de teléfono centrado
+                                Text(
+                                    text = "666666666",
+                                    fontSize = 18.sp,
+                                    fontWeight = FontWeight.Bold,
+                                    textAlign = TextAlign.Center,
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .padding(bottom = 8.dp) // Espacio entre el número y el botón
+                                )
+                                Button(
+                                    onClick = { /* Acción para llamar */ },
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .padding(top = 20.dp),  // Padding superior para el botón
+                                    shape = RoundedCornerShape(50.dp)
+                                ) {
+                                    Text(
+                                        text = "Llamar",
+                                        fontSize = 20.sp,
+                                        fontWeight = FontWeight.Bold
+                                    )
+                                }
+                                Button(
+                                    onClick = { /* Acción para llamar */ },
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .padding(top = 20.dp),  // Padding superior para el botón
+                                    shape = RoundedCornerShape(50.dp)
+                                ) {
+                                    Text(
+                                        text = "WhatsApp",
+                                        fontSize = 20.sp,
+                                        fontWeight = FontWeight.Bold
+                                    )
+                                }
                             }
                         }
                     }
                 }
             }
         }
-    }
-    BackHandler {
-        // Manejo del botón de retroceso
+        BackHandler {
+            // Manejo del botón de retroceso
+        }
     }
 }

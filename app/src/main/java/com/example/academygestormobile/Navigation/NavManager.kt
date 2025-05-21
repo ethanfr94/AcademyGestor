@@ -8,6 +8,8 @@ import com.example.academygestormobile.Views.Contact
 import com.example.academygestormobile.Views.CursosView
 import com.example.academygestormobile.Views.Home
 import com.example.academygestormobile.Views.Loggin
+import com.example.academygestormobile.Views.NewPostView
+import com.example.academygestormobile.Views.Profesor
 import com.example.academygestormobile.Views.SolicitudView
 
 @Composable
@@ -33,6 +35,12 @@ fun NavManager(
         }
         composable("solicitud") {
             SolicitudView(navController)
+        }
+        composable("profesor") {
+            Profesor(navController)
+        }
+        composable("newPost") {
+            NewPostView(navController)
         }
 
     }
