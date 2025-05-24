@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "D:\\Escritorio\\AcademyGestor\\AcademyGestor\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{69DBCFF2-143A-4733-A4C6-A3EED272A0FE}|AcademyGestor\\AcademyGestor.csproj|d:\\escritorio\\academygestor\\academygestor\\academygestor\\vistas\\solicitudview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{69DBCFF2-143A-4733-A4C6-A3EED272A0FE}|AcademyGestor\\AcademyGestor.csproj|solutionrelative:academygestor\\vistas\\solicitudview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{69DBCFF2-143A-4733-A4C6-A3EED272A0FE}|AcademyGestor\\AcademyGestor.csproj|d:\\escritorio\\academygestor\\academygestor\\academygestor\\vistas\\alumnoview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{69DBCFF2-143A-4733-A4C6-A3EED272A0FE}|AcademyGestor\\AcademyGestor.csproj|solutionrelative:academygestor\\vistas\\alumnoview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -58,7 +62,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 425,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -70,7 +74,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
+              "Title": "SolicitudView.cs [Dise\u00F1o]",
+              "DocumentMoniker": "D:\\Escritorio\\AcademyGestor\\AcademyGestor\\AcademyGestor\\Vistas\\SolicitudView.cs",
+              "RelativeDocumentMoniker": "AcademyGestor\\Vistas\\SolicitudView.cs",
+              "ToolTip": "D:\\Escritorio\\AcademyGestor\\AcademyGestor\\AcademyGestor\\Vistas\\SolicitudView.cs [Dise\u00F1o]",
+              "RelativeToolTip": "AcademyGestor\\Vistas\\SolicitudView.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-19T17:16:27.312Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "TutorView.cs",
               "DocumentMoniker": "D:\\Escritorio\\AcademyGestor\\AcademyGestor\\AcademyGestor\\Vistas\\TutorView.cs",
               "RelativeDocumentMoniker": "AcademyGestor\\Vistas\\TutorView.cs",
@@ -82,7 +98,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "TutorView.cs [Dise\u00F1o]",
               "DocumentMoniker": "D:\\Escritorio\\AcademyGestor\\AcademyGestor\\AcademyGestor\\Vistas\\TutorView.cs",
               "RelativeDocumentMoniker": "AcademyGestor\\Vistas\\TutorView.cs",
@@ -93,7 +109,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "PublicacionView.cs",
               "DocumentMoniker": "D:\\Escritorio\\AcademyGestor\\AcademyGestor\\AcademyGestor\\Vistas\\PublicacionView.cs",
               "RelativeDocumentMoniker": "AcademyGestor\\Vistas\\PublicacionView.cs",
@@ -105,7 +121,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "PublicacionView.cs [Dise\u00F1o]",
               "DocumentMoniker": "D:\\Escritorio\\AcademyGestor\\AcademyGestor\\AcademyGestor\\Vistas\\PublicacionView.cs",
               "RelativeDocumentMoniker": "AcademyGestor\\Vistas\\PublicacionView.cs",
@@ -116,7 +132,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "AlumnoView.cs",
               "DocumentMoniker": "D:\\Escritorio\\AcademyGestor\\AcademyGestor\\AcademyGestor\\Vistas\\AlumnoView.cs",
               "RelativeDocumentMoniker": "AcademyGestor\\Vistas\\AlumnoView.cs",
@@ -129,7 +145,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "AlumnoView.cs [Dise\u00F1o]",
               "DocumentMoniker": "D:\\Escritorio\\AcademyGestor\\AcademyGestor\\AcademyGestor\\Vistas\\AlumnoView.cs",
               "RelativeDocumentMoniker": "AcademyGestor\\Vistas\\AlumnoView.cs",
@@ -140,7 +156,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "ProfesorView.cs",
               "DocumentMoniker": "D:\\Escritorio\\AcademyGestor\\AcademyGestor\\AcademyGestor\\Vistas\\ProfesorView.cs",
               "RelativeDocumentMoniker": "AcademyGestor\\Vistas\\ProfesorView.cs",
@@ -152,7 +168,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "ProfesorView.cs [Dise\u00F1o]",
               "DocumentMoniker": "D:\\Escritorio\\AcademyGestor\\AcademyGestor\\AcademyGestor\\Vistas\\ProfesorView.cs",
               "RelativeDocumentMoniker": "AcademyGestor\\Vistas\\ProfesorView.cs",
@@ -163,7 +179,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "CursoView.cs",
               "DocumentMoniker": "D:\\Escritorio\\AcademyGestor\\AcademyGestor\\AcademyGestor\\Vistas\\CursoView.cs",
               "RelativeDocumentMoniker": "AcademyGestor\\Vistas\\CursoView.cs",
@@ -175,7 +191,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "CursoView.cs [Dise\u00F1o]",
               "DocumentMoniker": "D:\\Escritorio\\AcademyGestor\\AcademyGestor\\AcademyGestor\\Vistas\\CursoView.cs",
               "RelativeDocumentMoniker": "AcademyGestor\\Vistas\\CursoView.cs",
@@ -186,7 +202,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "ReciboView.cs",
               "DocumentMoniker": "D:\\Escritorio\\AcademyGestor\\AcademyGestor\\AcademyGestor\\Vistas\\ReciboView.cs",
               "RelativeDocumentMoniker": "AcademyGestor\\Vistas\\ReciboView.cs",
@@ -198,7 +214,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "ReciboView.cs [Dise\u00F1o]",
               "DocumentMoniker": "D:\\Escritorio\\AcademyGestor\\AcademyGestor\\AcademyGestor\\Vistas\\ReciboView.cs",
               "RelativeDocumentMoniker": "AcademyGestor\\Vistas\\ReciboView.cs",
