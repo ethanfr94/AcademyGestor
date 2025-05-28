@@ -65,6 +65,29 @@ namespace AcademyGestor.ApiService
             }
         }
 
+        public async Task<Profesor> getProfesorByDni(string dni)
+        {
+            try
+            {
+                Profesor profesor = new Profesor();
+                HttpResponseMessage resp = await cli.GetAsync($"http://localhost:8080/escuela_circo/profesor/dni/{dni}");
+                resp.EnsureSuccessStatusCode();
+                string json = await resp.Content.ReadAsStringAsync();
+                profesor = JsonConvert.DeserializeObject<Profesor>(json);
+                return profesor;
+            }
+            catch (HttpRequestException e)
+            {
+                Console.WriteLine("Error: " + e.Message);
+                return null;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error: " + e.Message);
+                return null;
+            }
+        }
+
         public async Task<bool> addProfesor(Profesor profesor)
         {
             try

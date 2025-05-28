@@ -40,7 +40,7 @@ fun currentRoute(navController: NavController): String? =
 
 @Composable
 fun BottomAppBar(navController: NavController) {
-    val bar_items = if (User.currentUser) {
+    val bar_items = if (User.user != null) {
         listOf(
             ItemsNav.Item_bottom_nav_home,
             ItemsNav.Item_bottom_nav_profesor
@@ -90,7 +90,7 @@ fun TopAppBar(navController: NavController) {
             )*/
         },
         actions = {
-            if (User.currentUser) {
+            if (User.user != null) {
                 // Mostrar el botón de añadir publicación solo si el usuario está autenticado
                 IconButton(onClick = {
                     navController.navigate("newpost")
@@ -104,7 +104,7 @@ fun TopAppBar(navController: NavController) {
         },
         navigationIcon = {
             IconButton(onClick = {
-                if (User.currentUser) {
+                if (User.user != null) {
                     showDialog = true
                 } else {
                     navController.navigate("loggin")
@@ -130,7 +130,7 @@ fun TopAppBar(navController: NavController) {
             text = { Text(text = "¿Estás seguro de que deseas cerrar sesión?") },
             confirmButton = {
                 Button(onClick = {
-                    User.currentUser = false
+                    User.user = null
                     showDialog = false
                     navController.navigate("loggin")
                 }) {

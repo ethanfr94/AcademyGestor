@@ -1,5 +1,7 @@
 package com.example.academygestormobile.Components
 
+import com.example.academygestormobile.Models.Usuario
+
 object User {
-    var currentUser: Boolean = false
+    var user: Usuario? = null
 }

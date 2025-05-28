@@ -16,11 +16,13 @@ namespace AcademyGestor.Vistas
     {
         private Profesor profesor;
         private CtrlProfesores ctrlProfesores;
+        private CtrlUsuarios ctrlUsuarios;
         public ProfesorView()
         {
             InitializeComponent();
             this.Text = "Nuevo Profesor";
             this.ctrlProfesores = new CtrlProfesores();
+            this.ctrlUsuarios = new CtrlUsuarios();
         }
 
         public ProfesorView(Profesor profesor)
@@ -29,6 +31,7 @@ namespace AcademyGestor.Vistas
             this.Text = "Modificar Profesor";
             this.profesor = profesor;
             this.ctrlProfesores = new CtrlProfesores();
+            
             cargaDatos();
         }
 
@@ -97,13 +100,31 @@ namespace AcademyGestor.Vistas
                 if (ok)
                 {
                     MessageBox.Show("Profesor guardado correctamente", "Profesor guardado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    string username = txtNombre.Text.Substring(0, 1).ToLower() + txtApe1.Text.ToLower();
+                    string password = txtNombre.Text.Substring(0, 1).ToLower() + txtApe1.Text.ToLower();
+
+
+                    Usuario nuevo = new Usuario();
+
+                    nuevo.user = username;
+                    nuevo.pass = password;
+                    nuevo.rol = Rol.User;
+
+                    bool add = await ctrlUsuarios.addUsuario(nuevo);
+                    if (add)
+                    {
+                        MessageBox.Show("Usuario creado correctamente", "Usuario creado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error al crear el usuario", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                     DialogResult = DialogResult.OK;
                     this.Close();
                 }
-                else
-                {
-                    MessageBox.Show("Error al guardar el profesor", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+
+
             }
         }
 
@@ -176,7 +197,7 @@ namespace AcademyGestor.Vistas
             }
             if (txtTlfn.Text.Length < 9)
             {
-                if(!ValidarTelefono(txtTlfn.Text))
+                if (!ValidarTelefono(txtTlfn.Text))
                 {
                     MessageBox.Show("El campo Teléfono debe contener 9 dígitos.", "Campo inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return false;

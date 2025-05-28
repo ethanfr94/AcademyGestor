@@ -6,32 +6,31 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.academygestormobile.API.RetrofitServiceFactory
-import com.example.academygestormobile.Models.Curso
 import com.example.academygestormobile.Models.Usuario
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class UsuariosViewModel:ViewModel() {
-    private val _usuario = MutableLiveData<Usuario>()
-    val usuario: LiveData<Usuario> = _usuario
-    private val _usuarios = MutableLiveData<List<Usuario>>()
-    val usuarios: LiveData<List<Usuario>> = _usuarios
+class UsuariosViewModel():ViewModel() {
+
+    private val _usuario = MutableLiveData<Usuario?>()
+    val usuario: LiveData<Usuario?> = _usuario
 
     private val serv = RetrofitServiceFactory.makeRetrofitService()
 
-    fun getUsuarios() {
+    fun getUsuario(user: String, pass: String) {
         viewModelScope.launch {
             try {
-                val usuariosList = serv.getUsuarios()
-                _usuarios.value = usuariosList
-                Log.d("Usuarios", "Received list: $usuariosList")
+                val usuarioResponse = serv.getUsuarioByLogin(user, pass)
+                _usuario.value = usuarioResponse
+                Log.d("Usuario", "Received: $usuarioResponse")
             } catch (e: Exception) {
-                Log.d("Usuarios", "$e")
+                Log.d("Usuario", "$e")
                 e.printStackTrace()
             }
         }
     }
+
     fun updateUsuario(usuario: Usuario) {
         CoroutineScope(Dispatchers.IO).launch {
             try {

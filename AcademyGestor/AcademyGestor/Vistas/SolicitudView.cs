@@ -189,6 +189,7 @@ namespace AcademyGestor.Vistas
                 else
                 {
                     MessageBox.Show("Matricula registrada correctamente.", "Matricula", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    await ctrlSolicitudes.deleteSolicitud((int)solicitud.id);
                 }
 
             }
@@ -212,6 +213,11 @@ namespace AcademyGestor.Vistas
             if (string.IsNullOrEmpty(txtApe1.Text))
             {
                 MessageBox.Show("El campo apellido 1 es obligatorio.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            if (string.IsNullOrEmpty(txtApe2.Text))
+            {
+                MessageBox.Show("El campo apellido 2 es obligatorio.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             if (string.IsNullOrEmpty(txtDni.Text))
@@ -239,6 +245,11 @@ namespace AcademyGestor.Vistas
                 MessageBox.Show("El campo teléfono es obligatorio.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
+            if(dtpFecha_nac.Value > DateTime.Now)
+            {
+                MessageBox.Show("La fecha de nacimiento no es valida.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
             int edad = CalcularEdad(dtpFecha_nac.Value);
             if (edad < 18)
             {
@@ -252,6 +263,93 @@ namespace AcademyGestor.Vistas
                     return false;
                 }            
             }
+
+            if (!ValidarTelefono(txtTlfn.Text))
+            {
+                MessageBox.Show("El teléfono debe contener 9 dígitos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            if (!ValidarDni(txtDni.Text))
+            {
+                MessageBox.Show("El DNI/NIE no es válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            if (!ValidarEmail(txtEmail.Text))
+            {
+                MessageBox.Show("El email no es válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        private bool ValidarTelefono(string telefono)
+        {
+            return telefono.All(char.IsDigit) && telefono.Length == 9;
+        }
+
+        private bool ValidarDni(string dniNie)
+        {
+            if (string.IsNullOrWhiteSpace(dniNie) || dniNie.Length != 9)
+                return false;
+
+            dniNie = dniNie.ToUpper();
+
+            // Validar NIE (comienza con X, Y o Z)
+            if (dniNie[0] == 'X' || dniNie[0] == 'Y' || dniNie[0] == 'Z')
+            {
+                // Reemplazar la letra inicial por un número para tratarlo como un DNI
+                char primeraLetra = dniNie[0];
+                string numeros = dniNie.Substring(1, 7);
+                char letra = dniNie[8];
+
+                if (!int.TryParse(numeros, out _))
+                    return false;
+
+                // Convertir la letra inicial del NIE a un número
+                switch (primeraLetra)
+                {
+                    case 'X': numeros = "0" + numeros; break;
+                    case 'Y': numeros = "1" + numeros; break;
+                    case 'Z': numeros = "2" + numeros; break;
+                }
+
+                return ValidarLetraDni(numeros, letra);
+            }
+            // Validar DNI (8 dígitos seguidos de una letra)
+            else
+            {
+                string numeros = dniNie.Substring(0, 8);
+                char letra = dniNie[8];
+
+                if (!int.TryParse(numeros, out _))
+                    return false;
+
+                return ValidarLetraDni(numeros, letra);
+            }
+        }
+
+        private bool ValidarLetraDni(string numeros, char letra)
+        {
+            // Letras válidas para el DNI según el módulo 23
+            string letrasValidas = "TRWAGMYFPDXBNJZSQVHLCKE";
+
+            // Calcular la posición de la letra
+            int numero = int.Parse(numeros);
+            int posicion = numero % 23;
+
+            // Comparar la letra calculada con la letra proporcionada
+            return letrasValidas[posicion] == letra;
+        }
+
+        private bool ValidarEmail(string email)
+        {
+            if (string.IsNullOrWhiteSpace(email))
+                return false;
+
+            // Expresión regular para validar el formato del correo electrónico
+            string patron = @"^[^@\s]+@[^@\s]+\.[a-zA-Z]{2,}$";
+            return System.Text.RegularExpressions.Regex.IsMatch(email, patron);
         }
     }
 }

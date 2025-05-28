@@ -31,6 +31,12 @@ interface RetrofitService {
     @GET("usuarios")
     suspend fun getUsuarios(): List<Usuario>
 
+    @GET("usuarios/login/{usuario}/{password}")
+    suspend fun getUsuarioByLogin(
+        @Path("usuario") usuario: String,
+        @Path("password") password: String
+    ): Usuario
+
 
     @GET("empresa")
     suspend fun getEmpresa(): Empresa
@@ -99,7 +105,7 @@ object RetrofitServiceFactory {
 
     fun makeRetrofitService(): RetrofitService {
         return Retrofit.Builder()
-            .baseUrl("http://192.168.1.133:8080/escuela_circo/")
+            .baseUrl("http://localhost:8080/escuela_circo/")
             .addConverterFactory(GsonConverterFactory.create())
             .build().create(RetrofitService::class.java)
     }

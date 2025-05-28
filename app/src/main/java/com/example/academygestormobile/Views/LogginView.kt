@@ -1,5 +1,6 @@
 package com.example.academygestormobile.Views
 
+import android.util.Log
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
@@ -20,6 +21,7 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -30,15 +32,26 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import com.example.academygestormobile.Components.User
+import com.example.academygestormobile.Models.Curso
+import com.example.academygestormobile.Models.Usuario
 import com.example.academygestormobile.R
+import com.example.academygestormobile.ViewModels.CursosViewModel
+import com.example.academygestormobile.ViewModels.UsuariosViewModel
 
 @Composable
-fun Loggin(nav: NavHostController) {
+fun Loggin(nav: NavHostController, usuariosViewModel: UsuariosViewModel = viewModel(), cursosViewModel: CursosViewModel = viewModel()) {
 
+    val cursos: List<Curso> by cursosViewModel.cursos.observeAsState(emptyList())
+    val usuario: Usuario? by usuariosViewModel.usuario.observeAsState()
     var user by remember { mutableStateOf("") }
     var pass by remember { mutableStateOf("") }
+
+   var  us: Usuario? = null
+
+
 
     Box(
         modifier = Modifier
@@ -99,8 +112,9 @@ fun Loggin(nav: NavHostController) {
 
             Button(
                 onClick = {
-                    User.currentUser = true
-                    nav.navigate("home") },
+                    usuariosViewModel.getUsuario(user, pass)
+                    Log.d("Logging", "usuarios: $usuario")
+                 },
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(top = 20.dp),  // Padding superior para el botón

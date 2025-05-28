@@ -14,7 +14,7 @@ namespace AcademyGestor.Modelos
 
     public class Usuario
     {
-        public int id { get; set; }
+        public int? id { get; set; }
         public string user { get; set; }
         public string pass { get; set; }
         public Rol rol { get; set; }
