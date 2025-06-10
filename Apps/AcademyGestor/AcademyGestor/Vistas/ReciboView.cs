@@ -58,7 +58,7 @@ namespace AcademyGestor.Vistas
             {
 
                 DataGridViewRow row = dgvRecibos.Rows[dgvRecibos.Rows.Add(
-                                    item.fecha.ToString("dd/MM/yyyy"),
+                                    item.fecha?.ToString("dd/MM/yyyy"),
                                     item.matricula.alumno.nombre + " " + item.matricula.alumno.apellido1 + " " + item.matricula.alumno.apellido2,
                                     item.matricula.curso.nombre,
                                     item.importe,
@@ -85,7 +85,7 @@ namespace AcademyGestor.Vistas
                 if (item.matricula.id == matricula.id)
                 {
                     DataGridViewRow row = dgvRecibos.Rows[dgvRecibos.Rows.Add(
-                                        item.fecha.ToString("dd/MM/yyyy"),
+                                        item.fecha?.ToString("dd/MM/yyyy"),
                                         item.matricula.alumno.nombre + " " + item.matricula.alumno.apellido1 + " " + item.matricula.alumno.apellido2,
                                         item.matricula.curso.nombre,
                                         item.importe,
@@ -105,11 +105,18 @@ namespace AcademyGestor.Vistas
                 DataGridViewRow selectedRow = dgvRecibos.SelectedRows[0];
                 if (selectedRow.Tag is Recibo recibo)
                 {
+                    Double imp = Convert.ToDouble(recibo.importe);
+
+                    if (recibo.descuento == 1)
+                    {
+                        imp = imp * 0.8;
+                    }
+
                     txtDetalle.Text = recibo.detalle;
-                    txtImporte.Text = recibo.importe.ToString();
+                    txtImporte.Text = imp.ToString();
                     chkDescuento.Checked = recibo.descuento == 1;
                     chkPagado.Checked = recibo.pagado == 1;
-                    dtpFecha.Value = recibo.fecha;
+                    dtpFecha.Value = (DateTime)recibo.fecha;
 
                     this.recibo = recibo;
                 }
@@ -118,10 +125,7 @@ namespace AcademyGestor.Vistas
 
         private void chkDescuento_CheckedChanged(object sender, EventArgs e)
         {
-            if (chkDescuento.Checked)
-            {
-                txtImporte.Text = (Convert.ToDouble(txtImporte.Text) * 0.8).ToString();
-            }
+
         }
 
         private async void btnCobrar_Click(object sender, EventArgs e)
@@ -143,6 +147,11 @@ namespace AcademyGestor.Vistas
             {
                 MessageBox.Show("No hay recibo seleccionado", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void btnRecibo_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Funcionalidad en desarrollo", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

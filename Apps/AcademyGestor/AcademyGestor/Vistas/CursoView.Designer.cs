@@ -44,6 +44,7 @@
             this.cmbCoordinador = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.chkActivo = new System.Windows.Forms.CheckBox();
+            this.btnEliminar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtCodCurso
@@ -186,6 +187,20 @@
             this.chkActivo.Text = "Activo";
             this.chkActivo.UseVisualStyleBackColor = true;
             // 
+            // btnEliminar
+            // 
+            this.btnEliminar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEliminar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnEliminar.Location = new System.Drawing.Point(175, 276);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(70, 23);
+            this.btnEliminar.TabIndex = 34;
+            this.btnEliminar.TabStop = false;
+            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            // 
             // CursoView
             // 
             this.AcceptButton = this.btnGuardar;
@@ -193,6 +208,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnSalir;
             this.ClientSize = new System.Drawing.Size(409, 311);
+            this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.cmbCoordinador);
             this.Controls.Add(this.label5);
@@ -234,5 +250,6 @@
         private System.Windows.Forms.ComboBox cmbCoordinador;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.CheckBox chkActivo;
+        private System.Windows.Forms.Button btnEliminar;
     }
 }

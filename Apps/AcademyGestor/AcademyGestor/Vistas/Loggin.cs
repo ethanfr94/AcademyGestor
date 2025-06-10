@@ -30,7 +30,7 @@ namespace AcademyGestor
 
             if (Properties.Settings.Default.Username != string.Empty && Properties.Settings.Default.Password != string.Empty && Properties.Settings.Default.Remember)
             {
-                chkRecordar.Checked = true;  
+                chkRecordar.Checked = true;
                 txtUser.Text = Properties.Settings.Default.Username;
                 txtPass.Text = Decrypt(Properties.Settings.Default.Password, EncryptionKey);
             }
@@ -65,11 +65,18 @@ namespace AcademyGestor
 
             Thread mainThread = new Thread(() =>
             {
-                Application.Run(new Main()); 
+                if (usuario.rol == Rol.Admin)
+                {
+                    Application.Run(new Main());
+                }
+                else
+                {
+                    MessageBox.Show("No tienes permisos para acceder a esta aplicación.", "Acceso Denegado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             });
 
-            mainThread.SetApartmentState(ApartmentState.STA); 
-            mainThread.Start(); 
+            mainThread.SetApartmentState(ApartmentState.STA);
+            mainThread.Start();
 
             this.Close();
         }
@@ -116,11 +123,11 @@ namespace AcademyGestor
             }
         }
 
-        
+
 
         private void chkRecordar_CheckedChanged(object sender, EventArgs e)
         {
-            if(chkRecordar.Checked)
+            if (chkRecordar.Checked)
             {
                 Properties.Settings.Default.Remember = true;
             }

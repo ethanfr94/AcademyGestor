@@ -5,6 +5,7 @@ import IFAEscuela_circo.Escuela_circo.Repositorios.ReciboRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -25,6 +26,7 @@ public class ReciboServiceImp implements ReciboService {
 
     @Override
     public Recibo guardar(Recibo recibo) {
+        recibo.setFecha(LocalDate.now());
         return repo.save(recibo);
     }
 

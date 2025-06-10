@@ -201,7 +201,7 @@ namespace AcademyGestor.Vistas
                     return;
                 }
                 else
-                {                    
+                {
                     this.Close();
                 }
 
@@ -253,5 +253,33 @@ namespace AcademyGestor.Vistas
             return true;
         }
 
+        private async void btnEliminar_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("¿Está seguro de que desea eliminar este curso?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                if (curso != null)
+                {
+                    try
+                    {
+                        int id = (int)curso.id;
+                        bool eliminado = await ctrlCursos.deleteCurso(id);
+                        if (eliminado)
+                        {
+                            MessageBox.Show("Curso eliminado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            this.Close();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Error al eliminar el curso.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error al eliminar el curso: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
     }
 }

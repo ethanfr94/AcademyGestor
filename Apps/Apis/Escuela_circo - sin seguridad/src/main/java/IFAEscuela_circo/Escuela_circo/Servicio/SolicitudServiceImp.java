@@ -2,9 +2,15 @@ package IFAEscuela_circo.Escuela_circo.Servicio;
 
 import IFAEscuela_circo.Escuela_circo.Modelos.Solicitud;
 import IFAEscuela_circo.Escuela_circo.Repositorios.SolicitudRepository;
+import jakarta.servlet.*;
+import jakarta.servlet.annotation.WebFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.time.Instant;
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -25,6 +31,7 @@ public class SolicitudServiceImp implements SolicitudService {
 
     @Override
     public Solicitud guardar(Solicitud solicitud) {
+        solicitud.setFecha(Instant.from(LocalDate.now()));
         return repo.save(solicitud);
     }
 
@@ -49,3 +56,4 @@ public class SolicitudServiceImp implements SolicitudService {
         }
     }
 }
+

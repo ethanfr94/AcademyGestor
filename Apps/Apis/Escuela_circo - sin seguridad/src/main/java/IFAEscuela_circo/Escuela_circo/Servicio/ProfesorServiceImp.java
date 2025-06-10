@@ -34,6 +34,16 @@ public class ProfesorServiceImp implements ProfesorService {
         return null;
     }
 
+    public Profesor findByEmail(String email) {
+        List<Profesor> profesores = repo.findAll();
+        for (Profesor profesor : profesores) {
+            if (profesor.getEmail().equals(email)) {
+                return profesor;
+            }
+        }
+        return null;
+    }
+
      @Override
      public Profesor guardar(Profesor profesor) {
          return repo.save(profesor);

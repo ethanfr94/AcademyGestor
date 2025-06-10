@@ -64,11 +64,13 @@ namespace AcademyGestor
             profesoresCurso = new List<Profesor_Curso>();
 
             cargaEmpresa();
+
         }
 
         private async void cargaEmpresa()
         {
             empresa = await ctrlEmpresa.getEmpresa();
+            await generarRecibos();
         }
 
         private async void cargaAlumnos()
@@ -233,7 +235,7 @@ namespace AcademyGestor
             foreach (var item in recibos)
             {
                 DataGridViewRow row = dgvDatos.Rows[dgvDatos.Rows.Add(
-                    item.fecha.ToString("dd/MM/yyyy"),
+                    item.fecha?.ToString("dd/MM/yyyy"),
                     item.matricula.alumno.nombre + " " + item.matricula.alumno.apellido1 + " " + item.matricula.alumno.apellido2,
                     item.matricula.curso.nombre,
                     item.importe,
@@ -457,7 +459,7 @@ namespace AcademyGestor
                 }
                 else if (selectedRow.Tag is Matricula matricula)
                 {
-                    if(matricula.fechBaja == null)
+                    if (matricula.fechBaja == null)
                     {
                         btnMulti.Enabled = true;
                     }
@@ -471,7 +473,7 @@ namespace AcademyGestor
                                     "- Fecha baja: " + (matricula.fechBaja != null ? matricula.fechBaja.Value.ToString("dd/MM/yyyy") : "") + "\n\n" +
                                     "- Autorizacion de fotos: " + (matricula.autorizacionFotos == 1 ? "si" : "no") + "\t" + "- Beca: " + (matricula.beca == 1 ? "si" : "no");
                 }
-                
+
                 else if (selectedRow.Tag is Publicacion publicacion)
                 {
                     btnEdit.Enabled = true;
@@ -488,14 +490,14 @@ namespace AcademyGestor
         }
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            switch(cmbSelect.SelectedItem.ToString())
+            switch (cmbSelect.SelectedItem.ToString())
             {
                 case "Profesores":
                     ProfesorView formProfesor = new ProfesorView();
                     formProfesor.ShowDialog();
                     cargaProfesores();
                     break;
-                case "Cursos":                    
+                case "Cursos":
                     CursoView formCurso = new CursoView();
                     formCurso.ShowDialog();
                     cargaCursos();
@@ -504,11 +506,11 @@ namespace AcademyGestor
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
-        {           
+        {
             if (dgvDatos.SelectedRows.Count > 0)
             {
                 DataGridViewRow selectedRow = dgvDatos.SelectedRows[0];
-                switch(cmbSelect.SelectedItem.ToString())
+                switch (cmbSelect.SelectedItem.ToString())
                 {
                     case "Alumnos":
                         if (selectedRow.Tag is Alumno alumno)
@@ -561,19 +563,9 @@ namespace AcademyGestor
         {
             if (cmbSelect.SelectedItem.ToString() == "Alumnos")
             {
-                if (dgvDatos.SelectedRows.Count > 0)
-                {
-                    DataGridViewRow selectedRow = dgvDatos.SelectedRows[0];
-                    if (selectedRow.Tag is Alumno alumno)
-                    {
-                        FaltaAsistenciaView formFaltas = new FaltaAsistenciaView(alumno);
-                        formFaltas.ShowDialog();
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Selecciona un alumno", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                }
+                FaltaAsistenciaView formFaltas = new FaltaAsistenciaView();
+                formFaltas.ShowDialog();
+
             }
             else if (cmbSelect.SelectedItem.ToString() == "Cursos")
             {
@@ -936,7 +928,7 @@ namespace AcademyGestor
                 {
                     Recibo r = item as Recibo;
                     DataGridViewRow row = dgvDatos.Rows[dgvDatos.Rows.Add(
-                        r.fecha.ToString("dd/MM/yyyy"),
+                        r.fecha?.ToString("dd/MM/yyyy"),
                         r.matricula.alumno.nombre + " " + r.matricula.alumno.apellido1 + " " + r.matricula.alumno.apellido2,
                         r.matricula.curso.nombre,
                         r.importe,
@@ -1058,6 +1050,55 @@ namespace AcademyGestor
         private void pictureBox2_Click(object sender, EventArgs e)
         {
             this.tsmiLogout_Click(sender, e);
+        }
+
+
+        private async Task generarRecibos()
+        {
+            // Obtener todas las matrículas y recibos existentes
+            var matriculas = await ctrlMatriculas.getMatriculas();
+            var recibos = await ctrlRecibos.getRecibos();
+
+            int mesActual = DateTime.Now.Month;
+            int anioActual = DateTime.Now.Year;
+            int diaActual = DateTime.Now.Day;
+
+            foreach (var matricula in matriculas)
+            {
+                if (matricula.fechBaja != null && matricula.fechBaja.Value < new DateTime(anioActual, mesActual, diaActual))
+                {
+                    // Si la matrícula ya está dada de baja, no generar recibo
+                    continue;
+                }
+                // Comprobar si ya existe un recibo para esta matrícula en el mes y año actual
+                bool existeRecibo = recibos.Any(r =>
+                    r.matricula != null &&
+                    r.matricula.id == matricula.id &&
+                    r.fecha?.Month == mesActual &&
+                    r.fecha?.Year == anioActual
+                );
+
+                if (!existeRecibo)
+                {
+                    // Obtener el importe del curso asociado a la matrícula
+                    double importe = 0;
+                    if (matricula.curso != null && matricula.curso.tipo != null)
+                        importe = matricula.curso.tipo.precio;
+
+                    // Crear el nuevo recibo
+                    Recibo nuevoRecibo = new Recibo
+                    {
+                        matricula = matricula,
+                        fecha = new DateTime(anioActual, mesActual, 1),
+                        importe = importe,
+                        pagado = 0,
+                        detalle = $"Recibo mensual {mesActual:D2}/{anioActual}",
+                        descuento = 0 // Modifica si necesitas aplicar descuentos
+                    };
+
+                    await ctrlRecibos.addRecibo(nuevoRecibo);
+                }
+            }
         }
     }
 }

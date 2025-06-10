@@ -72,6 +72,7 @@
             this.cmbTutor = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.chkNuevoTutor = new System.Windows.Forms.CheckBox();
+            this.btnEliminar = new System.Windows.Forms.Button();
             this.gbTutor.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -513,6 +514,19 @@
             this.chkNuevoTutor.UseVisualStyleBackColor = true;
             this.chkNuevoTutor.CheckedChanged += new System.EventHandler(this.chkNuevoTutor_CheckedChanged);
             // 
+            // btnEliminar
+            // 
+            this.btnEliminar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEliminar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnEliminar.Location = new System.Drawing.Point(223, 553);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(77, 23);
+            this.btnEliminar.TabIndex = 51;
+            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            // 
             // AlumnoView
             // 
             this.AcceptButton = this.btnGuardar;
@@ -520,6 +534,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnSalir;
             this.ClientSize = new System.Drawing.Size(473, 588);
+            this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.gbTutor);
             this.Controls.Add(this.dtpFecha_nac);
             this.Controls.Add(this.btnGuardar);
@@ -601,5 +616,6 @@
         private System.Windows.Forms.ComboBox cmbTutor;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.CheckBox chkNuevoTutor;
+        private System.Windows.Forms.Button btnEliminar;
     }
 }

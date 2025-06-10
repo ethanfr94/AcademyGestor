@@ -5,6 +5,7 @@ import IFAEscuela_circo.Escuela_circo.Repositorios.FaltasAsistenciaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -35,6 +36,10 @@ public class FaltaAsistenciaServiceImp implements FaltaAsistenciaService {
 
     @Override
     public FaltasAsistencia guardar(FaltasAsistencia faltasAsistencia) {
+        int day = LocalDate.now().getDayOfMonth();
+        int month = LocalDate.now().getMonthValue();
+        int year = LocalDate.now().getYear();
+        faltasAsistencia.setFecha(LocalDate.of(year, month, day));
         return repo.save(faltasAsistencia);
     }
 

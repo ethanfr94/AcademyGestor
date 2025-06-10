@@ -140,7 +140,7 @@ namespace AcademyGestor.Vistas
                 txtDniTutor.Enabled = false;
                 txtDireccionTutor.Enabled = false;
                 txtLocalidadTutor.Enabled = false;
-                txtTlfnTutor.Enabled = false;          
+                txtTlfnTutor.Enabled = false;
             }
         }
 
@@ -192,7 +192,7 @@ namespace AcademyGestor.Vistas
         }
 
         private async void btnGuardar_Click(object sender, EventArgs e)
-        {            
+        {
             if (!ValidarCampos())
             {
                 return;
@@ -361,10 +361,6 @@ namespace AcademyGestor.Vistas
                     MessageBox.Show("Alumno actualizado correctamente.", "Alumno actualizado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
                 }
-                if (alumno.tutor == null)
-                {
-                    MessageBox.Show("El tutor del alumno ha sido eliminado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
             }
         }
 
@@ -431,7 +427,7 @@ namespace AcademyGestor.Vistas
                         MessageBox.Show("Todos los campos del tutor son obligatorios para alumnos menores de edad.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return false;
                     }
-                    
+
                     if (!ValidarDni(txtDniTutor.Text))
                     {
                         MessageBox.Show("El DNI del tutor no tiene un formato válido.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -529,5 +525,26 @@ namespace AcademyGestor.Vistas
             return System.Text.RegularExpressions.Regex.IsMatch(email, patron);
         }
 
+        private async void btnEliminar_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("¿Estás seguro de que quieres eliminar al alumno " + alumno.nombre + " " + alumno.apellido1 + " " + alumno.apellido2 + "?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (result == DialogResult.Yes)
+            {
+                if (alumno != null)
+                {
+                    int id = (int)alumno.id;
+                    bool eliminado = await ctrlAlumnos.deleteAlumno(id);
+                    if (eliminado)
+                    {
+                        MessageBox.Show("Alumno eliminado correctamente.", "Eliminación exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error al eliminar el alumno.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
     }
 }

@@ -51,12 +51,11 @@ namespace AcademyGestor.Vistas
 
             txtCurso.Text = solicitud.curso.nombre;
 
-            dtpFecha.Text = solicitud.fecha.ToShortDateString();
             txtNombre.Text = this.solicitud.nombre;
             txtApe1.Text = this.solicitud.apellido1;
             txtApe2.Text = this.solicitud.apellido2;
             txtDni.Text = this.solicitud.dni;
-            dtpFecha_nac.Text = this.solicitud.fechaNac.ToShortDateString();
+            dtpFecha_nac.Value = this.solicitud.fechaNac;
             txtDireccion.Text = this.solicitud.direccion;
             txtLocalidad.Text = this.solicitud.localidad;
             txtEmail.Text = this.solicitud.email;
@@ -108,44 +107,64 @@ namespace AcademyGestor.Vistas
         private async void btnAceptar_Click(object sender, EventArgs e)
         {
             Alumno alumno = await ctrlAlumnos.getAlumnoByDni(solicitud.dni);
-
-            if(!ValidarCampos())
+            if (ValidarCampos())
             {
-                return;
-            }
 
-            if (alumno == null)
-            {
-                alumno = new Alumno();
-                alumno.nombre = txtNombre.Text;
-                alumno.apellido1 = txtApe1.Text;
-                alumno.apellido2 = txtApe2.Text;
-                alumno.dni = txtDni.Text;
-                alumno.fechaNac = dtpFecha_nac.Value;
-                alumno.direccion = txtDireccion.Text;
-                alumno.localidad = txtLocalidad.Text;
-                alumno.email = txtEmail.Text;
-                alumno.telefono = txtTlfn.Text;
-
-
-                if (CalcularEdad(dtpFecha_nac.Value) < 18)
+                if (alumno == null)
                 {
-                    if (tutor == null)
+                    alumno = new Alumno();
+                    alumno.nombre = txtNombre.Text;
+                    alumno.apellido1 = txtApe1.Text;
+                    alumno.apellido2 = txtApe2.Text;
+                    alumno.dni = txtDni.Text;
+                    alumno.fechaNac = dtpFecha_nac.Value;
+                    alumno.direccion = txtDireccion.Text;
+                    alumno.localidad = txtLocalidad.Text;
+                    alumno.email = txtEmail.Text;
+                    alumno.telefono = txtTlfn.Text;
+
+
+                    if (CalcularEdad(dtpFecha_nac.Value) < 18)
                     {
-                        alumno.tutor = null;
+                        if (tutor == null)
+                        {
+                            alumno.tutor = null;
+                        }
+                        else
+                        {
+                            alumno.tutor = tutor;
+                        }
+                    }
+
+                    bool insertado = await ctrlAlumnos.addAlumno(alumno);
+
+                    if (!insertado)
+                    {
+                        MessageBox.Show("Error al insertar el alumno.", "Matricula", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
                     }
                     else
                     {
-                        alumno.tutor = tutor;
+                        alumno = await ctrlAlumnos.getAlumnoByDni(alumno.dni);
+
+                        Matricula matricula = new Matricula();
+                        matricula.alumno = alumno;
+                        matricula.curso = curso;
+                        matricula.beca = solicitud.beca;
+                        matricula.autorizacionFotos = solicitud.autorizacionFotos;
+
+                        bool ins = await ctrlMatriculas.addMatricula(matricula);
+                        if (!ins)
+                        {
+                            MessageBox.Show("Error al registrar la matricula.", "Matricula", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Matricula registrada correctamente.", "Matricula", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            await ctrlSolicitudes.deleteSolicitud((int)solicitud.id);
+                        }
                     }
-                }
-
-                bool insertado = await ctrlAlumnos.addAlumno(alumno);
-
-                if (!insertado)
-                {
-                    MessageBox.Show("Error al insertar el alumno.", "Matricula", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
                 }
                 else
                 {
@@ -157,8 +176,8 @@ namespace AcademyGestor.Vistas
                     matricula.beca = solicitud.beca;
                     matricula.autorizacionFotos = solicitud.autorizacionFotos;
 
-                    bool ins = await ctrlMatriculas.addMatricula(matricula);
-                    if (!ins)
+                    bool insertado = await ctrlMatriculas.addMatricula(matricula);
+                    if (!insertado)
                     {
                         MessageBox.Show("Error al registrar la matricula.", "Matricula", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
@@ -168,30 +187,8 @@ namespace AcademyGestor.Vistas
                         MessageBox.Show("Matricula registrada correctamente.", "Matricula", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         await ctrlSolicitudes.deleteSolicitud((int)solicitud.id);
                     }
-                }
-            }
-            else
-            {
-                alumno = await ctrlAlumnos.getAlumnoByDni(alumno.dni);
 
-                Matricula matricula = new Matricula();
-                matricula.alumno = alumno;
-                matricula.curso = curso;
-                matricula.beca = solicitud.beca;
-                matricula.autorizacionFotos = solicitud.autorizacionFotos;
-
-                bool insertado = await ctrlMatriculas.addMatricula(matricula);
-                if (!insertado)
-                {
-                    MessageBox.Show("Error al registrar la matricula.", "Matricula", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
                 }
-                else
-                {
-                    MessageBox.Show("Matricula registrada correctamente.", "Matricula", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    await ctrlSolicitudes.deleteSolicitud((int)solicitud.id);
-                }
-
             }
         }
 
@@ -207,9 +204,11 @@ namespace AcademyGestor.Vistas
 
         private bool ValidarCampos()
         {
-            if (string.IsNullOrEmpty(txtNombre.Text)) { }
-            MessageBox.Show("El campo nombre es obligatorio.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            return false;
+            if (string.IsNullOrEmpty(txtNombre.Text))
+            {
+                MessageBox.Show("El campo nombre es obligatorio.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
             if (string.IsNullOrEmpty(txtApe1.Text))
             {
                 MessageBox.Show("El campo apellido 1 es obligatorio.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -281,11 +280,21 @@ namespace AcademyGestor.Vistas
                 MessageBox.Show("El email no es válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
+            return true;
         }
 
         private bool ValidarTelefono(string telefono)
         {
-            return telefono.All(char.IsDigit) && telefono.Length == 9;
+            bool ok = false;
+            if (telefono.Length == 9)
+            {
+                bool num = int.TryParse(telefono, out _);
+                if (num)
+                {
+                    ok = true;
+                }
+            }
+            return ok;
         }
 
         private bool ValidarDni(string dniNie)

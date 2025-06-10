@@ -1,5 +1,6 @@
 package IFAEscuela_circo.Escuela_circo.Modelos;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -9,10 +10,10 @@ import java.time.LocalDate;
 public class FaltasAsistencia {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Generación automática del ID
-
     @Column(name = "id", nullable = false)
     private Integer id;
 
+    @JsonFormat(pattern = "yyyy-MM-dd")
     @Column(name = "fecha", nullable = false)
     private LocalDate fecha;
 

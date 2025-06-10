@@ -80,7 +80,6 @@
             this.chkDescuento.TabIndex = 1;
             this.chkDescuento.Text = "Aplica descuento";
             this.chkDescuento.UseVisualStyleBackColor = true;
-            this.chkDescuento.CheckedChanged += new System.EventHandler(this.chkDescuento_CheckedChanged);
             // 
             // chkPagado
             // 
@@ -139,6 +138,7 @@
             this.btnRecibo.TabIndex = 2;
             this.btnRecibo.Text = "Generar recibo";
             this.btnRecibo.UseVisualStyleBackColor = true;
+            this.btnRecibo.Click += new System.EventHandler(this.btnRecibo_Click);
             // 
             // dgvRecibos
             // 

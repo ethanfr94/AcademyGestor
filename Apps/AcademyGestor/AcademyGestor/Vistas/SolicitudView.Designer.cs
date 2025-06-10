@@ -43,7 +43,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
             this.gbAlumno = new System.Windows.Forms.GroupBox();
             this.dtpFecha_nac = new System.Windows.Forms.DateTimePicker();
             this.txtTlfn = new System.Windows.Forms.Label();
@@ -76,7 +75,6 @@
             this.label19 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.txtCurso = new System.Windows.Forms.Label();
-            this.dtpFecha = new System.Windows.Forms.DateTimePicker();
             this.gbAlumno.SuspendLayout();
             this.gbTutor.SuspendLayout();
             this.SuspendLayout();
@@ -84,7 +82,7 @@
             // btnEliminar
             // 
             this.btnEliminar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnEliminar.Location = new System.Drawing.Point(166, 584);
+            this.btnEliminar.Location = new System.Drawing.Point(163, 563);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(108, 23);
             this.btnEliminar.TabIndex = 24;
@@ -95,7 +93,7 @@
             // btnSalir
             // 
             this.btnSalir.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnSalir.Location = new System.Drawing.Point(400, 584);
+            this.btnSalir.Location = new System.Drawing.Point(397, 563);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(77, 23);
             this.btnSalir.TabIndex = 26;
@@ -106,7 +104,7 @@
             // btnAceptar
             // 
             this.btnAceptar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnAceptar.Location = new System.Drawing.Point(280, 584);
+            this.btnAceptar.Location = new System.Drawing.Point(277, 563);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(114, 23);
             this.btnAceptar.TabIndex = 25;
@@ -211,15 +209,6 @@
             this.label6.TabIndex = 78;
             this.label6.Text = "Curso";
             // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(12, 39);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(37, 13);
-            this.label17.TabIndex = 79;
-            this.label17.Text = "Fecha";
-            // 
             // gbAlumno
             // 
             this.gbAlumno.Controls.Add(this.dtpFecha_nac);
@@ -241,7 +230,7 @@
             this.gbAlumno.Controls.Add(this.label3);
             this.gbAlumno.Controls.Add(this.label2);
             this.gbAlumno.Controls.Add(this.label1);
-            this.gbAlumno.Location = new System.Drawing.Point(6, 65);
+            this.gbAlumno.Location = new System.Drawing.Point(3, 44);
             this.gbAlumno.Name = "gbAlumno";
             this.gbAlumno.Size = new System.Drawing.Size(466, 237);
             this.gbAlumno.TabIndex = 81;
@@ -255,7 +244,7 @@
             this.dtpFecha_nac.Enabled = false;
             this.dtpFecha_nac.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpFecha_nac.Location = new System.Drawing.Point(122, 100);
-            this.dtpFecha_nac.MaxDate = new System.DateTime(2025, 4, 24, 0, 0, 0, 0);
+            this.dtpFecha_nac.MaxDate = new System.DateTime(2030, 12, 31, 0, 0, 0, 0);
             this.dtpFecha_nac.Name = "dtpFecha_nac";
             this.dtpFecha_nac.Size = new System.Drawing.Size(332, 20);
             this.dtpFecha_nac.TabIndex = 6;
@@ -345,7 +334,7 @@
             // 
             this.chkComerc.AutoSize = true;
             this.chkComerc.Enabled = false;
-            this.chkComerc.Location = new System.Drawing.Point(297, 531);
+            this.chkComerc.Location = new System.Drawing.Point(294, 510);
             this.chkComerc.Name = "chkComerc";
             this.chkComerc.Size = new System.Drawing.Size(163, 17);
             this.chkComerc.TabIndex = 21;
@@ -356,7 +345,7 @@
             // 
             this.chkWhatsapp.AutoSize = true;
             this.chkWhatsapp.Enabled = false;
-            this.chkWhatsapp.Location = new System.Drawing.Point(155, 531);
+            this.chkWhatsapp.Location = new System.Drawing.Point(152, 510);
             this.chkWhatsapp.Name = "chkWhatsapp";
             this.chkWhatsapp.Size = new System.Drawing.Size(122, 17);
             this.chkWhatsapp.TabIndex = 20;
@@ -367,7 +356,7 @@
             // 
             this.chkProt_datos.AutoSize = true;
             this.chkProt_datos.Enabled = false;
-            this.chkProt_datos.Location = new System.Drawing.Point(11, 531);
+            this.chkProt_datos.Location = new System.Drawing.Point(8, 510);
             this.chkProt_datos.Name = "chkProt_datos";
             this.chkProt_datos.Size = new System.Drawing.Size(121, 17);
             this.chkProt_datos.TabIndex = 19;
@@ -378,7 +367,7 @@
             // 
             this.chkBeca.AutoSize = true;
             this.chkBeca.Enabled = false;
-            this.chkBeca.Location = new System.Drawing.Point(155, 554);
+            this.chkBeca.Location = new System.Drawing.Point(152, 533);
             this.chkBeca.Name = "chkBeca";
             this.chkBeca.Size = new System.Drawing.Size(51, 17);
             this.chkBeca.TabIndex = 23;
@@ -389,7 +378,7 @@
             // 
             this.chkFotos.AutoSize = true;
             this.chkFotos.Enabled = false;
-            this.chkFotos.Location = new System.Drawing.Point(11, 554);
+            this.chkFotos.Location = new System.Drawing.Point(8, 533);
             this.chkFotos.Name = "chkFotos";
             this.chkFotos.Size = new System.Drawing.Size(110, 17);
             this.chkFotos.TabIndex = 22;
@@ -414,7 +403,7 @@
             this.gbTutor.Controls.Add(this.label19);
             this.gbTutor.Controls.Add(this.label20);
             this.gbTutor.Enabled = false;
-            this.gbTutor.Location = new System.Drawing.Point(2, 308);
+            this.gbTutor.Location = new System.Drawing.Point(-1, 287);
             this.gbTutor.Name = "gbTutor";
             this.gbTutor.Size = new System.Drawing.Size(470, 217);
             this.gbTutor.TabIndex = 82;
@@ -574,27 +563,13 @@
             this.txtCurso.TabIndex = 0;
             this.txtCurso.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // dtpFecha
-            // 
-            this.dtpFecha.Cursor = System.Windows.Forms.Cursors.Default;
-            this.dtpFecha.DropDownAlign = System.Windows.Forms.LeftRightAlignment.Right;
-            this.dtpFecha.Enabled = false;
-            this.dtpFecha.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFecha.Location = new System.Drawing.Point(128, 34);
-            this.dtpFecha.MaxDate = new System.DateTime(2025, 4, 24, 0, 0, 0, 0);
-            this.dtpFecha.Name = "dtpFecha";
-            this.dtpFecha.Size = new System.Drawing.Size(332, 20);
-            this.dtpFecha.TabIndex = 1;
-            this.dtpFecha.Value = new System.DateTime(2025, 4, 24, 0, 0, 0, 0);
-            // 
             // SolicitudView
             // 
             this.AcceptButton = this.btnAceptar;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnSalir;
-            this.ClientSize = new System.Drawing.Size(481, 619);
-            this.Controls.Add(this.dtpFecha);
+            this.ClientSize = new System.Drawing.Size(481, 595);
             this.Controls.Add(this.txtCurso);
             this.Controls.Add(this.gbTutor);
             this.Controls.Add(this.chkBeca);
@@ -603,7 +578,6 @@
             this.Controls.Add(this.chkWhatsapp);
             this.Controls.Add(this.chkProt_datos);
             this.Controls.Add(this.gbAlumno);
-            this.Controls.Add(this.label17);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnSalir);
@@ -636,7 +610,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label17;
         private System.Windows.Forms.GroupBox gbAlumno;
         private System.Windows.Forms.CheckBox chkComerc;
         private System.Windows.Forms.CheckBox chkWhatsapp;
@@ -669,6 +642,5 @@
         private System.Windows.Forms.Label txtApe2Tutor;
         private System.Windows.Forms.Label txtNombreTutor;
         private System.Windows.Forms.DateTimePicker dtpFecha_nac;
-        private System.Windows.Forms.DateTimePicker dtpFecha;
     }
 }

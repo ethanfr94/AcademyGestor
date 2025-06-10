@@ -101,8 +101,8 @@ namespace AcademyGestor.Vistas
                 {
                     MessageBox.Show("Profesor guardado correctamente", "Profesor guardado", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    string username = txtNombre.Text.Substring(0, 1).ToLower() + txtApe1.Text.ToLower();
-                    string password = txtNombre.Text.Substring(0, 1).ToLower() + txtApe1.Text.ToLower();
+                    string username = txtEmail.Text;
+                    string password = txtDni.Text;
 
 
                     Usuario nuevo = new Usuario();

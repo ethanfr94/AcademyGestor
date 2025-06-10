@@ -30,6 +30,11 @@ public class ProfesorController {
         return serv.findByDni(dni);
     }
 
+    @GetMapping("/profesores/email/{email}")
+    public Profesor getProfesorByEmail(@PathVariable String email) {
+        return serv.findByEmail(email);
+    }
+
     @PutMapping("/profesores/modificar/{id}")
     public Profesor updateProfesor(@RequestBody Profesor profesor, @PathVariable Integer id) {
         return serv.modificar(profesor, id);
