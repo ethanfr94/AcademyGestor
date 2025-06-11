@@ -53,79 +53,81 @@ fun  CursosView(nav: NavController, cursosViewModel: CursosViewModel= CursosView
             LazyColumn {
                 items(cursos) { item ->
                    // var visible by remember { mutableStateOf(false) }
-                    Row(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(16.dp)
-                    ) {
-                        Card(
+                    if(item.activo?.toInt() == 1){
+                        Row(
                             modifier = Modifier
-                                .weight(1f)
-                                .padding(10.dp)
-                                .border(1.dp, Color.Gray, RoundedCornerShape(12.dp)),
-                            shape = RoundedCornerShape(12.dp),
-                            onClick = {
-                                visible = if (visible == item.cod_curso) null else item.cod_curso
-                            }
-                        )  {
-                            Box(modifier = Modifier.padding(16.dp)) {
-                                Column {
-                                    // Aquí puedes agregar el contenido de la tarjeta
-                                    Text(
-                                        text = item.nombre,
-                                        fontSize = 18.sp,
-                                        fontWeight = FontWeight.Bold,
-                                        textAlign = TextAlign.Start
-                                    )
-                                    if(visible == item.cod_curso) {
-
-                                        Spacer(modifier = Modifier.padding(8.dp))
-
+                                .fillMaxWidth()
+                                .padding(16.dp)
+                        ) {
+                            Card(
+                                modifier = Modifier
+                                    .weight(1f)
+                                    .padding(10.dp)
+                                    .border(1.dp, Color.Gray, RoundedCornerShape(12.dp)),
+                                shape = RoundedCornerShape(12.dp),
+                                onClick = {
+                                    visible = if (visible == item.cod_curso) null else item.cod_curso
+                                }
+                            )  {
+                                Box(modifier = Modifier.padding(16.dp)) {
+                                    Column {
+                                        // Aquí puedes agregar el contenido de la tarjeta
                                         Text(
-                                            text = item.descripcion,
-                                            fontSize = 14.sp,
+                                            text = item.nombre,
+                                            fontSize = 18.sp,
+                                            fontWeight = FontWeight.Bold,
                                             textAlign = TextAlign.Start
                                         )
+                                        if(visible == item.cod_curso) {
 
-                                        Spacer(modifier = Modifier.padding(8.dp))
+                                            Spacer(modifier = Modifier.padding(8.dp))
 
-                                        Text(
-                                            text = item.horario,
-                                            fontSize = 14.sp,
-                                            textAlign = TextAlign.Start
-                                        )
-                                        Spacer(modifier = Modifier.padding(8.dp))
-
-
-                                        Text(
-                                            text = "Curso "+item.tipo.nombre,
-                                            fontSize = 14.sp,
-                                            textAlign = TextAlign.Start
-                                        )
-                                        Spacer(modifier = Modifier.padding(8.dp))
-
-
-                                        Button(
-                                            onClick = {
-                                                Curso.curso = item
-                                                nav.navigate("solicitud")
-                                            },
-                                            modifier = Modifier
-                                                .fillMaxWidth()
-                                                .padding(top = 20.dp),  // Padding superior para el botón
-                                            shape = RoundedCornerShape(50.dp)
-                                        )
-                                        {
                                             Text(
-                                                text = "Solicitar plaza",
-                                                fontSize = 20.sp,
-                                                fontWeight = FontWeight.Bold
+                                                text = item.descripcion,
+                                                fontSize = 14.sp,
+                                                textAlign = TextAlign.Start
                                             )
+
+                                            Spacer(modifier = Modifier.padding(8.dp))
+
+                                            Text(
+                                                text = item.horario,
+                                                fontSize = 14.sp,
+                                                textAlign = TextAlign.Start
+                                            )
+                                            Spacer(modifier = Modifier.padding(8.dp))
+
+
+                                            Text(
+                                                text = "Curso "+item.tipo.nombre,
+                                                fontSize = 14.sp,
+                                                textAlign = TextAlign.Start
+                                            )
+                                            Spacer(modifier = Modifier.padding(8.dp))
+
+
+                                            Button(
+                                                onClick = {
+                                                    Curso.curso = item
+                                                    nav.navigate("solicitud")
+                                                },
+                                                modifier = Modifier
+                                                    .fillMaxWidth()
+                                                    .padding(top = 20.dp),  // Padding superior para el botón
+                                                shape = RoundedCornerShape(50.dp)
+                                            )
+                                            {
+                                                Text(
+                                                    text = "Solicitar plaza",
+                                                    fontSize = 20.sp,
+                                                    fontWeight = FontWeight.Bold
+                                                )
+                                            }
                                         }
+
+
+
                                     }
-
-
-
                                 }
                             }
                         }
