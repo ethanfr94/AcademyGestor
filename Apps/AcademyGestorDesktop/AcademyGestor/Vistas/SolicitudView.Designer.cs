@@ -584,6 +584,7 @@
             this.Controls.Add(this.btnAceptar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "SolicitudView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.gbAlumno.ResumeLayout(false);
